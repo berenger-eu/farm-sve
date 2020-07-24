@@ -27,7 +27,8 @@ https://gitlab.inria.fr/bramas/farm-sve/-/issues
 
 # Citing
 
-We would appreciate that any publication that presents a software (that uses ARM SVE, obviously) where Farm-SVE was used at some point in the project (to facilitate the development or to debug, or anything else) refer to the following reference: (See the up to date web page at https://gitlab.inria.fr/bramas/farm-sve)
+We would appreciate that any publication that presents a software (that uses ARM SVE, obviously) where Farm-SVE was used at some point in the project (to facilitate the development or to debug, or anything else) refer to the following reference:
+Bérenger Bramas. Farm-SVE: A scalar C++ implementation of the ARM® Scalable Vector Extension (SVE). 2020. ⟨hal-02906179⟩
 
 Simply an acknowledgment to express the fact that this tool was used in the development process of your project and that it was useful to you would be great.
 
