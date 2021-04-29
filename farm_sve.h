@@ -15574,9 +15574,6 @@ inline svint32_t svneg_s32_z(svbool_t pg, svint32_t op){
         if(pg.vec[idx]){
             res.vec[idx] = -op.vec[idx];
         }
-        else{
-            res.vec[idx] = op.vec[idx];
-        }
     }
     return res;
 }
@@ -15585,9 +15582,6 @@ inline svint64_t svneg_s64_z(svbool_t pg, svint64_t op){
     for(int idx = 0 ; idx < op.Size ; ++idx){
         if(pg.vec[idx]){
             res.vec[idx] = -op.vec[idx];
-        }
-        else{
-            res.vec[idx] = op.vec[idx];
         }
     }
     return res;
