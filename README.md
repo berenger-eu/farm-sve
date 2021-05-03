@@ -63,6 +63,8 @@ When Farm-SVE is used the following macro are define in the header: `USE_FARM_SV
 
 Additionally, this macro `FARM_USE_F16C` is defined when F16 is enabled.
 
+Another possibility is to rename the `farm_sve.h` file like the original `arm_sve.h` and to include the current directory (if this is where the file is located) `-I.`.
+
 # Current limitations
 
 - Faults are not managed;
