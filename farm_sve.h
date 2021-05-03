@@ -44898,4 +44898,1333 @@ inline svfloat64_t   svreinterpret_f64(svfloat64_t op){
     return svreinterpret_f64_f64(op);
 }
 
+///////////////////////////////////////////////////////
+
+inline svint8x2_t svundef2_s8(){
+    svint8x2_t tuple;
+    return tuple;
+}
+inline svuint8x2_t svundef2_u8(){
+    svuint8x2_t tuple;
+    return tuple;
+}
+inline svint16x2_t svundef2_s16(){
+    svint16x2_t tuple;
+    return tuple;
+}
+inline svuint16x2_t svundef2_u16(){
+    svuint16x2_t tuple;
+    return tuple;
+}
+inline svfloat16x2_t svundef2_f16(){
+    svfloat16x2_t tuple;
+    return tuple;
+}
+inline svint32x2_t svundef2_s32(){
+    svint32x2_t tuple;
+    return tuple;
+}
+inline svuint32x2_t svundef2_u32(){
+    svuint32x2_t tuple;
+    return tuple;
+}
+inline svfloat32x2_t svundef2_f32(){
+    svfloat32x2_t tuple;
+    return tuple;
+}
+inline svint64x2_t svundef2_s64(){
+    svint64x2_t tuple;
+    return tuple;
+}
+inline svuint64x2_t svundef2_u64(){
+    svuint64x2_t tuple;
+    return tuple;
+}
+inline svfloat64x2_t svundef2_f64(){
+    svfloat64x2_t tuple;
+    return tuple;
+}
+inline svint8x3_t svundef3_s8(){
+    svint8x3_t tuple;
+    return tuple;
+}
+inline svuint8x3_t svundef3_u8(){
+    svuint8x3_t tuple;
+    return tuple;
+}
+inline svint16x3_t svundef3_s16(){
+    svint16x3_t tuple;
+    return tuple;
+}
+inline svuint16x3_t svundef3_u16(){
+    svuint16x3_t tuple;
+    return tuple;
+}
+inline svfloat16x3_t svundef3_f16(){
+    svfloat16x3_t tuple;
+    return tuple;
+}
+inline svint32x3_t svundef3_s32(){
+    svint32x3_t tuple;
+    return tuple;
+}
+inline svuint32x3_t svundef3_u32(){
+    svuint32x3_t tuple;
+    return tuple;
+}
+inline svfloat32x3_t svundef3_f32(){
+    svfloat32x3_t tuple;
+    return tuple;
+}
+inline svint64x3_t svundef3_s64(){
+    svint64x3_t tuple;
+    return tuple;
+}
+inline svuint64x3_t svundef3_u64(){
+    svuint64x3_t tuple;
+    return tuple;
+}
+inline svfloat64x3_t svundef3_f64(){
+    svfloat64x3_t tuple;
+    return tuple;
+}
+inline svint8x4_t svundef4_s8(){
+    svint8x4_t tuple;
+    return tuple;
+}
+inline svuint8x4_t svundef4_u8(){
+    svuint8x4_t tuple;
+    return tuple;
+}
+inline svint16x4_t svundef4_s16(){
+    svint16x4_t tuple;
+    return tuple;
+}
+inline svuint16x4_t svundef4_u16(){
+    svuint16x4_t tuple;
+    return tuple;
+}
+inline svfloat16x4_t svundef4_f16(){
+    svfloat16x4_t tuple;
+    return tuple;
+}
+inline svint32x4_t svundef4_s32(){
+    svint32x4_t tuple;
+    return tuple;
+}
+inline svuint32x4_t svundef4_u32(){
+    svuint32x4_t tuple;
+    return tuple;
+}
+inline svfloat32x4_t svundef4_f32(){
+    svfloat32x4_t tuple;
+    return tuple;
+}
+inline svint64x4_t svundef4_s64(){
+    svint64x4_t tuple;
+    return tuple;
+}
+inline svuint64x4_t svundef4_u64(){
+    svuint64x4_t tuple;
+    return tuple;
+}
+inline svfloat64x4_t svundef4_f64(){
+    svfloat64x4_t tuple;
+    return tuple;
+}
+
+
+///////////////////////////////////////////////////////
+
+inline svint8_t svget2_s8(svint8x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svint8x2_t svset2_s8(svint8x2_t tuple, uint64_t imm_index , svint8_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svint8x2_t svcreate2_s8(svint8_t x0, svint8_t x1){
+    svint8x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svint8_t svget2(svint8x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svint8x2_t svset2(svint8x2_t tuple, uint64_t imm_index , svint8_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svint8x2_t svcreate2(svint8_t x0, svint8_t x1){
+    svint8x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svuint8_t svget2_u8(svuint8x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svuint8x2_t svset2_u8(svuint8x2_t tuple, uint64_t imm_index , svuint8_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svuint8x2_t svcreate2_u8(svuint8_t x0, svuint8_t x1){
+    svuint8x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svuint8_t svget2(svuint8x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svuint8x2_t svset2(svuint8x2_t tuple, uint64_t imm_index , svuint8_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svuint8x2_t svcreate2(svuint8_t x0, svuint8_t x1){
+    svuint8x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svint16_t svget2_s16(svint16x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svint16x2_t svset2_s16(svint16x2_t tuple, uint64_t imm_index , svint16_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svint16x2_t svcreate2_s16(svint16_t x0, svint16_t x1){
+    svint16x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svint16_t svget2(svint16x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svint16x2_t svset2(svint16x2_t tuple, uint64_t imm_index , svint16_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svint16x2_t svcreate2(svint16_t x0, svint16_t x1){
+    svint16x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svuint16_t svget2_u16(svuint16x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svuint16x2_t svset2_u16(svuint16x2_t tuple, uint64_t imm_index , svuint16_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svuint16x2_t svcreate2_u16(svuint16_t x0, svuint16_t x1){
+    svuint16x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svuint16_t svget2(svuint16x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svuint16x2_t svset2(svuint16x2_t tuple, uint64_t imm_index , svuint16_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svuint16x2_t svcreate2(svuint16_t x0, svuint16_t x1){
+    svuint16x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svfloat16_t svget2_f16(svfloat16x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svfloat16x2_t svset2_f16(svfloat16x2_t tuple, uint64_t imm_index , svfloat16_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svfloat16x2_t svcreate2_f16(svfloat16_t x0, svfloat16_t x1){
+    svfloat16x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svfloat16_t svget2(svfloat16x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svfloat16x2_t svset2(svfloat16x2_t tuple, uint64_t imm_index , svfloat16_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svfloat16x2_t svcreate2(svfloat16_t x0, svfloat16_t x1){
+    svfloat16x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svint32_t svget2_s32(svint32x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svint32x2_t svset2_s32(svint32x2_t tuple, uint64_t imm_index , svint32_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svint32x2_t svcreate2_s32(svint32_t x0, svint32_t x1){
+    svint32x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svint32_t svget2(svint32x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svint32x2_t svset2(svint32x2_t tuple, uint64_t imm_index , svint32_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svint32x2_t svcreate2(svint32_t x0, svint32_t x1){
+    svint32x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svuint32_t svget2_u32(svuint32x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svuint32x2_t svset2_u32(svuint32x2_t tuple, uint64_t imm_index , svuint32_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svuint32x2_t svcreate2_u32(svuint32_t x0, svuint32_t x1){
+    svuint32x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svuint32_t svget2(svuint32x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svuint32x2_t svset2(svuint32x2_t tuple, uint64_t imm_index , svuint32_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svuint32x2_t svcreate2(svuint32_t x0, svuint32_t x1){
+    svuint32x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svfloat32_t svget2_f32(svfloat32x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svfloat32x2_t svset2_f32(svfloat32x2_t tuple, uint64_t imm_index , svfloat32_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svfloat32x2_t svcreate2_f32(svfloat32_t x0, svfloat32_t x1){
+    svfloat32x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svfloat32_t svget2(svfloat32x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svfloat32x2_t svset2(svfloat32x2_t tuple, uint64_t imm_index , svfloat32_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svfloat32x2_t svcreate2(svfloat32_t x0, svfloat32_t x1){
+    svfloat32x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svint64_t svget2_s64(svint64x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svint64x2_t svset2_s64(svint64x2_t tuple, uint64_t imm_index , svint64_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svint64x2_t svcreate2_s64(svint64_t x0, svint64_t x1){
+    svint64x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svint64_t svget2(svint64x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svint64x2_t svset2(svint64x2_t tuple, uint64_t imm_index , svint64_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svint64x2_t svcreate2(svint64_t x0, svint64_t x1){
+    svint64x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svuint64_t svget2_u64(svuint64x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svuint64x2_t svset2_u64(svuint64x2_t tuple, uint64_t imm_index , svuint64_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svuint64x2_t svcreate2_u64(svuint64_t x0, svuint64_t x1){
+    svuint64x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svuint64_t svget2(svuint64x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svuint64x2_t svset2(svuint64x2_t tuple, uint64_t imm_index , svuint64_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svuint64x2_t svcreate2(svuint64_t x0, svuint64_t x1){
+    svuint64x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svfloat64_t svget2_f64(svfloat64x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svfloat64x2_t svset2_f64(svfloat64x2_t tuple, uint64_t imm_index , svfloat64_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svfloat64x2_t svcreate2_f64(svfloat64_t x0, svfloat64_t x1){
+    svfloat64x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svfloat64_t svget2(svfloat64x2_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+}
+inline svfloat64x2_t svset2(svfloat64x2_t tuple, uint64_t imm_index , svfloat64_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    return tuple;
+}
+inline svfloat64x2_t svcreate2(svfloat64_t x0, svfloat64_t x1){
+    svfloat64x2_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    return tuple;
+}
+inline svint8_t svget3_s8(svint8x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svint8x3_t svset3_s8(svint8x3_t tuple, uint64_t imm_index , svint8_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svint8x3_t svcreate3_s8(svint8_t x0, svint8_t x1, svint8_t x2){
+    svint8x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svint8_t svget3(svint8x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svint8x3_t svset3(svint8x3_t tuple, uint64_t imm_index , svint8_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svint8x3_t svcreate3(svint8_t x0, svint8_t x1, svint8_t x2){
+    svint8x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svuint8_t svget3_u8(svuint8x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svuint8x3_t svset3_u8(svuint8x3_t tuple, uint64_t imm_index , svuint8_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svuint8x3_t svcreate3_u8(svuint8_t x0, svuint8_t x1, svuint8_t x2){
+    svuint8x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svuint8_t svget3(svuint8x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svuint8x3_t svset3(svuint8x3_t tuple, uint64_t imm_index , svuint8_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svuint8x3_t svcreate3(svuint8_t x0, svuint8_t x1, svuint8_t x2){
+    svuint8x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svint16_t svget3_s16(svint16x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svint16x3_t svset3_s16(svint16x3_t tuple, uint64_t imm_index , svint16_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svint16x3_t svcreate3_s16(svint16_t x0, svint16_t x1, svint16_t x2){
+    svint16x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svint16_t svget3(svint16x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svint16x3_t svset3(svint16x3_t tuple, uint64_t imm_index , svint16_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svint16x3_t svcreate3(svint16_t x0, svint16_t x1, svint16_t x2){
+    svint16x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svuint16_t svget3_u16(svuint16x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svuint16x3_t svset3_u16(svuint16x3_t tuple, uint64_t imm_index , svuint16_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svuint16x3_t svcreate3_u16(svuint16_t x0, svuint16_t x1, svuint16_t x2){
+    svuint16x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svuint16_t svget3(svuint16x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svuint16x3_t svset3(svuint16x3_t tuple, uint64_t imm_index , svuint16_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svuint16x3_t svcreate3(svuint16_t x0, svuint16_t x1, svuint16_t x2){
+    svuint16x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svfloat16_t svget3_f16(svfloat16x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svfloat16x3_t svset3_f16(svfloat16x3_t tuple, uint64_t imm_index , svfloat16_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svfloat16x3_t svcreate3_f16(svfloat16_t x0, svfloat16_t x1, svfloat16_t x2){
+    svfloat16x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svfloat16_t svget3(svfloat16x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svfloat16x3_t svset3(svfloat16x3_t tuple, uint64_t imm_index , svfloat16_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svfloat16x3_t svcreate3(svfloat16_t x0, svfloat16_t x1, svfloat16_t x2){
+    svfloat16x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svint32_t svget3_s32(svint32x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svint32x3_t svset3_s32(svint32x3_t tuple, uint64_t imm_index , svint32_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svint32x3_t svcreate3_s32(svint32_t x0, svint32_t x1, svint32_t x2){
+    svint32x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svint32_t svget3(svint32x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svint32x3_t svset3(svint32x3_t tuple, uint64_t imm_index , svint32_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svint32x3_t svcreate3(svint32_t x0, svint32_t x1, svint32_t x2){
+    svint32x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svuint32_t svget3_u32(svuint32x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svuint32x3_t svset3_u32(svuint32x3_t tuple, uint64_t imm_index , svuint32_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svuint32x3_t svcreate3_u32(svuint32_t x0, svuint32_t x1, svuint32_t x2){
+    svuint32x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svuint32_t svget3(svuint32x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svuint32x3_t svset3(svuint32x3_t tuple, uint64_t imm_index , svuint32_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svuint32x3_t svcreate3(svuint32_t x0, svuint32_t x1, svuint32_t x2){
+    svuint32x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svfloat32_t svget3_f32(svfloat32x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svfloat32x3_t svset3_f32(svfloat32x3_t tuple, uint64_t imm_index , svfloat32_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svfloat32x3_t svcreate3_f32(svfloat32_t x0, svfloat32_t x1, svfloat32_t x2){
+    svfloat32x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svfloat32_t svget3(svfloat32x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svfloat32x3_t svset3(svfloat32x3_t tuple, uint64_t imm_index , svfloat32_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svfloat32x3_t svcreate3(svfloat32_t x0, svfloat32_t x1, svfloat32_t x2){
+    svfloat32x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svint64_t svget3_s64(svint64x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svint64x3_t svset3_s64(svint64x3_t tuple, uint64_t imm_index , svint64_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svint64x3_t svcreate3_s64(svint64_t x0, svint64_t x1, svint64_t x2){
+    svint64x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svint64_t svget3(svint64x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svint64x3_t svset3(svint64x3_t tuple, uint64_t imm_index , svint64_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svint64x3_t svcreate3(svint64_t x0, svint64_t x1, svint64_t x2){
+    svint64x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svuint64_t svget3_u64(svuint64x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svuint64x3_t svset3_u64(svuint64x3_t tuple, uint64_t imm_index , svuint64_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svuint64x3_t svcreate3_u64(svuint64_t x0, svuint64_t x1, svuint64_t x2){
+    svuint64x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svuint64_t svget3(svuint64x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svuint64x3_t svset3(svuint64x3_t tuple, uint64_t imm_index , svuint64_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svuint64x3_t svcreate3(svuint64_t x0, svuint64_t x1, svuint64_t x2){
+    svuint64x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svfloat64_t svget3_f64(svfloat64x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svfloat64x3_t svset3_f64(svfloat64x3_t tuple, uint64_t imm_index , svfloat64_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svfloat64x3_t svcreate3_f64(svfloat64_t x0, svfloat64_t x1, svfloat64_t x2){
+    svfloat64x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svfloat64_t svget3(svfloat64x3_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+}
+inline svfloat64x3_t svset3(svfloat64x3_t tuple, uint64_t imm_index , svfloat64_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    return tuple;
+}
+inline svfloat64x3_t svcreate3(svfloat64_t x0, svfloat64_t x1, svfloat64_t x2){
+    svfloat64x3_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    return tuple;
+}
+inline svint8_t svget4_s8(svint8x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svint8x4_t svset4_s8(svint8x4_t tuple, uint64_t imm_index , svint8_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svint8x4_t svcreate4_s8(svint8_t x0, svint8_t x1, svint8_t x2, svint8_t x3){
+    svint8x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+inline svint8_t svget4(svint8x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svint8x4_t svset4(svint8x4_t tuple, uint64_t imm_index , svint8_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svint8x4_t svcreate4(svint8_t x0, svint8_t x1, svint8_t x2, svint8_t x3){
+    svint8x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+inline svuint8_t svget4_u8(svuint8x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svuint8x4_t svset4_u8(svuint8x4_t tuple, uint64_t imm_index , svuint8_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svuint8x4_t svcreate4_u8(svuint8_t x0, svuint8_t x1, svuint8_t x2, svuint8_t x3){
+    svuint8x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+inline svuint8_t svget4(svuint8x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svuint8x4_t svset4(svuint8x4_t tuple, uint64_t imm_index , svuint8_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svuint8x4_t svcreate4(svuint8_t x0, svuint8_t x1, svuint8_t x2, svuint8_t x3){
+    svuint8x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+inline svint16_t svget4_s16(svint16x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svint16x4_t svset4_s16(svint16x4_t tuple, uint64_t imm_index , svint16_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svint16x4_t svcreate4_s16(svint16_t x0, svint16_t x1, svint16_t x2, svint16_t x3){
+    svint16x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+inline svint16_t svget4(svint16x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svint16x4_t svset4(svint16x4_t tuple, uint64_t imm_index , svint16_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svint16x4_t svcreate4(svint16_t x0, svint16_t x1, svint16_t x2, svint16_t x3){
+    svint16x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+inline svuint16_t svget4_u16(svuint16x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svuint16x4_t svset4_u16(svuint16x4_t tuple, uint64_t imm_index , svuint16_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svuint16x4_t svcreate4_u16(svuint16_t x0, svuint16_t x1, svuint16_t x2, svuint16_t x3){
+    svuint16x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+inline svuint16_t svget4(svuint16x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svuint16x4_t svset4(svuint16x4_t tuple, uint64_t imm_index , svuint16_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svuint16x4_t svcreate4(svuint16_t x0, svuint16_t x1, svuint16_t x2, svuint16_t x3){
+    svuint16x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+inline svfloat16_t svget4_f16(svfloat16x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svfloat16x4_t svset4_f16(svfloat16x4_t tuple, uint64_t imm_index , svfloat16_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svfloat16x4_t svcreate4_f16(svfloat16_t x0, svfloat16_t x1, svfloat16_t x2, svfloat16_t x3){
+    svfloat16x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+inline svfloat16_t svget4(svfloat16x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svfloat16x4_t svset4(svfloat16x4_t tuple, uint64_t imm_index , svfloat16_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svfloat16x4_t svcreate4(svfloat16_t x0, svfloat16_t x1, svfloat16_t x2, svfloat16_t x3){
+    svfloat16x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+inline svint32_t svget4_s32(svint32x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svint32x4_t svset4_s32(svint32x4_t tuple, uint64_t imm_index , svint32_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svint32x4_t svcreate4_s32(svint32_t x0, svint32_t x1, svint32_t x2, svint32_t x3){
+    svint32x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+inline svint32_t svget4(svint32x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svint32x4_t svset4(svint32x4_t tuple, uint64_t imm_index , svint32_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svint32x4_t svcreate4(svint32_t x0, svint32_t x1, svint32_t x2, svint32_t x3){
+    svint32x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+inline svuint32_t svget4_u32(svuint32x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svuint32x4_t svset4_u32(svuint32x4_t tuple, uint64_t imm_index , svuint32_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svuint32x4_t svcreate4_u32(svuint32_t x0, svuint32_t x1, svuint32_t x2, svuint32_t x3){
+    svuint32x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+inline svuint32_t svget4(svuint32x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svuint32x4_t svset4(svuint32x4_t tuple, uint64_t imm_index , svuint32_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svuint32x4_t svcreate4(svuint32_t x0, svuint32_t x1, svuint32_t x2, svuint32_t x3){
+    svuint32x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+inline svfloat32_t svget4_f32(svfloat32x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svfloat32x4_t svset4_f32(svfloat32x4_t tuple, uint64_t imm_index , svfloat32_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svfloat32x4_t svcreate4_f32(svfloat32_t x0, svfloat32_t x1, svfloat32_t x2, svfloat32_t x3){
+    svfloat32x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+inline svfloat32_t svget4(svfloat32x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svfloat32x4_t svset4(svfloat32x4_t tuple, uint64_t imm_index , svfloat32_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svfloat32x4_t svcreate4(svfloat32_t x0, svfloat32_t x1, svfloat32_t x2, svfloat32_t x3){
+    svfloat32x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+inline svint64_t svget4_s64(svint64x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svint64x4_t svset4_s64(svint64x4_t tuple, uint64_t imm_index , svint64_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svint64x4_t svcreate4_s64(svint64_t x0, svint64_t x1, svint64_t x2, svint64_t x3){
+    svint64x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+inline svint64_t svget4(svint64x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svint64x4_t svset4(svint64x4_t tuple, uint64_t imm_index , svint64_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svint64x4_t svcreate4(svint64_t x0, svint64_t x1, svint64_t x2, svint64_t x3){
+    svint64x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+inline svuint64_t svget4_u64(svuint64x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svuint64x4_t svset4_u64(svuint64x4_t tuple, uint64_t imm_index , svuint64_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svuint64x4_t svcreate4_u64(svuint64_t x0, svuint64_t x1, svuint64_t x2, svuint64_t x3){
+    svuint64x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+inline svuint64_t svget4(svuint64x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svuint64x4_t svset4(svuint64x4_t tuple, uint64_t imm_index , svuint64_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svuint64x4_t svcreate4(svuint64_t x0, svuint64_t x1, svuint64_t x2, svuint64_t x3){
+    svuint64x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+inline svfloat64_t svget4_f64(svfloat64x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svfloat64x4_t svset4_f64(svfloat64x4_t tuple, uint64_t imm_index , svfloat64_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svfloat64x4_t svcreate4_f64(svfloat64_t x0, svfloat64_t x1, svfloat64_t x2, svfloat64_t x3){
+    svfloat64x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+inline svfloat64_t svget4(svfloat64x4_t tuple, uint64_t imm_index){
+    if(imm_index == 0) return tuple.v0;
+    if(imm_index == 1) return tuple.v1;
+    if(imm_index == 2) return tuple.v2;
+    if(imm_index == 3) return tuple.v3;
+}
+inline svfloat64x4_t svset4(svfloat64x4_t tuple, uint64_t imm_index , svfloat64_t x){
+    if(imm_index == 0) tuple.v0 = x;
+    if(imm_index == 1) tuple.v1 = x;
+    if(imm_index == 2) tuple.v2 = x;
+    if(imm_index == 3) tuple.v3 = x;
+    return tuple;
+}
+inline svfloat64x4_t svcreate4(svfloat64_t x0, svfloat64_t x1, svfloat64_t x2, svfloat64_t x3){
+    svfloat64x4_t tuple;
+    tuple.v0 = x0;
+    tuple.v1 = x1;
+    tuple.v2 = x2;
+    tuple.v3 = x3;
+    return tuple;
+}
+
+
+
 #endif
