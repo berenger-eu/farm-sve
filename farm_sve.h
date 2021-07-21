@@ -291,6 +291,7 @@ inline Type core_mulx(const Type v1, const Type v2) {
 
 template <class Type>
 inline Type core_abs(const Type v1) {
+  if (v1 == std::numeric_limits<Type>::min()) return v1;
   return (v1 < Type(0) ? Type(-v1) : Type(v1));
 }
 
@@ -305,11 +306,12 @@ inline Type core_qadd(const Type v1, const Type v2) {
 
 template <class Type>
 inline Type core_qsub(const Type v1, const Type v2) {
-  if ((v1 < 0) && (v2 > std::numeric_limits<Type>::max() + v1))
+  const int64_t sub = int64_t(v1) - v2;
+  if (sub > std::numeric_limits<Type>::max())
     return std::numeric_limits<Type>::max();
-  if ((v1 > 0) && (v2 < std::numeric_limits<Type>::min() + v1))
+  if (sub < std::numeric_limits<Type>::min())
     return std::numeric_limits<Type>::min();
-  return (v1 + v2);
+  return sub;
 }
 
 template <class Type>
@@ -470,7 +472,7 @@ inline Type core_svrevw(const Type v1) {
   bytes32 data;
   data.val = v1;
   for (int idx = 0; idx < int(sizeof(Type) / 8); ++idx) {
-    std::swap(data.bt[idx], data.bt[sizeof(Type) - idx - 1]);
+    std::swap(data.bt[idx], data.bt[sizeof(Type) / 4 - idx - 1]);
   }
 
   return data.val;
@@ -529,12 +531,6 @@ Type core_ceil(Type x, core_ceil_choices type) {
     case core_ceil_type_n:
       // Floating-point round to nearest, ties to even
       std::fesetround(FE_TONEAREST);
-      // TODO Ensure it works as expected
-      if (uint64_t(x) & 1) {
-        x -= std::numeric_limits<Type>::epsilon();
-      } else {
-        x += std::numeric_limits<Type>::epsilon();
-      }
       break;
     case core_ceil_type_p:
       // Floating-point round towards +Inf
@@ -548,7 +544,7 @@ Type core_ceil(Type x, core_ceil_choices type) {
       std::fesetround(FE_TOWARDZERO);
       break;
   }
-  result = std::rint(x);  // or std::nearbyint
+  result = std::nearbyint(x);
   std::fesetround(save_round);
   return result;
 }
@@ -7729,42 +7725,42 @@ inline void svst1_scatter_u64base_index_f64(svbool_t pg, svuint64_t bases,
 inline void svst1b_s16(svbool_t pg, int8_t *base, svint16_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx] = int8_t(data.vec[idx]);
+      base[idx] = int8_t(data.vec[idx] & 0xFF);
     }
   }
 }
 inline void svst1b_s32(svbool_t pg, int8_t *base, svint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx] = int8_t(data.vec[idx]);
+      base[idx] = int8_t(data.vec[idx] & 0xFF);
     }
   }
 }
 inline void svst1b_s64(svbool_t pg, int8_t *base, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx] = int8_t(data.vec[idx]);
+      base[idx] = int8_t(data.vec[idx] & 0xFF);
     }
   }
 }
 inline void svst1b_u16(svbool_t pg, uint8_t *base, svuint16_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx] = uint8_t(data.vec[idx]);
+      base[idx] = uint8_t(data.vec[idx] & 0xFF);
     }
   }
 }
 inline void svst1b_u32(svbool_t pg, uint8_t *base, svuint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx] = uint8_t(data.vec[idx]);
+      base[idx] = uint8_t(data.vec[idx] & 0xFF);
     }
   }
 }
 inline void svst1b_u64(svbool_t pg, uint8_t *base, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx] = uint8_t(data.vec[idx]);
+      base[idx] = uint8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7772,7 +7768,7 @@ inline void svst1b_vnum_s16(svbool_t pg, int8_t *base, int64_t vnum,
                             svint16_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx * vnum] = int8_t(data.vec[idx]);
+      base[idx * vnum] = int8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7780,7 +7776,7 @@ inline void svst1b_vnum_s32(svbool_t pg, int8_t *base, int64_t vnum,
                             svint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx * vnum] = int8_t(data.vec[idx]);
+      base[idx * vnum] = int8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7788,7 +7784,7 @@ inline void svst1b_vnum_s64(svbool_t pg, int8_t *base, int64_t vnum,
                             svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx * vnum] = int8_t(data.vec[idx]);
+      base[idx * vnum] = int8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7796,7 +7792,7 @@ inline void svst1b_vnum_u16(svbool_t pg, uint8_t *base, int64_t vnum,
                             svuint16_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx * vnum] = uint8_t(data.vec[idx]);
+      base[idx * vnum] = uint8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7804,7 +7800,7 @@ inline void svst1b_vnum_u32(svbool_t pg, uint8_t *base, int64_t vnum,
                             svuint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx * vnum] = uint8_t(data.vec[idx]);
+      base[idx * vnum] = uint8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7812,7 +7808,7 @@ inline void svst1b_vnum_u64(svbool_t pg, uint8_t *base, int64_t vnum,
                             svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx * vnum] = uint8_t(data.vec[idx]);
+      base[idx * vnum] = uint8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7820,7 +7816,8 @@ inline void svst1b_scatter_u32base_s32(svbool_t pg, svuint32_t bases,
                                        svint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      *reinterpret_cast<uint8_t *>(bases.vec[idx]) = uint8_t(data.vec[idx]);
+      *reinterpret_cast<uint8_t *>(bases.vec[idx]) =
+          uint8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7828,7 +7825,8 @@ inline void svst1b_scatter_u64base_s64(svbool_t pg, svuint64_t bases,
                                        svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      *reinterpret_cast<uint8_t *>(bases.vec[idx]) = uint8_t(data.vec[idx]);
+      *reinterpret_cast<uint8_t *>(bases.vec[idx]) =
+          uint8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7836,7 +7834,8 @@ inline void svst1b_scatter_u32base_u32(svbool_t pg, svuint32_t bases,
                                        svuint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      *reinterpret_cast<uint8_t *>(bases.vec[idx]) = uint8_t(data.vec[idx]);
+      *reinterpret_cast<uint8_t *>(bases.vec[idx]) =
+          uint8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7844,7 +7843,8 @@ inline void svst1b_scatter_u64base_u64(svbool_t pg, svuint64_t bases,
                                        svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      *reinterpret_cast<uint8_t *>(bases.vec[idx]) = uint8_t(data.vec[idx]);
+      *reinterpret_cast<uint8_t *>(bases.vec[idx]) =
+          uint8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7852,7 +7852,7 @@ inline void svst1b_scatter_s32offset_s32(svbool_t pg, int8_t *base,
                                          svint32_t offsets, svint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[offsets.vec[idx] / sizeof(int8_t)] = int8_t(data.vec[idx]);
+      base[offsets.vec[idx] / sizeof(int8_t)] = int8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7860,7 +7860,7 @@ inline void svst1b_scatter_s64offset_s64(svbool_t pg, int8_t *base,
                                          svint64_t offsets, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[offsets.vec[idx] / sizeof(int8_t)] = int8_t(data.vec[idx]);
+      base[offsets.vec[idx] / sizeof(int8_t)] = int8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7868,7 +7868,7 @@ inline void svst1b_scatter_s32offset_u32(svbool_t pg, uint8_t *base,
                                          svint32_t offsets, svuint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[offsets.vec[idx] / sizeof(int8_t)] = int8_t(data.vec[idx]);
+      base[offsets.vec[idx] / sizeof(int8_t)] = int8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7876,7 +7876,7 @@ inline void svst1b_scatter_s64offset_u64(svbool_t pg, uint8_t *base,
                                          svint64_t offsets, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[offsets.vec[idx] / sizeof(int8_t)] = int8_t(data.vec[idx]);
+      base[offsets.vec[idx] / sizeof(int8_t)] = int8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7884,7 +7884,7 @@ inline void svst1b_scatter_u32offset_s32(svbool_t pg, int8_t *base,
                                          svuint32_t offsets, svint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[offsets.vec[idx] / sizeof(uint8_t)] = uint8_t(data.vec[idx]);
+      base[offsets.vec[idx] / sizeof(uint8_t)] = uint8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7892,7 +7892,7 @@ inline void svst1b_scatter_u64offset_s64(svbool_t pg, int8_t *base,
                                          svuint64_t offsets, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[offsets.vec[idx] / sizeof(uint8_t)] = uint8_t(data.vec[idx]);
+      base[offsets.vec[idx] / sizeof(uint8_t)] = uint8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7900,7 +7900,7 @@ inline void svst1b_scatter_u32offset_u32(svbool_t pg, uint8_t *base,
                                          svuint32_t offsets, svuint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[offsets.vec[idx] / sizeof(uint8_t)] = uint8_t(data.vec[idx]);
+      base[offsets.vec[idx] / sizeof(uint8_t)] = uint8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7908,7 +7908,7 @@ inline void svst1b_scatter_u64offset_u64(svbool_t pg, uint8_t *base,
                                          svuint64_t offsets, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[offsets.vec[idx] / sizeof(uint8_t)] = uint8_t(data.vec[idx]);
+      base[offsets.vec[idx] / sizeof(uint8_t)] = uint8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7917,7 +7917,7 @@ inline void svst1b_scatter_u32base_offset_s32(svbool_t pg, svuint32_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)] =
-          uint8_t(data.vec[idx]);
+          uint8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7926,7 +7926,7 @@ inline void svst1b_scatter_u64base_offset_s64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)] =
-          uint8_t(data.vec[idx]);
+          uint8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7935,7 +7935,7 @@ inline void svst1b_scatter_u32base_offset_u32(svbool_t pg, svuint32_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)] =
-          uint8_t(data.vec[idx]);
+          uint8_t(data.vec[idx] & 0xFF);
     }
   }
 }
@@ -7944,35 +7944,35 @@ inline void svst1b_scatter_u64base_offset_u64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)] =
-          uint8_t(data.vec[idx]);
+          uint8_t(data.vec[idx] & 0xFF);
     }
   }
 }
 inline void svst1h_s32(svbool_t pg, int16_t *base, svint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx] = int16_t(data.vec[idx]);
+      base[idx] = int16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
 inline void svst1h_s64(svbool_t pg, int16_t *base, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx] = int16_t(data.vec[idx]);
+      base[idx] = int16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
 inline void svst1h_u32(svbool_t pg, uint16_t *base, svuint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx] = uint16_t(data.vec[idx]);
+      base[idx] = uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
 inline void svst1h_u64(svbool_t pg, uint16_t *base, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx] = uint16_t(data.vec[idx]);
+      base[idx] = uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -7980,7 +7980,7 @@ inline void svst1h_vnum_s32(svbool_t pg, int16_t *base, int64_t vnum,
                             svint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx * vnum] = int16_t(data.vec[idx]);
+      base[idx * vnum] = int16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -7988,7 +7988,7 @@ inline void svst1h_vnum_s64(svbool_t pg, int16_t *base, int64_t vnum,
                             svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx * vnum] = int16_t(data.vec[idx]);
+      base[idx * vnum] = int16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -7996,7 +7996,7 @@ inline void svst1h_vnum_u32(svbool_t pg, uint16_t *base, int64_t vnum,
                             svuint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx * vnum] = uint16_t(data.vec[idx]);
+      base[idx * vnum] = uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8004,7 +8004,7 @@ inline void svst1h_vnum_u64(svbool_t pg, uint16_t *base, int64_t vnum,
                             svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx * vnum] = uint16_t(data.vec[idx]);
+      base[idx * vnum] = uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8012,7 +8012,8 @@ inline void svst1h_scatter_u32base_s32(svbool_t pg, svuint32_t bases,
                                        svint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      *reinterpret_cast<uint16_t *>(bases.vec[idx]) = uint16_t(data.vec[idx]);
+      *reinterpret_cast<uint16_t *>(bases.vec[idx]) =
+          uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8020,7 +8021,8 @@ inline void svst1h_scatter_u64base_s64(svbool_t pg, svuint64_t bases,
                                        svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      *reinterpret_cast<uint16_t *>(bases.vec[idx]) = uint16_t(data.vec[idx]);
+      *reinterpret_cast<uint16_t *>(bases.vec[idx]) =
+          uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8028,7 +8030,8 @@ inline void svst1h_scatter_u32base_u32(svbool_t pg, svuint32_t bases,
                                        svuint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      *reinterpret_cast<uint16_t *>(bases.vec[idx]) = uint16_t(data.vec[idx]);
+      *reinterpret_cast<uint16_t *>(bases.vec[idx]) =
+          uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8036,7 +8039,8 @@ inline void svst1h_scatter_u64base_u64(svbool_t pg, svuint64_t bases,
                                        svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      *reinterpret_cast<uint16_t *>(bases.vec[idx]) = uint16_t(data.vec[idx]);
+      *reinterpret_cast<uint16_t *>(bases.vec[idx]) =
+          uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8044,7 +8048,8 @@ inline void svst1h_scatter_s32offset_s32(svbool_t pg, int16_t *base,
                                          svint32_t offsets, svint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[offsets.vec[idx] / sizeof(int16_t)] = int16_t(data.vec[idx]);
+      base[offsets.vec[idx] / sizeof(int16_t)] =
+          int16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8052,7 +8057,8 @@ inline void svst1h_scatter_s64offset_s64(svbool_t pg, int16_t *base,
                                          svint64_t offsets, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[offsets.vec[idx] / sizeof(int16_t)] = int16_t(data.vec[idx]);
+      base[offsets.vec[idx] / sizeof(int16_t)] =
+          int16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8060,7 +8066,8 @@ inline void svst1h_scatter_s32offset_u32(svbool_t pg, uint16_t *base,
                                          svint32_t offsets, svuint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[offsets.vec[idx] / sizeof(int16_t)] = int16_t(data.vec[idx]);
+      base[offsets.vec[idx] / sizeof(int16_t)] =
+          int16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8068,7 +8075,8 @@ inline void svst1h_scatter_s64offset_u64(svbool_t pg, uint16_t *base,
                                          svint64_t offsets, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[offsets.vec[idx] / sizeof(int16_t)] = int16_t(data.vec[idx]);
+      base[offsets.vec[idx] / sizeof(int16_t)] =
+          int16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8076,7 +8084,8 @@ inline void svst1h_scatter_u32offset_s32(svbool_t pg, int16_t *base,
                                          svuint32_t offsets, svint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[offsets.vec[idx] / sizeof(uint16_t)] = uint16_t(data.vec[idx]);
+      base[offsets.vec[idx] / sizeof(uint16_t)] =
+          uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8084,7 +8093,8 @@ inline void svst1h_scatter_u64offset_s64(svbool_t pg, int16_t *base,
                                          svuint64_t offsets, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[offsets.vec[idx] / sizeof(uint16_t)] = uint16_t(data.vec[idx]);
+      base[offsets.vec[idx] / sizeof(uint16_t)] =
+          uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8092,7 +8102,8 @@ inline void svst1h_scatter_u32offset_u32(svbool_t pg, uint16_t *base,
                                          svuint32_t offsets, svuint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[offsets.vec[idx] / sizeof(uint16_t)] = uint16_t(data.vec[idx]);
+      base[offsets.vec[idx] / sizeof(uint16_t)] =
+          uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8100,7 +8111,8 @@ inline void svst1h_scatter_u64offset_u64(svbool_t pg, uint16_t *base,
                                          svuint64_t offsets, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[offsets.vec[idx] / sizeof(uint16_t)] = uint16_t(data.vec[idx]);
+      base[offsets.vec[idx] / sizeof(uint16_t)] =
+          uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8109,7 +8121,7 @@ inline void svst1h_scatter_u32base_offset_s32(svbool_t pg, svuint32_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)] =
-          uint16_t(data.vec[idx]);
+          uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8118,7 +8130,7 @@ inline void svst1h_scatter_u64base_offset_s64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)] =
-          uint16_t(data.vec[idx]);
+          uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8127,7 +8139,7 @@ inline void svst1h_scatter_u32base_offset_u32(svbool_t pg, svuint32_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)] =
-          uint16_t(data.vec[idx]);
+          uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8136,7 +8148,7 @@ inline void svst1h_scatter_u64base_offset_u64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)] =
-          uint16_t(data.vec[idx]);
+          uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8144,7 +8156,7 @@ inline void svst1h_scatter_s32index_s32(svbool_t pg, int16_t *base,
                                         svint32_t indices, svint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[indices.vec[idx]] = int16_t(data.vec[idx]);
+      base[indices.vec[idx]] = int16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8152,7 +8164,7 @@ inline void svst1h_scatter_s64index_s64(svbool_t pg, int16_t *base,
                                         svint64_t indices, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[indices.vec[idx]] = int16_t(data.vec[idx]);
+      base[indices.vec[idx]] = int16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8160,7 +8172,7 @@ inline void svst1h_scatter_s32index_u32(svbool_t pg, uint16_t *base,
                                         svint32_t indices, svuint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[indices.vec[idx]] = int16_t(data.vec[idx]);
+      base[indices.vec[idx]] = int16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8168,7 +8180,7 @@ inline void svst1h_scatter_s64index_u64(svbool_t pg, uint16_t *base,
                                         svint64_t indices, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[indices.vec[idx]] = int16_t(data.vec[idx]);
+      base[indices.vec[idx]] = int16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8176,7 +8188,7 @@ inline void svst1h_scatter_u32index_s32(svbool_t pg, int16_t *base,
                                         svuint32_t indices, svint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[indices.vec[idx]] = uint16_t(data.vec[idx]);
+      base[indices.vec[idx]] = uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8184,7 +8196,7 @@ inline void svst1h_scatter_u64index_s64(svbool_t pg, int16_t *base,
                                         svuint64_t indices, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[indices.vec[idx]] = uint16_t(data.vec[idx]);
+      base[indices.vec[idx]] = uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8192,7 +8204,7 @@ inline void svst1h_scatter_u32index_u32(svbool_t pg, uint16_t *base,
                                         svuint32_t indices, svuint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[indices.vec[idx]] = uint16_t(data.vec[idx]);
+      base[indices.vec[idx]] = uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8200,7 +8212,7 @@ inline void svst1h_scatter_u64index_u64(svbool_t pg, uint16_t *base,
                                         svuint64_t indices, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[indices.vec[idx]] = uint16_t(data.vec[idx]);
+      base[indices.vec[idx]] = uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8209,7 +8221,7 @@ inline void svst1h_scatter_u32base_index_s32(svbool_t pg, svuint32_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<uint16_t *>(bases.vec[idx])[index] =
-          uint16_t(data.vec[idx]);
+          uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8218,7 +8230,7 @@ inline void svst1h_scatter_u64base_index_s64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<uint16_t *>(bases.vec[idx])[index] =
-          uint16_t(data.vec[idx]);
+          uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8227,7 +8239,7 @@ inline void svst1h_scatter_u32base_index_u32(svbool_t pg, svuint32_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<uint16_t *>(bases.vec[idx])[index] =
-          uint16_t(data.vec[idx]);
+          uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
@@ -8236,21 +8248,21 @@ inline void svst1h_scatter_u64base_index_u64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<uint16_t *>(bases.vec[idx])[index] =
-          uint16_t(data.vec[idx]);
+          uint16_t(data.vec[idx] & 0xFFFF);
     }
   }
 }
 inline void svst1w_s64(svbool_t pg, int32_t *base, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx] = int32_t(data.vec[idx]);
+      base[idx] = int32_t(data.vec[idx] & 0xFFFFFFFF);
     }
   }
 }
 inline void svst1w_u64(svbool_t pg, uint32_t *base, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx] = uint32_t(data.vec[idx]);
+      base[idx] = uint32_t(data.vec[idx] & 0xFFFFFFFF);
     }
   }
 }
@@ -8258,7 +8270,7 @@ inline void svst1w_vnum_s64(svbool_t pg, int32_t *base, int64_t vnum,
                             svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx * vnum] = int32_t(data.vec[idx]);
+      base[idx * vnum] = int32_t(data.vec[idx] & 0xFFFFFFFF);
     }
   }
 }
@@ -8266,7 +8278,7 @@ inline void svst1w_vnum_u64(svbool_t pg, uint32_t *base, int64_t vnum,
                             svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[idx * vnum] = uint32_t(data.vec[idx]);
+      base[idx * vnum] = uint32_t(data.vec[idx] & 0xFFFFFFFF);
     }
   }
 }
@@ -8274,7 +8286,8 @@ inline void svst1w_scatter_u64base_s64(svbool_t pg, svuint64_t bases,
                                        svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      *reinterpret_cast<uint32_t *>(bases.vec[idx]) = uint32_t(data.vec[idx]);
+      *reinterpret_cast<uint32_t *>(bases.vec[idx]) =
+          uint32_t(data.vec[idx] & 0xFFFFFFFF);
     }
   }
 }
@@ -8282,7 +8295,8 @@ inline void svst1w_scatter_u64base_u64(svbool_t pg, svuint64_t bases,
                                        svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      *reinterpret_cast<uint32_t *>(bases.vec[idx]) = uint32_t(data.vec[idx]);
+      *reinterpret_cast<uint32_t *>(bases.vec[idx]) =
+          uint32_t(data.vec[idx] & 0xFFFFFFFF);
     }
   }
 }
@@ -8290,7 +8304,8 @@ inline void svst1w_scatter_s64offset_s64(svbool_t pg, int32_t *base,
                                          svint64_t offsets, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[offsets.vec[idx] / sizeof(int32_t)] = int32_t(data.vec[idx]);
+      base[offsets.vec[idx] / sizeof(int32_t)] =
+          int32_t(data.vec[idx] & 0xFFFFFFFF);
     }
   }
 }
@@ -8298,7 +8313,8 @@ inline void svst1w_scatter_s64offset_u64(svbool_t pg, uint32_t *base,
                                          svint64_t offsets, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[offsets.vec[idx] / sizeof(int32_t)] = int32_t(data.vec[idx]);
+      base[offsets.vec[idx] / sizeof(int32_t)] =
+          int32_t(data.vec[idx] & 0xFFFFFFFF);
     }
   }
 }
@@ -8306,7 +8322,8 @@ inline void svst1w_scatter_u64offset_s64(svbool_t pg, int32_t *base,
                                          svuint64_t offsets, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[offsets.vec[idx] / sizeof(uint32_t)] = uint32_t(data.vec[idx]);
+      base[offsets.vec[idx] / sizeof(uint32_t)] =
+          uint32_t(data.vec[idx] & 0xFFFFFFFF);
     }
   }
 }
@@ -8314,7 +8331,8 @@ inline void svst1w_scatter_u64offset_u64(svbool_t pg, uint32_t *base,
                                          svuint64_t offsets, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[offsets.vec[idx] / sizeof(uint32_t)] = uint32_t(data.vec[idx]);
+      base[offsets.vec[idx] / sizeof(uint32_t)] =
+          uint32_t(data.vec[idx] & 0xFFFFFFFF);
     }
   }
 }
@@ -8323,7 +8341,7 @@ inline void svst1w_scatter_u64base_offset_s64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<uint32_t *>(bases.vec[idx])[offset / sizeof(uint32_t)] =
-          uint32_t(data.vec[idx]);
+          uint32_t(data.vec[idx] & 0xFFFFFFFF);
     }
   }
 }
@@ -8332,7 +8350,7 @@ inline void svst1w_scatter_u64base_offset_u64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<uint32_t *>(bases.vec[idx])[offset / sizeof(uint32_t)] =
-          uint32_t(data.vec[idx]);
+          uint32_t(data.vec[idx] & 0xFFFFFFFF);
     }
   }
 }
@@ -8340,7 +8358,7 @@ inline void svst1w_scatter_s64index_s64(svbool_t pg, int32_t *base,
                                         svint64_t indices, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[indices.vec[idx]] = int32_t(data.vec[idx]);
+      base[indices.vec[idx]] = int32_t(data.vec[idx] & 0xFFFFFFFF);
     }
   }
 }
@@ -8348,7 +8366,7 @@ inline void svst1w_scatter_s64index_u64(svbool_t pg, uint32_t *base,
                                         svint64_t indices, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[indices.vec[idx]] = int32_t(data.vec[idx]);
+      base[indices.vec[idx]] = int32_t(data.vec[idx] & 0xFFFFFFFF);
     }
   }
 }
@@ -8356,7 +8374,7 @@ inline void svst1w_scatter_u64index_s64(svbool_t pg, int32_t *base,
                                         svuint64_t indices, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[indices.vec[idx]] = uint32_t(data.vec[idx]);
+      base[indices.vec[idx]] = uint32_t(data.vec[idx] & 0xFFFFFFFF);
     }
   }
 }
@@ -8364,7 +8382,7 @@ inline void svst1w_scatter_u64index_u64(svbool_t pg, uint32_t *base,
                                         svuint64_t indices, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      base[indices.vec[idx]] = uint32_t(data.vec[idx]);
+      base[indices.vec[idx]] = uint32_t(data.vec[idx] & 0xFFFFFFFF);
     }
   }
 }
@@ -8373,7 +8391,7 @@ inline void svst1w_scatter_u64base_index_s64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<uint32_t *>(bases.vec[idx])[index] =
-          uint32_t(data.vec[idx]);
+          uint32_t(data.vec[idx] & 0xFFFFFFFF);
     }
   }
 }
@@ -8382,7 +8400,7 @@ inline void svst1w_scatter_u64base_index_u64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<uint32_t *>(bases.vec[idx])[index] =
-          uint32_t(data.vec[idx]);
+          uint32_t(data.vec[idx] & 0xFFFFFFFF);
     }
   }
 }
@@ -12123,7 +12141,7 @@ inline svint32_t svmul_s32_z(svbool_t pg, svint32_t op1, svint32_t op2) {
   svint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2.vec[idx]);
+      res.vec[idx] = (int64_t(op1.vec[idx]) * op2.vec[idx]);
     }
   }
   return res;
@@ -12151,7 +12169,7 @@ inline svuint16_t svmul_u16_z(svbool_t pg, svuint16_t op1, svuint16_t op2) {
   svuint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2.vec[idx]);
+      res.vec[idx] = (uint32_t(op1.vec[idx]) * op2.vec[idx]);
     }
   }
   return res;
@@ -12160,7 +12178,7 @@ inline svuint32_t svmul_u32_z(svbool_t pg, svuint32_t op1, svuint32_t op2) {
   svuint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2.vec[idx]);
+      res.vec[idx] = (uint64_t(op1.vec[idx]) * op2.vec[idx]);
     }
   }
   return res;
@@ -12187,7 +12205,7 @@ inline svint16_t svmul_s16_m(svbool_t pg, svint16_t op1, svint16_t op2) {
   svint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2.vec[idx]);
+      res.vec[idx] = (int32_t(op1.vec[idx]) * op2.vec[idx]);
     }
   }
   return res;
@@ -17267,7 +17285,7 @@ inline svint8_t svbic_s8_z(svbool_t pg, svint8_t op1, svint8_t op2) {
   svint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     }
   }
   return res;
@@ -17276,7 +17294,7 @@ inline svint16_t svbic_s16_z(svbool_t pg, svint16_t op1, svint16_t op2) {
   svint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     }
   }
   return res;
@@ -17285,7 +17303,7 @@ inline svint32_t svbic_s32_z(svbool_t pg, svint32_t op1, svint32_t op2) {
   svint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     }
   }
   return res;
@@ -17294,7 +17312,7 @@ inline svint64_t svbic_s64_z(svbool_t pg, svint64_t op1, svint64_t op2) {
   svint64_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     }
   }
   return res;
@@ -17303,7 +17321,7 @@ inline svuint8_t svbic_u8_z(svbool_t pg, svuint8_t op1, svuint8_t op2) {
   svuint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     }
   }
   return res;
@@ -17312,7 +17330,7 @@ inline svuint16_t svbic_u16_z(svbool_t pg, svuint16_t op1, svuint16_t op2) {
   svuint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     }
   }
   return res;
@@ -17321,7 +17339,7 @@ inline svuint32_t svbic_u32_z(svbool_t pg, svuint32_t op1, svuint32_t op2) {
   svuint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     }
   }
   return res;
@@ -17330,7 +17348,7 @@ inline svuint64_t svbic_u64_z(svbool_t pg, svuint64_t op1, svuint64_t op2) {
   svuint64_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     }
   }
   return res;
@@ -17339,7 +17357,7 @@ inline svint8_t svbic_s8_m(svbool_t pg, svint8_t op1, svint8_t op2) {
   svint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     } else {
       res.vec[idx] = op1.vec[idx];
     }
@@ -17350,7 +17368,7 @@ inline svint16_t svbic_s16_m(svbool_t pg, svint16_t op1, svint16_t op2) {
   svint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     } else {
       res.vec[idx] = op1.vec[idx];
     }
@@ -17361,7 +17379,7 @@ inline svint32_t svbic_s32_m(svbool_t pg, svint32_t op1, svint32_t op2) {
   svint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     } else {
       res.vec[idx] = op1.vec[idx];
     }
@@ -17372,7 +17390,7 @@ inline svint64_t svbic_s64_m(svbool_t pg, svint64_t op1, svint64_t op2) {
   svint64_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     } else {
       res.vec[idx] = op1.vec[idx];
     }
@@ -17383,7 +17401,7 @@ inline svuint8_t svbic_u8_m(svbool_t pg, svuint8_t op1, svuint8_t op2) {
   svuint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     } else {
       res.vec[idx] = op1.vec[idx];
     }
@@ -17394,7 +17412,7 @@ inline svuint16_t svbic_u16_m(svbool_t pg, svuint16_t op1, svuint16_t op2) {
   svuint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     } else {
       res.vec[idx] = op1.vec[idx];
     }
@@ -17405,7 +17423,7 @@ inline svuint32_t svbic_u32_m(svbool_t pg, svuint32_t op1, svuint32_t op2) {
   svuint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     } else {
       res.vec[idx] = op1.vec[idx];
     }
@@ -17416,7 +17434,7 @@ inline svuint64_t svbic_u64_m(svbool_t pg, svuint64_t op1, svuint64_t op2) {
   svuint64_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     } else {
       res.vec[idx] = op1.vec[idx];
     }
@@ -17427,7 +17445,7 @@ inline svint8_t svbic_s8_x(svbool_t pg, svint8_t op1, svint8_t op2) {
   svint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     }
   }
   return res;
@@ -17436,7 +17454,7 @@ inline svint16_t svbic_s16_x(svbool_t pg, svint16_t op1, svint16_t op2) {
   svint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     }
   }
   return res;
@@ -17445,7 +17463,7 @@ inline svint32_t svbic_s32_x(svbool_t pg, svint32_t op1, svint32_t op2) {
   svint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     }
   }
   return res;
@@ -17454,7 +17472,7 @@ inline svint64_t svbic_s64_x(svbool_t pg, svint64_t op1, svint64_t op2) {
   svint64_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     }
   }
   return res;
@@ -17463,7 +17481,7 @@ inline svuint8_t svbic_u8_x(svbool_t pg, svuint8_t op1, svuint8_t op2) {
   svuint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     }
   }
   return res;
@@ -17472,7 +17490,7 @@ inline svuint16_t svbic_u16_x(svbool_t pg, svuint16_t op1, svuint16_t op2) {
   svuint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     }
   }
   return res;
@@ -17481,7 +17499,7 @@ inline svuint32_t svbic_u32_x(svbool_t pg, svuint32_t op1, svuint32_t op2) {
   svuint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     }
   }
   return res;
@@ -17490,7 +17508,7 @@ inline svuint64_t svbic_u64_x(svbool_t pg, svuint64_t op1, svuint64_t op2) {
   svuint64_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2.vec[idx]);
+      res.vec[idx] = (op1.vec[idx] & ~op2.vec[idx]);
     }
   }
   return res;
@@ -17499,7 +17517,7 @@ inline svint8_t svbic_n_s8_z(svbool_t pg, svint8_t op1, int8_t op2) {
   svint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     }
   }
   return res;
@@ -17508,7 +17526,7 @@ inline svint16_t svbic_n_s16_z(svbool_t pg, svint16_t op1, int16_t op2) {
   svint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     }
   }
   return res;
@@ -17517,7 +17535,7 @@ inline svint32_t svbic_n_s32_z(svbool_t pg, svint32_t op1, int32_t op2) {
   svint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     }
   }
   return res;
@@ -17526,7 +17544,7 @@ inline svint64_t svbic_n_s64_z(svbool_t pg, svint64_t op1, int64_t op2) {
   svint64_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     }
   }
   return res;
@@ -17535,7 +17553,7 @@ inline svuint8_t svbic_n_u8_z(svbool_t pg, svuint8_t op1, uint8_t op2) {
   svuint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     }
   }
   return res;
@@ -17544,7 +17562,7 @@ inline svuint16_t svbic_n_u16_z(svbool_t pg, svuint16_t op1, uint16_t op2) {
   svuint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     }
   }
   return res;
@@ -17553,7 +17571,7 @@ inline svuint32_t svbic_n_u32_z(svbool_t pg, svuint32_t op1, uint32_t op2) {
   svuint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     }
   }
   return res;
@@ -17562,7 +17580,7 @@ inline svuint64_t svbic_n_u64_z(svbool_t pg, svuint64_t op1, uint64_t op2) {
   svuint64_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     }
   }
   return res;
@@ -17571,7 +17589,7 @@ inline svint8_t svbic_n_s8_m(svbool_t pg, svint8_t op1, int8_t op2) {
   svint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     } else {
       res.vec[idx] = op1.vec[idx];
     }
@@ -17582,7 +17600,7 @@ inline svint16_t svbic_n_s16_m(svbool_t pg, svint16_t op1, int16_t op2) {
   svint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     } else {
       res.vec[idx] = op1.vec[idx];
     }
@@ -17593,7 +17611,7 @@ inline svint32_t svbic_n_s32_m(svbool_t pg, svint32_t op1, int32_t op2) {
   svint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     } else {
       res.vec[idx] = op1.vec[idx];
     }
@@ -17604,7 +17622,7 @@ inline svint64_t svbic_n_s64_m(svbool_t pg, svint64_t op1, int64_t op2) {
   svint64_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     } else {
       res.vec[idx] = op1.vec[idx];
     }
@@ -17615,7 +17633,7 @@ inline svuint8_t svbic_n_u8_m(svbool_t pg, svuint8_t op1, uint8_t op2) {
   svuint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     } else {
       res.vec[idx] = op1.vec[idx];
     }
@@ -17626,7 +17644,7 @@ inline svuint16_t svbic_n_u16_m(svbool_t pg, svuint16_t op1, uint16_t op2) {
   svuint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     } else {
       res.vec[idx] = op1.vec[idx];
     }
@@ -17637,7 +17655,7 @@ inline svuint32_t svbic_n_u32_m(svbool_t pg, svuint32_t op1, uint32_t op2) {
   svuint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     } else {
       res.vec[idx] = op1.vec[idx];
     }
@@ -17648,7 +17666,7 @@ inline svuint64_t svbic_n_u64_m(svbool_t pg, svuint64_t op1, uint64_t op2) {
   svuint64_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     } else {
       res.vec[idx] = op1.vec[idx];
     }
@@ -17659,7 +17677,7 @@ inline svint8_t svbic_n_s8_x(svbool_t pg, svint8_t op1, int8_t op2) {
   svint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     }
   }
   return res;
@@ -17668,7 +17686,7 @@ inline svint16_t svbic_n_s16_x(svbool_t pg, svint16_t op1, int16_t op2) {
   svint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     }
   }
   return res;
@@ -17677,7 +17695,7 @@ inline svint32_t svbic_n_s32_x(svbool_t pg, svint32_t op1, int32_t op2) {
   svint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     }
   }
   return res;
@@ -17686,7 +17704,7 @@ inline svint64_t svbic_n_s64_x(svbool_t pg, svint64_t op1, int64_t op2) {
   svint64_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     }
   }
   return res;
@@ -17695,7 +17713,7 @@ inline svuint8_t svbic_n_u8_x(svbool_t pg, svuint8_t op1, uint8_t op2) {
   svuint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     }
   }
   return res;
@@ -17704,7 +17722,7 @@ inline svuint16_t svbic_n_u16_x(svbool_t pg, svuint16_t op1, uint16_t op2) {
   svuint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     }
   }
   return res;
@@ -17713,7 +17731,7 @@ inline svuint32_t svbic_n_u32_x(svbool_t pg, svuint32_t op1, uint32_t op2) {
   svuint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     }
   }
   return res;
@@ -17722,7 +17740,7 @@ inline svuint64_t svbic_n_u64_x(svbool_t pg, svuint64_t op1, uint64_t op2) {
   svuint64_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] & !op2);
+      res.vec[idx] = (op1.vec[idx] & ~op2);
     }
   }
   return res;
@@ -29768,7 +29786,7 @@ inline float64_t svaddv_f64(svbool_t pg,
   return res;
 }
 inline float16_t svmaxv_f16(svbool_t pg, svfloat16_t op) {
-  float16_t res = std::numeric_limits<float16_t>::min();
+  float16_t res = std::numeric_limits<float16_t>::lowest();
   int nbActive = 0;
   int nbNan = 0;
   for (int idx = 0; idx < op.Size; ++idx) {
@@ -29791,7 +29809,7 @@ inline float16_t svmaxv_f16(svbool_t pg, svfloat16_t op) {
   return res;
 }
 inline float32_t svmaxv_f32(svbool_t pg, svfloat32_t op) {
-  float32_t res = std::numeric_limits<float32_t>::min();
+  float32_t res = std::numeric_limits<float32_t>::lowest();
   int nbActive = 0;
   int nbNan = 0;
   for (int idx = 0; idx < op.Size; ++idx) {
@@ -29814,7 +29832,7 @@ inline float32_t svmaxv_f32(svbool_t pg, svfloat32_t op) {
   return res;
 }
 inline float64_t svmaxv_f64(svbool_t pg, svfloat64_t op) {
-  float64_t res = std::numeric_limits<float64_t>::min();
+  float64_t res = std::numeric_limits<float64_t>::lowest();
   int nbActive = 0;
   int nbNan = 0;
   for (int idx = 0; idx < op.Size; ++idx) {
@@ -29837,7 +29855,7 @@ inline float64_t svmaxv_f64(svbool_t pg, svfloat64_t op) {
   return res;
 }
 inline float16_t svmaxnmv_f16(svbool_t pg, svfloat16_t op) {
-  float16_t res = std::numeric_limits<float16_t>::min();
+  float16_t res = std::numeric_limits<float16_t>::lowest();
   int nbActive = 0;
   int nbNan = 0;
   for (int idx = 0; idx < op.Size; ++idx) {
@@ -29857,7 +29875,7 @@ inline float16_t svmaxnmv_f16(svbool_t pg, svfloat16_t op) {
   return res;
 }
 inline float32_t svmaxnmv_f32(svbool_t pg, svfloat32_t op) {
-  float32_t res = std::numeric_limits<float32_t>::min();
+  float32_t res = std::numeric_limits<float32_t>::lowest();
   int nbActive = 0;
   int nbNan = 0;
   for (int idx = 0; idx < op.Size; ++idx) {
@@ -29877,7 +29895,7 @@ inline float32_t svmaxnmv_f32(svbool_t pg, svfloat32_t op) {
   return res;
 }
 inline float64_t svmaxnmv_f64(svbool_t pg, svfloat64_t op) {
-  float64_t res = std::numeric_limits<float64_t>::min();
+  float64_t res = std::numeric_limits<float64_t>::lowest();
   int nbActive = 0;
   int nbNan = 0;
   for (int idx = 0; idx < op.Size; ++idx) {
@@ -32261,6 +32279,7 @@ inline svint8_t svsplice_s8(svbool_t pg, svint8_t op1, svint8_t op2) {
   svint8_t res;
   int idx = 0;
   int idxOp1 = 0;
+  int idxOp2 = 0;
   while (idxOp1 < op1.Size) {
     if (pg.vec[idxOp1]) {
       res.vec[idx] = op1.vec[idxOp1];
@@ -32269,8 +32288,9 @@ inline svint8_t svsplice_s8(svbool_t pg, svint8_t op1, svint8_t op2) {
     idxOp1 += 1;
   }
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -32278,6 +32298,7 @@ inline svint16_t svsplice_s16(svbool_t pg, svint16_t op1, svint16_t op2) {
   svint16_t res;
   int idx = 0;
   int idxOp1 = 0;
+  int idxOp2 = 0;
   while (idxOp1 < op1.Size) {
     if (pg.vec[idxOp1]) {
       res.vec[idx] = op1.vec[idxOp1];
@@ -32286,8 +32307,9 @@ inline svint16_t svsplice_s16(svbool_t pg, svint16_t op1, svint16_t op2) {
     idxOp1 += 1;
   }
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -32295,6 +32317,7 @@ inline svint32_t svsplice_s32(svbool_t pg, svint32_t op1, svint32_t op2) {
   svint32_t res;
   int idx = 0;
   int idxOp1 = 0;
+  int idxOp2 = 0;
   while (idxOp1 < op1.Size) {
     if (pg.vec[idxOp1]) {
       res.vec[idx] = op1.vec[idxOp1];
@@ -32303,8 +32326,9 @@ inline svint32_t svsplice_s32(svbool_t pg, svint32_t op1, svint32_t op2) {
     idxOp1 += 1;
   }
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -32312,6 +32336,7 @@ inline svint64_t svsplice_s64(svbool_t pg, svint64_t op1, svint64_t op2) {
   svint64_t res;
   int idx = 0;
   int idxOp1 = 0;
+  int idxOp2 = 0;
   while (idxOp1 < op1.Size) {
     if (pg.vec[idxOp1]) {
       res.vec[idx] = op1.vec[idxOp1];
@@ -32320,8 +32345,9 @@ inline svint64_t svsplice_s64(svbool_t pg, svint64_t op1, svint64_t op2) {
     idxOp1 += 1;
   }
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -32329,6 +32355,7 @@ inline svuint8_t svsplice_u8(svbool_t pg, svuint8_t op1, svuint8_t op2) {
   svuint8_t res;
   int idx = 0;
   int idxOp1 = 0;
+  int idxOp2 = 0;
   while (idxOp1 < op1.Size) {
     if (pg.vec[idxOp1]) {
       res.vec[idx] = op1.vec[idxOp1];
@@ -32337,8 +32364,9 @@ inline svuint8_t svsplice_u8(svbool_t pg, svuint8_t op1, svuint8_t op2) {
     idxOp1 += 1;
   }
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -32346,6 +32374,7 @@ inline svuint16_t svsplice_u16(svbool_t pg, svuint16_t op1, svuint16_t op2) {
   svuint16_t res;
   int idx = 0;
   int idxOp1 = 0;
+  int idxOp2 = 0;
   while (idxOp1 < op1.Size) {
     if (pg.vec[idxOp1]) {
       res.vec[idx] = op1.vec[idxOp1];
@@ -32354,8 +32383,9 @@ inline svuint16_t svsplice_u16(svbool_t pg, svuint16_t op1, svuint16_t op2) {
     idxOp1 += 1;
   }
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -32363,6 +32393,7 @@ inline svuint32_t svsplice_u32(svbool_t pg, svuint32_t op1, svuint32_t op2) {
   svuint32_t res;
   int idx = 0;
   int idxOp1 = 0;
+  int idxOp2 = 0;
   while (idxOp1 < op1.Size) {
     if (pg.vec[idxOp1]) {
       res.vec[idx] = op1.vec[idxOp1];
@@ -32371,8 +32402,9 @@ inline svuint32_t svsplice_u32(svbool_t pg, svuint32_t op1, svuint32_t op2) {
     idxOp1 += 1;
   }
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -32380,6 +32412,7 @@ inline svuint64_t svsplice_u64(svbool_t pg, svuint64_t op1, svuint64_t op2) {
   svuint64_t res;
   int idx = 0;
   int idxOp1 = 0;
+  int idxOp2 = 0;
   while (idxOp1 < op1.Size) {
     if (pg.vec[idxOp1]) {
       res.vec[idx] = op1.vec[idxOp1];
@@ -32388,8 +32421,9 @@ inline svuint64_t svsplice_u64(svbool_t pg, svuint64_t op1, svuint64_t op2) {
     idxOp1 += 1;
   }
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -32397,6 +32431,7 @@ inline svfloat16_t svsplice_f16(svbool_t pg, svfloat16_t op1, svfloat16_t op2) {
   svfloat16_t res;
   int idx = 0;
   int idxOp1 = 0;
+  int idxOp2 = 0;
   while (idxOp1 < op1.Size) {
     if (pg.vec[idxOp1]) {
       res.vec[idx] = op1.vec[idxOp1];
@@ -32405,8 +32440,9 @@ inline svfloat16_t svsplice_f16(svbool_t pg, svfloat16_t op1, svfloat16_t op2) {
     idxOp1 += 1;
   }
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -32414,6 +32450,7 @@ inline svfloat32_t svsplice_f32(svbool_t pg, svfloat32_t op1, svfloat32_t op2) {
   svfloat32_t res;
   int idx = 0;
   int idxOp1 = 0;
+  int idxOp2 = 0;
   while (idxOp1 < op1.Size) {
     if (pg.vec[idxOp1]) {
       res.vec[idx] = op1.vec[idxOp1];
@@ -32422,8 +32459,9 @@ inline svfloat32_t svsplice_f32(svbool_t pg, svfloat32_t op1, svfloat32_t op2) {
     idxOp1 += 1;
   }
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -32431,6 +32469,7 @@ inline svfloat64_t svsplice_f64(svbool_t pg, svfloat64_t op1, svfloat64_t op2) {
   svfloat64_t res;
   int idx = 0;
   int idxOp1 = 0;
+  int idxOp2 = 0;
   while (idxOp1 < op1.Size) {
     if (pg.vec[idxOp1]) {
       res.vec[idx] = op1.vec[idxOp1];
@@ -32439,8 +32478,9 @@ inline svfloat64_t svsplice_f64(svbool_t pg, svfloat64_t op1, svfloat64_t op2) {
     idxOp1 += 1;
   }
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -32454,9 +32494,11 @@ inline svint8_t svext_s8(svint8_t op1, svint8_t op2, uint64_t imm3) {
     res.vec[idx] = op1.vec[idx + imm3];
     idx += 1;
   }
+  int idxOp2 = 0;
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -32470,9 +32512,11 @@ inline svint16_t svext_s16(svint16_t op1, svint16_t op2, uint64_t imm3) {
     res.vec[idx] = op1.vec[idx + imm3];
     idx += 1;
   }
+  int idxOp2 = 0;
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -32486,9 +32530,11 @@ inline svint32_t svext_s32(svint32_t op1, svint32_t op2, uint64_t imm3) {
     res.vec[idx] = op1.vec[idx + imm3];
     idx += 1;
   }
+  int idxOp2 = 0;
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -32502,9 +32548,11 @@ inline svint64_t svext_s64(svint64_t op1, svint64_t op2, uint64_t imm3) {
     res.vec[idx] = op1.vec[idx + imm3];
     idx += 1;
   }
+  int idxOp2 = 0;
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -32518,9 +32566,11 @@ inline svuint8_t svext_u8(svuint8_t op1, svuint8_t op2, uint64_t imm3) {
     res.vec[idx] = op1.vec[idx + imm3];
     idx += 1;
   }
+  int idxOp2 = 0;
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -32534,9 +32584,11 @@ inline svuint16_t svext_u16(svuint16_t op1, svuint16_t op2, uint64_t imm3) {
     res.vec[idx] = op1.vec[idx + imm3];
     idx += 1;
   }
+  int idxOp2 = 0;
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -32550,9 +32602,11 @@ inline svuint32_t svext_u32(svuint32_t op1, svuint32_t op2, uint64_t imm3) {
     res.vec[idx] = op1.vec[idx + imm3];
     idx += 1;
   }
+  int idxOp2 = 0;
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -32566,9 +32620,11 @@ inline svuint64_t svext_u64(svuint64_t op1, svuint64_t op2, uint64_t imm3) {
     res.vec[idx] = op1.vec[idx + imm3];
     idx += 1;
   }
+  int idxOp2 = 0;
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -32582,9 +32638,11 @@ inline svfloat16_t svext_f16(svfloat16_t op1, svfloat16_t op2, uint64_t imm3) {
     res.vec[idx] = op1.vec[idx + imm3];
     idx += 1;
   }
+  int idxOp2 = 0;
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -32598,9 +32656,11 @@ inline svfloat32_t svext_f32(svfloat32_t op1, svfloat32_t op2, uint64_t imm3) {
     res.vec[idx] = op1.vec[idx + imm3];
     idx += 1;
   }
+  int idxOp2 = 0;
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -32614,9 +32674,11 @@ inline svfloat64_t svext_f64(svfloat64_t op1, svfloat64_t op2, uint64_t imm3) {
     res.vec[idx] = op1.vec[idx + imm3];
     idx += 1;
   }
+  int idxOp2 = 0;
   while (idx < res.Size) {
-    res.vec[idx] = op2.vec[idx];
+    res.vec[idx] = op2.vec[idxOp2];
     idx += 1;
+    idxOp2 += 1;
   }
   return res;
 }
@@ -33340,49 +33402,50 @@ inline svuint64_t svunpkhi_u64(svuint32_t op) {
 }
 inline svbool_t svunpkhi_b(svbool_t op) {
   svbool_t res;
-  for (int idx = 0; idx < FARM_NB_BITS_IN_VEC / 8 / 2; ++idx) {
-    res.vec[idx] = op.vec[idx + FARM_NB_BITS_IN_VEC / 8 / 2];
+  for (int idx = 0; idx < FARM_NB_BITS_IN_VEC / 8 / 2 / sizeof(uint16_t);
+       ++idx) {
+    res.vec[idx] = op.vec[idx + FARM_NB_BITS_IN_VEC / 8 / 2 / sizeof(uint16_t)];
   }
   return res;
 }
 inline svint16_t svunpklo_s16(svint8_t op) {
   svint16_t res;
   for (int idx = 0; idx < op.Size / 2; ++idx) {
-    res.vec[idx] = op.vec[idx + op.Size / 2];
+    res.vec[idx] = op.vec[idx];
   }
   return res;
 }
 inline svint32_t svunpklo_s32(svint16_t op) {
   svint32_t res;
   for (int idx = 0; idx < op.Size / 2; ++idx) {
-    res.vec[idx] = op.vec[idx + op.Size / 2];
+    res.vec[idx] = op.vec[idx];
   }
   return res;
 }
 inline svint64_t svunpklo_s64(svint32_t op) {
   svint64_t res;
   for (int idx = 0; idx < op.Size / 2; ++idx) {
-    res.vec[idx] = op.vec[idx + op.Size / 2];
+    res.vec[idx] = op.vec[idx];
   }
   return res;
 }
 inline svuint16_t svunpklo_u16(svuint8_t op) {
   svuint16_t res;
   for (int idx = 0; idx < op.Size / 2; ++idx) {
-    res.vec[idx] = op.vec[idx + op.Size / 2];
+    res.vec[idx] = op.vec[idx];
   }
   return res;
 }
 inline svuint32_t svunpklo_u32(svuint16_t op) {
   svuint32_t res;
   for (int idx = 0; idx < op.Size / 2; ++idx) {
-    res.vec[idx] = op.vec[idx + op.Size / 2];
+    res.vec[idx] = op.vec[idx];
   }
   return res;
 }
 inline svuint64_t svunpklo_u64(svuint32_t op) {
   svuint64_t res;
-  for (int idx = 0; idx < FARM_NB_BITS_IN_VEC / 8 / 2; ++idx) {
+  for (int idx = 0; idx < op.Size / 2; ++idx) {
     res.vec[idx] = op.vec[idx];
   }
   return res;
