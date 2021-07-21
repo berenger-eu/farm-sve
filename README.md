@@ -20,10 +20,14 @@ An alternative, could be to use a vectorization library, such as Inastemp (https
 Please visit the official GIT repository to let us know if you find any bug or would like to propose any improvement:
 
 https://gitlab.inria.fr/bramas/farm-sve
+OR
+https://github.com/berenger-eu/farm-sve/
 
 Feel free to open an issue here:
 
 https://gitlab.inria.fr/bramas/farm-sve/-/issues
+OR
+https://github.com/berenger-eu/farm-sve/issues
 
 # Citing
 
