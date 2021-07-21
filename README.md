@@ -40,6 +40,7 @@ Simply an acknowledgment to express the fact that this tool was used in the deve
 
 # Authors:
 - Berenger Bramas (berenger.bramas@inria.fr)
+- Jan Wassenberg (janwas@google.com) - some fixes
 
 # Under MIT License.
 
