@@ -10126,7 +10126,7 @@ inline svint32_t svadd_s32_z(svbool_t pg, svint32_t op1, svint32_t op2) {
   svint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] + op2.vec[idx]);
+      res.vec[idx] = int32_t(uint32_t(op1.vec[idx]) + uint32_t(op2.vec[idx]));
     }
   }
   return res;
@@ -10135,7 +10135,7 @@ inline svint64_t svadd_s64_z(svbool_t pg, svint64_t op1, svint64_t op2) {
   svint64_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] + op2.vec[idx]);
+      res.vec[idx] = int64_t(uint64_t(op1.vec[idx]) + uint64_t(op2.vec[idx]));
     }
   }
   return res;
@@ -10202,7 +10202,7 @@ inline svint32_t svadd_s32_m(svbool_t pg, svint32_t op1, svint32_t op2) {
   svint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] + op2.vec[idx]);
+      res.vec[idx] = int32_t(uint32_t(op1.vec[idx]) + uint32_t(op2.vec[idx]));
     } else {
       res.vec[idx] = (op1.vec[idx]);
     }
@@ -10213,7 +10213,7 @@ inline svint64_t svadd_s64_m(svbool_t pg, svint64_t op1, svint64_t op2) {
   svint64_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] + op2.vec[idx]);
+      res.vec[idx] = int64_t(uint64_t(op1.vec[idx]) + uint64_t(op2.vec[idx]));
     } else {
       res.vec[idx] = (op1.vec[idx]);
     }
@@ -10286,7 +10286,7 @@ inline svint32_t svadd_s32_x(svbool_t pg, svint32_t op1, svint32_t op2) {
   svint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] + op2.vec[idx]);
+      res.vec[idx] = int32_t(uint32_t(op1.vec[idx]) + uint32_t(op2.vec[idx]));
     }
   }
   return res;
@@ -10295,7 +10295,7 @@ inline svint64_t svadd_s64_x(svbool_t pg, svint64_t op1, svint64_t op2) {
   svint64_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] + op2.vec[idx]);
+      res.vec[idx] = int64_t(uint64_t(op1.vec[idx]) + uint64_t(op2.vec[idx]));
     }
   }
   return res;
@@ -10687,7 +10687,7 @@ inline svint32_t svsub_s32_z(svbool_t pg, svint32_t op1, svint32_t op2) {
   svint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] - op2.vec[idx]);
+      res.vec[idx] = int32_t(uint32_t(op1.vec[idx]) - uint32_t(op2.vec[idx]));
     }
   }
   return res;
@@ -10696,7 +10696,7 @@ inline svint64_t svsub_s64_z(svbool_t pg, svint64_t op1, svint64_t op2) {
   svint64_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] - op2.vec[idx]);
+      res.vec[idx] = int64_t(uint64_t(op1.vec[idx]) - uint64_t(op2.vec[idx]));
     }
   }
   return res;
@@ -10831,7 +10831,7 @@ inline svint32_t svsub_s32_x(svbool_t pg, svint32_t op1, svint32_t op2) {
   svint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] - op2.vec[idx]);
+      res.vec[idx] = int32_t(uint32_t(op1.vec[idx]) - uint32_t(op2.vec[idx]));
     }
   }
   return res;
@@ -10840,7 +10840,7 @@ inline svint64_t svsub_s64_x(svbool_t pg, svint64_t op1, svint64_t op2) {
   svint64_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] - op2.vec[idx]);
+      res.vec[idx] = int64_t(uint64_t(op1.vec[idx]) - uint64_t(op2.vec[idx]));
     }
   }
   return res;
@@ -12142,7 +12142,7 @@ inline svint8_t svmul_s8_z(svbool_t pg, svint8_t op1, svint8_t op2) {
   svint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2.vec[idx]);
+      res.vec[idx] = core_to_s8(op1.vec[idx] * op2.vec[idx]);
     }
   }
   return res;
@@ -12151,7 +12151,7 @@ inline svint16_t svmul_s16_z(svbool_t pg, svint16_t op1, svint16_t op2) {
   svint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2.vec[idx]);
+      res.vec[idx] = core_to_s16(op1.vec[idx] * op2.vec[idx]);
     }
   }
   return res;
@@ -12161,7 +12161,7 @@ inline svint32_t svmul_s32_z(svbool_t pg, svint32_t op1, svint32_t op2) {
   svint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (int64_t(op1.vec[idx]) * op2.vec[idx]);
+      res.vec[idx] = core_to_s32(int64_t(op1.vec[idx]) * op2.vec[idx]);
     }
   }
   return res;
@@ -12180,7 +12180,7 @@ inline svuint8_t svmul_u8_z(svbool_t pg, svuint8_t op1, svuint8_t op2) {
   svuint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2.vec[idx]);
+      res.vec[idx] = core_to_u8(op1.vec[idx] * op2.vec[idx]);
     }
   }
   return res;
@@ -12189,7 +12189,7 @@ inline svuint16_t svmul_u16_z(svbool_t pg, svuint16_t op1, svuint16_t op2) {
   svuint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (uint32_t(op1.vec[idx]) * op2.vec[idx]);
+      res.vec[idx] = core_to_u16(uint32_t(op1.vec[idx]) * op2.vec[idx]);
     }
   }
   return res;
@@ -12198,7 +12198,7 @@ inline svuint32_t svmul_u32_z(svbool_t pg, svuint32_t op1, svuint32_t op2) {
   svuint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (uint64_t(op1.vec[idx]) * op2.vec[idx]);
+      res.vec[idx] = core_to_u32(uint64_t(op1.vec[idx]) * op2.vec[idx]);
     }
   }
   return res;
@@ -12216,7 +12216,7 @@ inline svint8_t svmul_s8_m(svbool_t pg, svint8_t op1, svint8_t op2) {
   svint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2.vec[idx]);
+      res.vec[idx] = core_to_s8(op1.vec[idx] * op2.vec[idx]);
     }
   }
   return res;
@@ -12225,7 +12225,7 @@ inline svint16_t svmul_s16_m(svbool_t pg, svint16_t op1, svint16_t op2) {
   svint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (int32_t(op1.vec[idx]) * op2.vec[idx]);
+      res.vec[idx] = core_to_s16(int32_t(op1.vec[idx]) * op2.vec[idx]);
     }
   }
   return res;
@@ -12234,7 +12234,7 @@ inline svint32_t svmul_s32_m(svbool_t pg, svint32_t op1, svint32_t op2) {
   svint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2.vec[idx]);
+      res.vec[idx] = core_to_s32(int64_t(op1.vec[idx]) * op2.vec[idx]);
     }
   }
   return res;
@@ -12252,7 +12252,7 @@ inline svuint8_t svmul_u8_m(svbool_t pg, svuint8_t op1, svuint8_t op2) {
   svuint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2.vec[idx]);
+      res.vec[idx] = core_to_u8(op1.vec[idx] * op2.vec[idx]);
     }
   }
   return res;
@@ -12261,7 +12261,7 @@ inline svuint16_t svmul_u16_m(svbool_t pg, svuint16_t op1, svuint16_t op2) {
   svuint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2.vec[idx]);
+      res.vec[idx] = core_to_u16(uint32_t(op1.vec[idx]) * op2.vec[idx]);
     }
   }
   return res;
@@ -12270,7 +12270,7 @@ inline svuint32_t svmul_u32_m(svbool_t pg, svuint32_t op1, svuint32_t op2) {
   svuint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2.vec[idx]);
+      res.vec[idx] = core_to_u32(uint64_t(op1.vec[idx]) * op2.vec[idx]);
     }
   }
   return res;
@@ -12288,7 +12288,7 @@ inline svint8_t svmul_s8_x(svbool_t pg, svint8_t op1, svint8_t op2) {
   svint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2.vec[idx]);
+      res.vec[idx] = core_to_s8(op1.vec[idx] * op2.vec[idx]);
     }
   }
   return res;
@@ -12297,7 +12297,7 @@ inline svint16_t svmul_s16_x(svbool_t pg, svint16_t op1, svint16_t op2) {
   svint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2.vec[idx]);
+      res.vec[idx] = core_to_s16(int32_t(op1.vec[idx]) * op2.vec[idx]);
     }
   }
   return res;
@@ -12306,7 +12306,7 @@ inline svint32_t svmul_s32_x(svbool_t pg, svint32_t op1, svint32_t op2) {
   svint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2.vec[idx]);
+      res.vec[idx] = core_to_s32(int64_t(op1.vec[idx]) * op2.vec[idx]);
     }
   }
   return res;
@@ -12324,7 +12324,7 @@ inline svuint8_t svmul_u8_x(svbool_t pg, svuint8_t op1, svuint8_t op2) {
   svuint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2.vec[idx]);
+      res.vec[idx] = core_to_u8(op1.vec[idx] * op2.vec[idx]);
     }
   }
   return res;
@@ -12333,7 +12333,7 @@ inline svuint16_t svmul_u16_x(svbool_t pg, svuint16_t op1, svuint16_t op2) {
   svuint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2.vec[idx]);
+      res.vec[idx] = core_to_u16(uint32_t(op1.vec[idx]) * op2.vec[idx]);
     }
   }
   return res;
@@ -12342,7 +12342,7 @@ inline svuint32_t svmul_u32_x(svbool_t pg, svuint32_t op1, svuint32_t op2) {
   svuint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2.vec[idx]);
+      res.vec[idx] = core_to_u32(uint64_t(op1.vec[idx]) * op2.vec[idx]);
     }
   }
   return res;
@@ -12360,7 +12360,7 @@ inline svint8_t svmul_n_s8_z(svbool_t pg, svint8_t op1, int8_t op2) {
   svint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2);
+      res.vec[idx] = core_to_s8(op1.vec[idx] * op2);
     }
   }
   return res;
@@ -12369,7 +12369,7 @@ inline svint16_t svmul_n_s16_z(svbool_t pg, svint16_t op1, int16_t op2) {
   svint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2);
+      res.vec[idx] = core_to_s16(int32_t(op1.vec[idx]) * op2);
     }
   }
   return res;
@@ -12379,7 +12379,7 @@ inline svint32_t svmul_n_s32_z(svbool_t pg, svint32_t op1, int32_t op2) {
   svint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2);
+      res.vec[idx] = core_to_s32(int64_t(op1.vec[idx]) * op2);
     }
   }
   return res;
@@ -12398,7 +12398,7 @@ inline svuint8_t svmul_n_u8_z(svbool_t pg, svuint8_t op1, uint8_t op2) {
   svuint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2);
+      res.vec[idx] = core_to_u8(op1.vec[idx] * op2);
     }
   }
   return res;
@@ -12407,7 +12407,7 @@ inline svuint16_t svmul_n_u16_z(svbool_t pg, svuint16_t op1, uint16_t op2) {
   svuint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2);
+      res.vec[idx] = core_to_u16(uint32_t(op1.vec[idx]) * op2);
     }
   }
   return res;
@@ -12416,7 +12416,7 @@ inline svuint32_t svmul_n_u32_z(svbool_t pg, svuint32_t op1, uint32_t op2) {
   svuint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2);
+      res.vec[idx] = core_to_u32(uint64_t(op1.vec[idx]) * op2);
     }
   }
   return res;
@@ -12434,7 +12434,7 @@ inline svint8_t svmul_n_s8_m(svbool_t pg, svint8_t op1, int8_t op2) {
   svint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2);
+      res.vec[idx] = core_to_s8(op1.vec[idx] * op2);
     }
   }
   return res;
@@ -12443,7 +12443,7 @@ inline svint16_t svmul_n_s16_m(svbool_t pg, svint16_t op1, int16_t op2) {
   svint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2);
+      res.vec[idx] = core_to_s16(int32_t(op1.vec[idx]) * op2);
     }
   }
   return res;
@@ -12452,7 +12452,7 @@ inline svint32_t svmul_n_s32_m(svbool_t pg, svint32_t op1, int32_t op2) {
   svint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2);
+      res.vec[idx] = core_to_s32(int64_t(op1.vec[idx]) * op2);
     }
   }
   return res;
@@ -12470,7 +12470,7 @@ inline svuint8_t svmul_n_u8_m(svbool_t pg, svuint8_t op1, uint8_t op2) {
   svuint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2);
+      res.vec[idx] = core_to_u8(op1.vec[idx] * op2);
     }
   }
   return res;
@@ -12479,7 +12479,7 @@ inline svuint16_t svmul_n_u16_m(svbool_t pg, svuint16_t op1, uint16_t op2) {
   svuint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2);
+      res.vec[idx] = core_to_u16(uint32_t(op1.vec[idx]) * op2);
     }
   }
   return res;
@@ -12488,7 +12488,7 @@ inline svuint32_t svmul_n_u32_m(svbool_t pg, svuint32_t op1, uint32_t op2) {
   svuint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2);
+      res.vec[idx] = core_to_u32(uint64_t(op1.vec[idx]) * op2);
     }
   }
   return res;
@@ -12506,7 +12506,7 @@ inline svint8_t svmul_n_s8_x(svbool_t pg, svint8_t op1, int8_t op2) {
   svint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2);
+      res.vec[idx] = core_to_s8(op1.vec[idx] * op2);
     }
   }
   return res;
@@ -12515,7 +12515,7 @@ inline svint16_t svmul_n_s16_x(svbool_t pg, svint16_t op1, int16_t op2) {
   svint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2);
+      res.vec[idx] = core_to_s16(int32_t(op1.vec[idx]) * op2);
     }
   }
   return res;
@@ -12524,7 +12524,7 @@ inline svint32_t svmul_n_s32_x(svbool_t pg, svint32_t op1, int32_t op2) {
   svint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2);
+      res.vec[idx] = core_to_s32(int64_t(op1.vec[idx]) * op2);
     }
   }
   return res;
@@ -12542,7 +12542,7 @@ inline svuint8_t svmul_n_u8_x(svbool_t pg, svuint8_t op1, uint8_t op2) {
   svuint8_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2);
+      res.vec[idx] = core_to_u8(op1.vec[idx] * op2);
     }
   }
   return res;
@@ -12551,7 +12551,7 @@ inline svuint16_t svmul_n_u16_x(svbool_t pg, svuint16_t op1, uint16_t op2) {
   svuint16_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2);
+      res.vec[idx] = core_to_u16(uint32_t(op1.vec[idx]) * op2);
     }
   }
   return res;
@@ -12560,7 +12560,7 @@ inline svuint32_t svmul_n_u32_x(svbool_t pg, svuint32_t op1, uint32_t op2) {
   svuint32_t res;
   for (int idx = 0; idx < op1.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (op1.vec[idx] * op2);
+      res.vec[idx] = core_to_u32(uint64_t(op1.vec[idx]) * op2);
     }
   }
   return res;
