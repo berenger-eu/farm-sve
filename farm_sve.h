@@ -605,6 +605,17 @@ struct VecBool {
     }
   }
 };
+
+
+void farm_mem_add_load(const size_t inSize){
+
+}
+
+void farm_mem_add_store(const size_t inSize){
+
+}
+
+
 ///////// FARM EXTRA END /////////
 
 typedef FarmFloat16 float16_t;
@@ -891,6 +902,7 @@ inline svint8_t svld1_s8(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -900,6 +912,7 @@ inline svint16_t svld1_s16(svbool_t pg, const int16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -909,6 +922,7 @@ inline svint32_t svld1_s32(svbool_t pg, const int32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -918,6 +932,7 @@ inline svint64_t svld1_s64(svbool_t pg, const int64_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -927,6 +942,7 @@ inline svuint8_t svld1_u8(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -936,6 +952,7 @@ inline svuint16_t svld1_u16(svbool_t pg, const uint16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -945,6 +962,7 @@ inline svuint32_t svld1_u32(svbool_t pg, const uint32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -954,6 +972,7 @@ inline svuint64_t svld1_u64(svbool_t pg, const uint64_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -963,6 +982,7 @@ inline svfloat16_t svld1_f16(svbool_t pg, const float16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -972,6 +992,7 @@ inline svfloat32_t svld1_f32(svbool_t pg, const float32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -981,6 +1002,7 @@ inline svfloat64_t svld1_f64(svbool_t pg, const float64_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -990,6 +1012,7 @@ inline svint8_t svld1_vnum_s8(svbool_t pg, const int8_t *base, int64_t vnum) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + res.Size * vnum];
+farm_mem_add_load(sizeof(base[idx + res.Size * vnum]));
     }
   }
   return res;
@@ -1000,6 +1023,7 @@ inline svint16_t svld1_vnum_s16(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + res.Size * vnum];
+farm_mem_add_load(sizeof(base[idx + res.Size * vnum]));
     }
   }
   return res;
@@ -1010,6 +1034,7 @@ inline svint32_t svld1_vnum_s32(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + res.Size * vnum];
+farm_mem_add_load(sizeof(base[idx + res.Size * vnum]));
     }
   }
   return res;
@@ -1020,6 +1045,7 @@ inline svint64_t svld1_vnum_s64(svbool_t pg, const int64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + res.Size * vnum];
+farm_mem_add_load(sizeof(base[idx + res.Size * vnum]));
     }
   }
   return res;
@@ -1029,6 +1055,7 @@ inline svuint8_t svld1_vnum_u8(svbool_t pg, const uint8_t *base, int64_t vnum) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + res.Size * vnum];
+farm_mem_add_load(sizeof(base[idx + res.Size * vnum]));
     }
   }
   return res;
@@ -1039,6 +1066,7 @@ inline svuint16_t svld1_vnum_u16(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + res.Size * vnum];
+farm_mem_add_load(sizeof(base[idx + res.Size * vnum]));
     }
   }
   return res;
@@ -1049,6 +1077,7 @@ inline svuint32_t svld1_vnum_u32(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + res.Size * vnum];
+farm_mem_add_load(sizeof(base[idx + res.Size * vnum]));
     }
   }
   return res;
@@ -1059,6 +1088,7 @@ inline svuint64_t svld1_vnum_u64(svbool_t pg, const uint64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + res.Size * vnum];
+farm_mem_add_load(sizeof(base[idx + res.Size * vnum]));
     }
   }
   return res;
@@ -1069,6 +1099,7 @@ inline svfloat16_t svld1_vnum_f16(svbool_t pg, const float16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + res.Size * vnum];
+farm_mem_add_load(sizeof(base[idx + res.Size * vnum]));
     }
   }
   return res;
@@ -1079,6 +1110,7 @@ inline svfloat32_t svld1_vnum_f32(svbool_t pg, const float32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + res.Size * vnum];
+farm_mem_add_load(sizeof(base[idx + res.Size * vnum]));
     }
   }
   return res;
@@ -1089,6 +1121,7 @@ inline svfloat64_t svld1_vnum_f64(svbool_t pg, const float64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + res.Size * vnum];
+farm_mem_add_load(sizeof(base[idx + res.Size * vnum]));
     }
   }
   return res;
@@ -1099,6 +1132,7 @@ inline svint32_t svld1_gather_u32base_s32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int32_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -1108,6 +1142,7 @@ inline svint64_t svld1_gather_u64base_s64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int64_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -1117,6 +1152,7 @@ inline svuint32_t svld1_gather_u32base_u32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint32_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -1126,6 +1162,7 @@ inline svuint64_t svld1_gather_u64base_u64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint64_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -1135,6 +1172,7 @@ inline svfloat32_t svld1_gather_u32base_f32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const float32_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -1144,6 +1182,7 @@ inline svfloat64_t svld1_gather_u64base_f64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const float64_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -1154,6 +1193,7 @@ inline svint32_t svld1_gather_s32offset_s32(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int32_t)]));
     }
   }
   return res;
@@ -1164,6 +1204,7 @@ inline svint64_t svld1_gather_s64offset_s64(svbool_t pg, const int64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int64_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int64_t)]));
     }
   }
   return res;
@@ -1174,6 +1215,7 @@ inline svuint32_t svld1_gather_s32offset_u32(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint32_t)]));
     }
   }
   return res;
@@ -1184,6 +1226,7 @@ inline svuint64_t svld1_gather_s64offset_u64(svbool_t pg, const uint64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint64_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint64_t)]));
     }
   }
   return res;
@@ -1195,6 +1238,7 @@ inline svfloat32_t svld1_gather_s32offset_f32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(float32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(float32_t)]));
     }
   }
   return res;
@@ -1206,6 +1250,7 @@ inline svfloat64_t svld1_gather_s64offset_f64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(float64_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(float64_t)]));
     }
   }
   return res;
@@ -1216,6 +1261,7 @@ inline svint32_t svld1_gather_u32offset_s32(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int32_t)]));
     }
   }
   return res;
@@ -1226,6 +1272,7 @@ inline svint64_t svld1_gather_u64offset_s64(svbool_t pg, const int64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int64_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int64_t)]));
     }
   }
   return res;
@@ -1236,6 +1283,7 @@ inline svuint32_t svld1_gather_u32offset_u32(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint32_t)]));
     }
   }
   return res;
@@ -1246,6 +1294,7 @@ inline svuint64_t svld1_gather_u64offset_u64(svbool_t pg, const uint64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint64_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint64_t)]));
     }
   }
   return res;
@@ -1257,6 +1306,7 @@ inline svfloat32_t svld1_gather_u32offset_f32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(float32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(float32_t)]));
     }
   }
   return res;
@@ -1268,6 +1318,7 @@ inline svfloat64_t svld1_gather_u64offset_f64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(float64_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(float64_t)]));
     }
   }
   return res;
@@ -1279,6 +1330,7 @@ inline svint32_t svld1_gather_u32base_offset_s32(svbool_t pg, svuint32_t bases,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const int32_t *>(
           bases.vec[idx])[offset / sizeof(int32_t)];
+          farm_mem_add_load( sizeof(int32_t));
     }
   }
   return res;
@@ -1290,6 +1342,7 @@ inline svint64_t svld1_gather_u64base_offset_s64(svbool_t pg, svuint64_t bases,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const int64_t *>(
           bases.vec[idx])[offset / sizeof(int64_t)];
+          farm_mem_add_load( sizeof(int64_t));
     }
   }
   return res;
@@ -1301,6 +1354,7 @@ inline svuint32_t svld1_gather_u32base_offset_u32(svbool_t pg, svuint32_t bases,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const uint32_t *>(
           bases.vec[idx])[offset / sizeof(uint32_t)];
+          farm_mem_add_load( sizeof(uint32_t));
     }
   }
   return res;
@@ -1312,6 +1366,7 @@ inline svuint64_t svld1_gather_u64base_offset_u64(svbool_t pg, svuint64_t bases,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const uint64_t *>(
           bases.vec[idx])[offset / sizeof(uint64_t)];
+          farm_mem_add_load( sizeof(uint64_t));
     }
   }
   return res;
@@ -1324,6 +1379,7 @@ inline svfloat32_t svld1_gather_u32base_offset_f32(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const float32_t *>(
           bases.vec[idx])[offset / sizeof(float32_t)];
+          farm_mem_add_load( sizeof(float32_t));
     }
   }
   return res;
@@ -1336,6 +1392,7 @@ inline svfloat64_t svld1_gather_u64base_offset_f64(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const float64_t *>(
           bases.vec[idx])[offset / sizeof(float64_t)];
+          farm_mem_add_load( sizeof(float64_t));
     }
   }
   return res;
@@ -1346,6 +1403,7 @@ inline svint32_t svld1_gather_s32index_s32(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -1356,6 +1414,7 @@ inline svint64_t svld1_gather_s64index_s64(svbool_t pg, const int64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -1366,6 +1425,7 @@ inline svuint32_t svld1_gather_s32index_u32(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -1376,6 +1436,7 @@ inline svuint64_t svld1_gather_s64index_u64(svbool_t pg, const uint64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -1386,6 +1447,7 @@ inline svfloat32_t svld1_gather_s32index_f32(svbool_t pg, const float32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -1396,6 +1458,7 @@ inline svfloat64_t svld1_gather_s64index_f64(svbool_t pg, const float64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -1406,6 +1469,7 @@ inline svint32_t svld1_gather_u32index_s32(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -1416,6 +1480,7 @@ inline svint64_t svld1_gather_u64index_s64(svbool_t pg, const int64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -1426,6 +1491,7 @@ inline svuint32_t svld1_gather_u32index_u32(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -1436,6 +1502,7 @@ inline svuint64_t svld1_gather_u64index_u64(svbool_t pg, const uint64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -1446,6 +1513,7 @@ inline svfloat32_t svld1_gather_u32index_f32(svbool_t pg, const float32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -1456,6 +1524,7 @@ inline svfloat64_t svld1_gather_u64index_f64(svbool_t pg, const float64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -1466,6 +1535,7 @@ inline svint32_t svld1_gather_u32base_index_s32(svbool_t pg, svuint32_t bases,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int32_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -1476,6 +1546,7 @@ inline svint64_t svld1_gather_u64base_index_s64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int64_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -1486,6 +1557,7 @@ inline svuint32_t svld1_gather_u32base_index_u32(svbool_t pg, svuint32_t bases,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint32_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -1496,6 +1568,7 @@ inline svuint64_t svld1_gather_u64base_index_u64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint64_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -1506,6 +1579,7 @@ inline svfloat32_t svld1_gather_u32base_index_f32(svbool_t pg, svuint32_t bases,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const float32_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -1516,6 +1590,7 @@ inline svfloat64_t svld1_gather_u64base_index_f64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const float64_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -1525,6 +1600,7 @@ inline svint16_t svld1sb_s16(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -1534,6 +1610,7 @@ inline svint32_t svld1sb_s32(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -1543,6 +1620,7 @@ inline svint64_t svld1sb_s64(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -1552,6 +1630,7 @@ inline svuint16_t svld1sb_u16(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -1561,6 +1640,7 @@ inline svuint32_t svld1sb_u32(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -1570,6 +1650,7 @@ inline svuint64_t svld1sb_u64(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -1580,6 +1661,7 @@ inline svint16_t svld1sb_vnum_s16(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -1590,6 +1672,7 @@ inline svint32_t svld1sb_vnum_s32(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -1600,6 +1683,7 @@ inline svint64_t svld1sb_vnum_s64(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -1610,6 +1694,7 @@ inline svuint16_t svld1sb_vnum_u16(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -1620,6 +1705,7 @@ inline svuint32_t svld1sb_vnum_u32(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -1630,6 +1716,7 @@ inline svuint64_t svld1sb_vnum_u64(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -1639,6 +1726,7 @@ inline svint32_t svld1sb_gather_u32base_s32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int8_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -1648,6 +1736,7 @@ inline svint64_t svld1sb_gather_u64base_s64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int8_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -1657,6 +1746,7 @@ inline svuint32_t svld1sb_gather_u32base_u32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int8_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -1666,6 +1756,7 @@ inline svuint64_t svld1sb_gather_u64base_u64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int8_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -1676,6 +1767,7 @@ inline svint32_t svld1sb_gather_s32offset_s32(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int8_t)]));
     }
   }
   return res;
@@ -1686,6 +1778,7 @@ inline svint64_t svld1sb_gather_s64offset_s64(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int8_t)]));
     }
   }
   return res;
@@ -1696,6 +1789,7 @@ inline svuint32_t svld1sb_gather_s32offset_u32(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int8_t)]));
     }
   }
   return res;
@@ -1706,6 +1800,7 @@ inline svuint64_t svld1sb_gather_s64offset_u64(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int8_t)]));
     }
   }
   return res;
@@ -1716,6 +1811,7 @@ inline svint32_t svld1sb_gather_u32offset_s32(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int8_t)]));
     }
   }
   return res;
@@ -1726,6 +1822,7 @@ inline svint64_t svld1sb_gather_u64offset_s64(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int8_t)]));
     }
   }
   return res;
@@ -1736,6 +1833,7 @@ inline svuint32_t svld1sb_gather_u32offset_u32(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int8_t)]));
     }
   }
   return res;
@@ -1746,6 +1844,7 @@ inline svuint64_t svld1sb_gather_u64offset_u64(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int8_t)]));
     }
   }
   return res;
@@ -1756,8 +1855,8 @@ inline svint32_t svld1sb_gather_u32base_offset_s32(svbool_t pg,
   svint32_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (reinterpret_cast<const int8_t *>(
-          bases.vec[idx])[offset / sizeof(int8_t)]);
+      res.vec[idx] = (reinterpret_cast<const int8_t *>(bases.vec[idx])[offset / sizeof(int8_t)]);
+      farm_mem_add_load(sizeof(reinterpret_cast<const int8_t *>(bases.vec[idx])[offset / sizeof(int8_t)]));
     }
   }
   return res;
@@ -1768,8 +1867,8 @@ inline svint64_t svld1sb_gather_u64base_offset_s64(svbool_t pg,
   svint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (reinterpret_cast<const int8_t *>(
-          bases.vec[idx])[offset / sizeof(int8_t)]);
+      res.vec[idx] = (reinterpret_cast<const int8_t *>(bases.vec[idx])[offset / sizeof(int8_t)]);
+      farm_mem_add_load(sizeof(reinterpret_cast<const int8_t *>(bases.vec[idx])[offset / sizeof(int8_t)]));
     }
   }
   return res;
@@ -1780,8 +1879,8 @@ inline svuint32_t svld1sb_gather_u32base_offset_u32(svbool_t pg,
   svuint32_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (reinterpret_cast<const int8_t *>(
-          bases.vec[idx])[offset / sizeof(int8_t)]);
+      res.vec[idx] = (reinterpret_cast<const int8_t *>(bases.vec[idx])[offset / sizeof(int8_t)]);
+      farm_mem_add_load(sizeof(reinterpret_cast<const int8_t *>(bases.vec[idx])[offset / sizeof(int8_t)]));
     }
   }
   return res;
@@ -1792,8 +1891,8 @@ inline svuint64_t svld1sb_gather_u64base_offset_u64(svbool_t pg,
   svuint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (reinterpret_cast<const int8_t *>(
-          bases.vec[idx])[offset / sizeof(int8_t)]);
+      res.vec[idx] = (reinterpret_cast<const int8_t *>(bases.vec[idx])[offset / sizeof(int8_t)]);
+      farm_mem_add_load(sizeof(reinterpret_cast<const int8_t *>(bases.vec[idx])[offset / sizeof(int8_t)]));
     }
   }
   return res;
@@ -1803,6 +1902,7 @@ inline svint16_t svld1ub_s16(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -1812,6 +1912,7 @@ inline svint32_t svld1ub_s32(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -1821,6 +1922,7 @@ inline svint64_t svld1ub_s64(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -1830,6 +1932,7 @@ inline svuint16_t svld1ub_u16(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -1839,6 +1942,7 @@ inline svuint32_t svld1ub_u32(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -1848,6 +1952,7 @@ inline svuint64_t svld1ub_u64(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -1858,6 +1963,7 @@ inline svint16_t svld1ub_vnum_s16(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -1868,6 +1974,7 @@ inline svint32_t svld1ub_vnum_s32(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -1878,6 +1985,7 @@ inline svint64_t svld1ub_vnum_s64(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -1888,6 +1996,7 @@ inline svuint16_t svld1ub_vnum_u16(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -1898,6 +2007,7 @@ inline svuint32_t svld1ub_vnum_u32(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -1908,6 +2018,7 @@ inline svuint64_t svld1ub_vnum_u64(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -1917,6 +2028,7 @@ inline svint32_t svld1ub_gather_u32base_s32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint8_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -1926,6 +2038,7 @@ inline svint64_t svld1ub_gather_u64base_s64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint8_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -1935,6 +2048,7 @@ inline svuint32_t svld1ub_gather_u32base_u32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint8_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -1944,6 +2058,7 @@ inline svuint64_t svld1ub_gather_u64base_u64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint8_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -1954,6 +2069,7 @@ inline svint32_t svld1ub_gather_s32offset_s32(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint8_t)]));
     }
   }
   return res;
@@ -1964,6 +2080,7 @@ inline svint64_t svld1ub_gather_s64offset_s64(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint8_t)]));
     }
   }
   return res;
@@ -1974,6 +2091,7 @@ inline svuint32_t svld1ub_gather_s32offset_u32(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint8_t)]));
     }
   }
   return res;
@@ -1984,6 +2102,7 @@ inline svuint64_t svld1ub_gather_s64offset_u64(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint8_t)]));
     }
   }
   return res;
@@ -1994,6 +2113,7 @@ inline svint32_t svld1ub_gather_u32offset_s32(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint8_t)]));
     }
   }
   return res;
@@ -2004,6 +2124,7 @@ inline svint64_t svld1ub_gather_u64offset_s64(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint8_t)]));
     }
   }
   return res;
@@ -2014,6 +2135,7 @@ inline svuint32_t svld1ub_gather_u32offset_u32(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint8_t)]));
     }
   }
   return res;
@@ -2024,6 +2146,7 @@ inline svuint64_t svld1ub_gather_u64offset_u64(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint8_t)]));
     }
   }
   return res;
@@ -2034,8 +2157,8 @@ inline svint32_t svld1ub_gather_u32base_offset_s32(svbool_t pg,
   svint32_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (reinterpret_cast<const uint8_t *>(
-          bases.vec[idx])[offset / sizeof(uint8_t)]);
+      res.vec[idx] = (reinterpret_cast<const uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)]);
+        farm_mem_add_load(sizeof(reinterpret_cast<const uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)]));
     }
   }
   return res;
@@ -2046,8 +2169,8 @@ inline svint64_t svld1ub_gather_u64base_offset_s64(svbool_t pg,
   svint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (reinterpret_cast<const uint8_t *>(
-          bases.vec[idx])[offset / sizeof(uint8_t)]);
+      res.vec[idx] = (reinterpret_cast<const uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)]);
+      farm_mem_add_load(sizeof(reinterpret_cast<const uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)]));
     }
   }
   return res;
@@ -2058,8 +2181,8 @@ inline svuint32_t svld1ub_gather_u32base_offset_u32(svbool_t pg,
   svuint32_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (reinterpret_cast<const uint8_t *>(
-          bases.vec[idx])[offset / sizeof(uint8_t)]);
+      res.vec[idx] = (reinterpret_cast<const uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)]);
+      farm_mem_add_load(sizeof(reinterpret_cast<const uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)]));
     }
   }
   return res;
@@ -2070,8 +2193,8 @@ inline svuint64_t svld1ub_gather_u64base_offset_u64(svbool_t pg,
   svuint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (reinterpret_cast<const uint8_t *>(
-          bases.vec[idx])[offset / sizeof(uint8_t)]);
+      res.vec[idx] = (reinterpret_cast<const uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)]);
+      farm_mem_add_load(sizeof(reinterpret_cast<const uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)]));
     }
   }
   return res;
@@ -2081,6 +2204,7 @@ inline svint32_t svld1sh_s32(svbool_t pg, const int16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -2090,6 +2214,7 @@ inline svint64_t svld1sh_s64(svbool_t pg, const int16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -2099,6 +2224,7 @@ inline svuint32_t svld1sh_u32(svbool_t pg, const int16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -2108,6 +2234,7 @@ inline svuint64_t svld1sh_u64(svbool_t pg, const int16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -2118,6 +2245,7 @@ inline svint32_t svld1sh_vnum_s32(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -2128,6 +2256,7 @@ inline svint64_t svld1sh_vnum_s64(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -2138,6 +2267,7 @@ inline svuint32_t svld1sh_vnum_u32(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -2148,6 +2278,7 @@ inline svuint64_t svld1sh_vnum_u64(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -2157,6 +2288,7 @@ inline svint32_t svld1sh_gather_u32base_s32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int16_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -2166,6 +2298,7 @@ inline svint64_t svld1sh_gather_u64base_s64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int16_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -2175,6 +2308,7 @@ inline svuint32_t svld1sh_gather_u32base_u32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int16_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -2184,6 +2318,7 @@ inline svuint64_t svld1sh_gather_u64base_u64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int16_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -2194,6 +2329,7 @@ inline svint32_t svld1sh_gather_s32offset_s32(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int16_t)]));
     }
   }
   return res;
@@ -2204,6 +2340,7 @@ inline svint64_t svld1sh_gather_s64offset_s64(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int16_t)]));
     }
   }
   return res;
@@ -2214,6 +2351,7 @@ inline svuint32_t svld1sh_gather_s32offset_u32(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int16_t)]));
     }
   }
   return res;
@@ -2224,6 +2362,7 @@ inline svuint64_t svld1sh_gather_s64offset_u64(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int16_t)]));
     }
   }
   return res;
@@ -2234,6 +2373,7 @@ inline svint32_t svld1sh_gather_u32offset_s32(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int16_t)]));
     }
   }
   return res;
@@ -2244,6 +2384,7 @@ inline svint64_t svld1sh_gather_u64offset_s64(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int16_t)]));
     }
   }
   return res;
@@ -2254,6 +2395,7 @@ inline svuint32_t svld1sh_gather_u32offset_u32(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int16_t)]));
     }
   }
   return res;
@@ -2264,6 +2406,7 @@ inline svuint64_t svld1sh_gather_u64offset_u64(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int16_t)]));
     }
   }
   return res;
@@ -2274,8 +2417,8 @@ inline svint32_t svld1sh_gather_u32base_offset_s32(svbool_t pg,
   svint32_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (reinterpret_cast<const int16_t *>(
-          bases.vec[idx])[offset / sizeof(int16_t)]);
+      res.vec[idx] = (reinterpret_cast<const int16_t *>(bases.vec[idx])[offset / sizeof(int16_t)]);
+        farm_mem_add_load(sizeof(reinterpret_cast<const int16_t *>(bases.vec[idx])[offset / sizeof(int16_t)]));
     }
   }
   return res;
@@ -2286,8 +2429,8 @@ inline svint64_t svld1sh_gather_u64base_offset_s64(svbool_t pg,
   svint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (reinterpret_cast<const int16_t *>(
-          bases.vec[idx])[offset / sizeof(int16_t)]);
+      res.vec[idx] = (reinterpret_cast<const int16_t *>(bases.vec[idx])[offset / sizeof(int16_t)]);
+      farm_mem_add_load(sizeof(reinterpret_cast<const int16_t *>(bases.vec[idx])[offset / sizeof(int16_t)]));
     }
   }
   return res;
@@ -2298,8 +2441,8 @@ inline svuint32_t svld1sh_gather_u32base_offset_u32(svbool_t pg,
   svuint32_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (reinterpret_cast<const int16_t *>(
-          bases.vec[idx])[offset / sizeof(int16_t)]);
+      res.vec[idx] = (reinterpret_cast<const int16_t *>(bases.vec[idx])[offset / sizeof(int16_t)]);
+      farm_mem_add_load(sizeof(reinterpret_cast<const int16_t *>(bases.vec[idx])[offset / sizeof(int16_t)]));
     }
   }
   return res;
@@ -2310,8 +2453,8 @@ inline svuint64_t svld1sh_gather_u64base_offset_u64(svbool_t pg,
   svuint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (reinterpret_cast<const int16_t *>(
-          bases.vec[idx])[offset / sizeof(int16_t)]);
+      res.vec[idx] = (reinterpret_cast<const int16_t *>(bases.vec[idx])[offset / sizeof(int16_t)]);
+      farm_mem_add_load(sizeof(reinterpret_cast<const int16_t *>(bases.vec[idx])[offset / sizeof(int16_t)]));
     }
   }
   return res;
@@ -2322,6 +2465,7 @@ inline svint32_t svld1sh_gather_s32index_s32(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -2332,6 +2476,7 @@ inline svint64_t svld1sh_gather_s64index_s64(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -2342,6 +2487,7 @@ inline svuint32_t svld1sh_gather_s32index_u32(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -2352,6 +2498,7 @@ inline svuint64_t svld1sh_gather_s64index_u64(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -2362,6 +2509,7 @@ inline svint32_t svld1sh_gather_u32index_s32(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -2372,6 +2520,7 @@ inline svint64_t svld1sh_gather_u64index_s64(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -2382,6 +2531,7 @@ inline svuint32_t svld1sh_gather_u32index_u32(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -2392,6 +2542,7 @@ inline svuint64_t svld1sh_gather_u64index_u64(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -2402,6 +2553,7 @@ inline svint32_t svld1sh_gather_u32base_index_s32(svbool_t pg, svuint32_t bases,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int16_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -2412,6 +2564,7 @@ inline svint64_t svld1sh_gather_u64base_index_s64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int16_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -2423,6 +2576,7 @@ inline svuint32_t svld1sh_gather_u32base_index_u32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int16_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -2434,6 +2588,7 @@ inline svuint64_t svld1sh_gather_u64base_index_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int16_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -2443,6 +2598,7 @@ inline svint32_t svld1uh_s32(svbool_t pg, const uint16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -2452,6 +2608,7 @@ inline svint64_t svld1uh_s64(svbool_t pg, const uint16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -2461,6 +2618,7 @@ inline svuint32_t svld1uh_u32(svbool_t pg, const uint16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -2470,6 +2628,7 @@ inline svuint64_t svld1uh_u64(svbool_t pg, const uint16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -2480,6 +2639,7 @@ inline svint32_t svld1uh_vnum_s32(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -2490,6 +2650,7 @@ inline svint64_t svld1uh_vnum_s64(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -2500,6 +2661,7 @@ inline svuint32_t svld1uh_vnum_u32(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -2510,6 +2672,7 @@ inline svuint64_t svld1uh_vnum_u64(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -2519,6 +2682,7 @@ inline svint32_t svld1uh_gather_u32base_s32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint16_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -2528,6 +2692,7 @@ inline svint64_t svld1uh_gather_u64base_s64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint16_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -2537,6 +2702,7 @@ inline svuint32_t svld1uh_gather_u32base_u32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint16_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -2546,6 +2712,7 @@ inline svuint64_t svld1uh_gather_u64base_u64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint16_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -2556,6 +2723,7 @@ inline svint32_t svld1uh_gather_s32offset_s32(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint16_t)]));
     }
   }
   return res;
@@ -2566,6 +2734,7 @@ inline svint64_t svld1uh_gather_s64offset_s64(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint16_t)]));
     }
   }
   return res;
@@ -2577,6 +2746,7 @@ inline svuint32_t svld1uh_gather_s32offset_u32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint16_t)]));
     }
   }
   return res;
@@ -2588,6 +2758,7 @@ inline svuint64_t svld1uh_gather_s64offset_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint16_t)]));
     }
   }
   return res;
@@ -2598,6 +2769,7 @@ inline svint32_t svld1uh_gather_u32offset_s32(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint16_t)]));
     }
   }
   return res;
@@ -2608,6 +2780,7 @@ inline svint64_t svld1uh_gather_u64offset_s64(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint16_t)]));
     }
   }
   return res;
@@ -2619,6 +2792,7 @@ inline svuint32_t svld1uh_gather_u32offset_u32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint16_t)]));
     }
   }
   return res;
@@ -2630,6 +2804,7 @@ inline svuint64_t svld1uh_gather_u64offset_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint16_t)]));
     }
   }
   return res;
@@ -2640,8 +2815,8 @@ inline svint32_t svld1uh_gather_u32base_offset_s32(svbool_t pg,
   svint32_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (reinterpret_cast<const uint16_t *>(
-          bases.vec[idx])[offset / sizeof(uint16_t)]);
+      res.vec[idx] = (reinterpret_cast<const uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)]);
+        farm_mem_add_load(sizeof(reinterpret_cast<const uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)]));
     }
   }
   return res;
@@ -2652,8 +2827,8 @@ inline svint64_t svld1uh_gather_u64base_offset_s64(svbool_t pg,
   svint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (reinterpret_cast<const uint16_t *>(
-          bases.vec[idx])[offset / sizeof(uint16_t)]);
+      res.vec[idx] = (reinterpret_cast<const uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)]);
+      farm_mem_add_load(sizeof(reinterpret_cast<const uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)]));
     }
   }
   return res;
@@ -2664,8 +2839,8 @@ inline svuint32_t svld1uh_gather_u32base_offset_u32(svbool_t pg,
   svuint32_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (reinterpret_cast<const uint16_t *>(
-          bases.vec[idx])[offset / sizeof(uint16_t)]);
+      res.vec[idx] = (reinterpret_cast<const uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)]);
+      farm_mem_add_load(sizeof(reinterpret_cast<const uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)]));
     }
   }
   return res;
@@ -2676,8 +2851,8 @@ inline svuint64_t svld1uh_gather_u64base_offset_u64(svbool_t pg,
   svuint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (reinterpret_cast<const uint16_t *>(
-          bases.vec[idx])[offset / sizeof(uint16_t)]);
+      res.vec[idx] = (reinterpret_cast<const uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)]);
+      farm_mem_add_load(sizeof(reinterpret_cast<const uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)]));
     }
   }
   return res;
@@ -2688,6 +2863,7 @@ inline svint32_t svld1uh_gather_s32index_s32(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -2698,6 +2874,7 @@ inline svint64_t svld1uh_gather_s64index_s64(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -2708,6 +2885,7 @@ inline svuint32_t svld1uh_gather_s32index_u32(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -2718,6 +2896,7 @@ inline svuint64_t svld1uh_gather_s64index_u64(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -2728,6 +2907,7 @@ inline svint32_t svld1uh_gather_u32index_s32(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -2738,6 +2918,7 @@ inline svint64_t svld1uh_gather_u64index_s64(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -2748,6 +2929,7 @@ inline svuint32_t svld1uh_gather_u32index_u32(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -2758,6 +2940,7 @@ inline svuint64_t svld1uh_gather_u64index_u64(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -2768,6 +2951,7 @@ inline svint32_t svld1uh_gather_u32base_index_s32(svbool_t pg, svuint32_t bases,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint16_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -2778,6 +2962,7 @@ inline svint64_t svld1uh_gather_u64base_index_s64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint16_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -2789,6 +2974,7 @@ inline svuint32_t svld1uh_gather_u32base_index_u32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint16_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -2800,6 +2986,7 @@ inline svuint64_t svld1uh_gather_u64base_index_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint16_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -2809,6 +2996,7 @@ inline svint64_t svld1sw_s64(svbool_t pg, const int32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -2818,6 +3006,7 @@ inline svuint64_t svld1sw_u64(svbool_t pg, const int32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -2828,6 +3017,7 @@ inline svint64_t svld1sw_vnum_s64(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 4];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 4]));
     }
   }
   return res;
@@ -2838,6 +3028,7 @@ inline svuint64_t svld1sw_vnum_u64(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 4];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 4]));
     }
   }
   return res;
@@ -2847,6 +3038,7 @@ inline svint64_t svld1sw_gather_u64base_s64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int32_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -2856,6 +3048,7 @@ inline svuint64_t svld1sw_gather_u64base_u64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int32_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -2866,6 +3059,7 @@ inline svint64_t svld1sw_gather_s64offset_s64(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int32_t)]));
     }
   }
   return res;
@@ -2876,6 +3070,7 @@ inline svuint64_t svld1sw_gather_s64offset_u64(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int32_t)]));
     }
   }
   return res;
@@ -2886,6 +3081,7 @@ inline svint64_t svld1sw_gather_u64offset_s64(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int32_t)]));
     }
   }
   return res;
@@ -2896,6 +3092,7 @@ inline svuint64_t svld1sw_gather_u64offset_u64(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int32_t)]));
     }
   }
   return res;
@@ -2906,8 +3103,8 @@ inline svint64_t svld1sw_gather_u64base_offset_s64(svbool_t pg,
   svint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (reinterpret_cast<const int32_t *>(
-          bases.vec[idx])[offset / sizeof(int32_t)]);
+      res.vec[idx] = (reinterpret_cast<const int32_t *>(bases.vec[idx])[offset / sizeof(int32_t)]);
+        farm_mem_add_load(sizeof(reinterpret_cast<const int32_t *>(bases.vec[idx])[offset / sizeof(int32_t)]));
     }
   }
   return res;
@@ -2918,8 +3115,8 @@ inline svuint64_t svld1sw_gather_u64base_offset_u64(svbool_t pg,
   svuint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (reinterpret_cast<const int32_t *>(
-          bases.vec[idx])[offset / sizeof(int32_t)]);
+      res.vec[idx] = (reinterpret_cast<const int32_t *>(bases.vec[idx])[offset / sizeof(int32_t)]);
+      farm_mem_add_load(sizeof(reinterpret_cast<const int32_t *>(bases.vec[idx])[offset / sizeof(int32_t)]));
     }
   }
   return res;
@@ -2930,6 +3127,7 @@ inline svint64_t svld1sw_gather_s64index_s64(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -2940,6 +3138,7 @@ inline svuint64_t svld1sw_gather_s64index_u64(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -2950,6 +3149,7 @@ inline svint64_t svld1sw_gather_u64index_s64(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -2960,6 +3160,7 @@ inline svuint64_t svld1sw_gather_u64index_u64(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -2970,6 +3171,7 @@ inline svint64_t svld1sw_gather_u64base_index_s64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int32_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -2981,6 +3183,7 @@ inline svuint64_t svld1sw_gather_u64base_index_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int32_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -2990,6 +3193,7 @@ inline svint64_t svld1uw_s64(svbool_t pg, const uint32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -2999,6 +3203,7 @@ inline svuint64_t svld1uw_u64(svbool_t pg, const uint32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -3009,6 +3214,7 @@ inline svint64_t svld1uw_vnum_s64(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 4];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 4]));
     }
   }
   return res;
@@ -3019,6 +3225,7 @@ inline svuint64_t svld1uw_vnum_u64(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 4];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 4]));
     }
   }
   return res;
@@ -3028,6 +3235,7 @@ inline svint64_t svld1uw_gather_u64base_s64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint32_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -3037,6 +3245,7 @@ inline svuint64_t svld1uw_gather_u64base_u64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint32_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -3047,6 +3256,7 @@ inline svint64_t svld1uw_gather_s64offset_s64(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint32_t)]));
     }
   }
   return res;
@@ -3058,6 +3268,7 @@ inline svuint64_t svld1uw_gather_s64offset_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint32_t)]));
     }
   }
   return res;
@@ -3068,6 +3279,7 @@ inline svint64_t svld1uw_gather_u64offset_s64(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint32_t)]));
     }
   }
   return res;
@@ -3079,6 +3291,7 @@ inline svuint64_t svld1uw_gather_u64offset_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint32_t)]));
     }
   }
   return res;
@@ -3089,8 +3302,8 @@ inline svint64_t svld1uw_gather_u64base_offset_s64(svbool_t pg,
   svint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (reinterpret_cast<const uint32_t *>(
-          bases.vec[idx])[offset / sizeof(uint32_t)]);
+      res.vec[idx] = (reinterpret_cast<const uint32_t *>(bases.vec[idx])[offset / sizeof(uint32_t)]);
+        farm_mem_add_load(sizeof(reinterpret_cast<const uint32_t *>(bases.vec[idx])[offset / sizeof(uint32_t)]));
     }
   }
   return res;
@@ -3101,8 +3314,8 @@ inline svuint64_t svld1uw_gather_u64base_offset_u64(svbool_t pg,
   svuint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = (reinterpret_cast<const uint32_t *>(
-          bases.vec[idx])[offset / sizeof(uint32_t)]);
+      res.vec[idx] = (reinterpret_cast<const uint32_t *>(bases.vec[idx])[offset / sizeof(uint32_t)]);
+      farm_mem_add_load(sizeof(reinterpret_cast<const uint32_t *>(bases.vec[idx])[offset / sizeof(uint32_t)]));
     }
   }
   return res;
@@ -3113,6 +3326,7 @@ inline svint64_t svld1uw_gather_s64index_s64(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -3123,6 +3337,7 @@ inline svuint64_t svld1uw_gather_s64index_u64(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -3133,6 +3348,7 @@ inline svint64_t svld1uw_gather_u64index_s64(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -3143,6 +3359,7 @@ inline svuint64_t svld1uw_gather_u64index_u64(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -3153,6 +3370,7 @@ inline svint64_t svld1uw_gather_u64base_index_s64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint32_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -3164,6 +3382,7 @@ inline svuint64_t svld1uw_gather_u64base_index_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint32_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -3274,6 +3493,7 @@ inline svint8_t svldff1_s8(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -3283,6 +3503,7 @@ inline svint16_t svldff1_s16(svbool_t pg, const int16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -3292,6 +3513,7 @@ inline svint32_t svldff1_s32(svbool_t pg, const int32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -3301,6 +3523,7 @@ inline svint64_t svldff1_s64(svbool_t pg, const int64_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -3310,6 +3533,7 @@ inline svuint8_t svldff1_u8(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -3319,6 +3543,7 @@ inline svuint16_t svldff1_u16(svbool_t pg, const uint16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -3328,6 +3553,7 @@ inline svuint32_t svldff1_u32(svbool_t pg, const uint32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -3337,6 +3563,7 @@ inline svuint64_t svldff1_u64(svbool_t pg, const uint64_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -3346,6 +3573,7 @@ inline svfloat16_t svldff1_f16(svbool_t pg, const float16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -3355,6 +3583,7 @@ inline svfloat32_t svldff1_f32(svbool_t pg, const float32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -3364,6 +3593,7 @@ inline svfloat64_t svldff1_f64(svbool_t pg, const float64_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -3373,6 +3603,7 @@ inline svint8_t svldff1_vnum_s8(svbool_t pg, const int8_t *base, int64_t vnum) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -3383,6 +3614,7 @@ inline svint16_t svldff1_vnum_s16(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -3393,6 +3625,7 @@ inline svint32_t svldff1_vnum_s32(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 4];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 4]));
     }
   }
   return res;
@@ -3403,6 +3636,7 @@ inline svint64_t svldff1_vnum_s64(svbool_t pg, const int64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 8];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 8]));
     }
   }
   return res;
@@ -3413,6 +3647,7 @@ inline svuint8_t svldff1_vnum_u8(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -3423,6 +3658,7 @@ inline svuint16_t svldff1_vnum_u16(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -3433,6 +3669,7 @@ inline svuint32_t svldff1_vnum_u32(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 4];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 4]));
     }
   }
   return res;
@@ -3443,6 +3680,7 @@ inline svuint64_t svldff1_vnum_u64(svbool_t pg, const uint64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 8];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 8]));
     }
   }
   return res;
@@ -3453,6 +3691,7 @@ inline svfloat16_t svldff1_vnum_f16(svbool_t pg, const float16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -3463,6 +3702,7 @@ inline svfloat32_t svldff1_vnum_f32(svbool_t pg, const float32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 4];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 4]));
     }
   }
   return res;
@@ -3473,6 +3713,7 @@ inline svfloat64_t svldff1_vnum_f64(svbool_t pg, const float64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 8];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 8]));
     }
   }
   return res;
@@ -3482,6 +3723,7 @@ inline svint32_t svldff1_gather_u32base_s32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int32_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -3491,6 +3733,7 @@ inline svint64_t svldff1_gather_u64base_s64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int64_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -3500,6 +3743,7 @@ inline svuint32_t svldff1_gather_u32base_u32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint32_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -3509,6 +3753,7 @@ inline svuint64_t svldff1_gather_u64base_u64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint64_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -3518,6 +3763,7 @@ inline svfloat32_t svldff1_gather_u32base_f32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const float32_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -3527,6 +3773,7 @@ inline svfloat64_t svldff1_gather_u64base_f64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const float64_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -3537,6 +3784,7 @@ inline svint32_t svldff1_gather_s32offset_s32(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int32_t)]));
     }
   }
   return res;
@@ -3547,6 +3795,7 @@ inline svint64_t svldff1_gather_s64offset_s64(svbool_t pg, const int64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int64_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int64_t)]));
     }
   }
   return res;
@@ -3558,6 +3807,7 @@ inline svuint32_t svldff1_gather_s32offset_u32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint32_t)]));
     }
   }
   return res;
@@ -3569,6 +3819,7 @@ inline svuint64_t svldff1_gather_s64offset_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint64_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint64_t)]));
     }
   }
   return res;
@@ -3580,6 +3831,7 @@ inline svfloat32_t svldff1_gather_s32offset_f32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(float32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(float32_t)]));
     }
   }
   return res;
@@ -3591,6 +3843,7 @@ inline svfloat64_t svldff1_gather_s64offset_f64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(float64_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(float64_t)]));
     }
   }
   return res;
@@ -3601,6 +3854,7 @@ inline svint32_t svldff1_gather_u32offset_s32(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int32_t)]));
     }
   }
   return res;
@@ -3611,6 +3865,7 @@ inline svint64_t svldff1_gather_u64offset_s64(svbool_t pg, const int64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int64_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int64_t)]));
     }
   }
   return res;
@@ -3622,6 +3877,7 @@ inline svuint32_t svldff1_gather_u32offset_u32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint32_t)]));
     }
   }
   return res;
@@ -3633,6 +3889,7 @@ inline svuint64_t svldff1_gather_u64offset_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint64_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint64_t)]));
     }
   }
   return res;
@@ -3644,6 +3901,7 @@ inline svfloat32_t svldff1_gather_u32offset_f32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(float32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(float32_t)]));
     }
   }
   return res;
@@ -3655,6 +3913,7 @@ inline svfloat64_t svldff1_gather_u64offset_f64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(float64_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(float64_t)]));
     }
   }
   return res;
@@ -3667,6 +3926,7 @@ inline svint32_t svldff1_gather_u32base_offset_s32(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const int32_t *>(
           bases.vec[idx])[offset / sizeof(int32_t)];
+          farm_mem_add_load( sizeof(int32_t));
     }
   }
   return res;
@@ -3679,6 +3939,7 @@ inline svint64_t svldff1_gather_u64base_offset_s64(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const int64_t *>(
           bases.vec[idx])[offset / sizeof(int64_t)];
+          farm_mem_add_load( sizeof(int64_t));
     }
   }
   return res;
@@ -3691,6 +3952,7 @@ inline svuint32_t svldff1_gather_u32base_offset_u32(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const uint32_t *>(
           bases.vec[idx])[offset / sizeof(uint32_t)];
+          farm_mem_add_load( sizeof(uint32_t));
     }
   }
   return res;
@@ -3703,6 +3965,7 @@ inline svuint64_t svldff1_gather_u64base_offset_u64(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const uint64_t *>(
           bases.vec[idx])[offset / sizeof(uint64_t)];
+          farm_mem_add_load( sizeof(uint64_t));
     }
   }
   return res;
@@ -3715,6 +3978,7 @@ inline svfloat32_t svldff1_gather_u32base_offset_f32(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const float32_t *>(
           bases.vec[idx])[offset / sizeof(float32_t)];
+          farm_mem_add_load( sizeof(float32_t));
     }
   }
   return res;
@@ -3727,6 +3991,7 @@ inline svfloat64_t svldff1_gather_u64base_offset_f64(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const float64_t *>(
           bases.vec[idx])[offset / sizeof(float64_t)];
+          farm_mem_add_load( sizeof(float64_t));
     }
   }
   return res;
@@ -3737,6 +4002,7 @@ inline svint32_t svldff1_gather_s32index_s32(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -3747,6 +4013,7 @@ inline svint64_t svldff1_gather_s64index_s64(svbool_t pg, const int64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -3757,6 +4024,7 @@ inline svuint32_t svldff1_gather_s32index_u32(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -3767,6 +4035,7 @@ inline svuint64_t svldff1_gather_s64index_u64(svbool_t pg, const uint64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -3778,6 +4047,7 @@ inline svfloat32_t svldff1_gather_s32index_f32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -3789,6 +4059,7 @@ inline svfloat64_t svldff1_gather_s64index_f64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -3799,6 +4070,7 @@ inline svint32_t svldff1_gather_u32index_s32(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -3809,6 +4081,7 @@ inline svint64_t svldff1_gather_u64index_s64(svbool_t pg, const int64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -3819,6 +4092,7 @@ inline svuint32_t svldff1_gather_u32index_u32(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -3829,6 +4103,7 @@ inline svuint64_t svldff1_gather_u64index_u64(svbool_t pg, const uint64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -3840,6 +4115,7 @@ inline svfloat32_t svldff1_gather_u32index_f32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -3851,6 +4127,7 @@ inline svfloat64_t svldff1_gather_u64index_f64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -3861,6 +4138,7 @@ inline svint32_t svldff1_gather_u32base_index_s32(svbool_t pg, svuint32_t bases,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int32_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -3871,6 +4149,7 @@ inline svint64_t svldff1_gather_u64base_index_s64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int64_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -3882,6 +4161,7 @@ inline svuint32_t svldff1_gather_u32base_index_u32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint32_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -3893,6 +4173,7 @@ inline svuint64_t svldff1_gather_u64base_index_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint64_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -3904,6 +4185,7 @@ inline svfloat32_t svldff1_gather_u32base_index_f32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const float32_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -3915,6 +4197,7 @@ inline svfloat64_t svldff1_gather_u64base_index_f64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const float64_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -3924,6 +4207,7 @@ inline svint16_t svldff1sb_s16(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -3933,6 +4217,7 @@ inline svint32_t svldff1sb_s32(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -3942,6 +4227,7 @@ inline svint64_t svldff1sb_s64(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -3951,6 +4237,7 @@ inline svuint16_t svldff1sb_u16(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -3960,6 +4247,7 @@ inline svuint32_t svldff1sb_u32(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -3969,6 +4257,7 @@ inline svuint64_t svldff1sb_u64(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -3979,6 +4268,7 @@ inline svint16_t svldff1sb_vnum_s16(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -3989,6 +4279,7 @@ inline svint32_t svldff1sb_vnum_s32(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -3999,6 +4290,7 @@ inline svint64_t svldff1sb_vnum_s64(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -4009,6 +4301,7 @@ inline svuint16_t svldff1sb_vnum_u16(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -4019,6 +4312,7 @@ inline svuint32_t svldff1sb_vnum_u32(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -4029,6 +4323,7 @@ inline svuint64_t svldff1sb_vnum_u64(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -4038,6 +4333,7 @@ inline svint32_t svldff1sb_gather_u32base_s32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int8_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -4047,6 +4343,7 @@ inline svint64_t svldff1sb_gather_u64base_s64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int8_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -4056,6 +4353,7 @@ inline svuint32_t svldff1sb_gather_u32base_u32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int8_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -4065,6 +4363,7 @@ inline svuint64_t svldff1sb_gather_u64base_u64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int8_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -4075,6 +4374,7 @@ inline svint32_t svldff1sb_gather_s32offset_s32(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int8_t)]));
     }
   }
   return res;
@@ -4085,6 +4385,7 @@ inline svint64_t svldff1sb_gather_s64offset_s64(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int8_t)]));
     }
   }
   return res;
@@ -4096,6 +4397,7 @@ inline svuint32_t svldff1sb_gather_s32offset_u32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int8_t)]));
     }
   }
   return res;
@@ -4107,6 +4409,7 @@ inline svuint64_t svldff1sb_gather_s64offset_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int8_t)]));
     }
   }
   return res;
@@ -4117,6 +4420,7 @@ inline svint32_t svldff1sb_gather_u32offset_s32(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int8_t)]));
     }
   }
   return res;
@@ -4127,6 +4431,7 @@ inline svint64_t svldff1sb_gather_u64offset_s64(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int8_t)]));
     }
   }
   return res;
@@ -4138,6 +4443,7 @@ inline svuint32_t svldff1sb_gather_u32offset_u32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int8_t)]));
     }
   }
   return res;
@@ -4149,6 +4455,7 @@ inline svuint64_t svldff1sb_gather_u64offset_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int8_t)]));
     }
   }
   return res;
@@ -4161,6 +4468,7 @@ inline svint32_t svldff1sb_gather_u32base_offset_s32(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const int8_t *>(
           bases.vec[idx])[offset / sizeof(int8_t)];
+          farm_mem_add_load( sizeof(int8_t));
     }
   }
   return res;
@@ -4173,6 +4481,7 @@ inline svint64_t svldff1sb_gather_u64base_offset_s64(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const int8_t *>(
           bases.vec[idx])[offset / sizeof(int8_t)];
+          farm_mem_add_load( sizeof(int8_t));
     }
   }
   return res;
@@ -4185,6 +4494,7 @@ inline svuint32_t svldff1sb_gather_u32base_offset_u32(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const int8_t *>(
           bases.vec[idx])[offset / sizeof(int8_t)];
+          farm_mem_add_load( sizeof(int8_t));
     }
   }
   return res;
@@ -4197,6 +4507,7 @@ inline svuint64_t svldff1sb_gather_u64base_offset_u64(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const int8_t *>(
           bases.vec[idx])[offset / sizeof(int8_t)];
+          farm_mem_add_load( sizeof(int8_t));
     }
   }
   return res;
@@ -4206,6 +4517,7 @@ inline svint16_t svldff1ub_s16(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -4215,6 +4527,7 @@ inline svint32_t svldff1ub_s32(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -4224,6 +4537,7 @@ inline svint64_t svldff1ub_s64(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -4233,6 +4547,7 @@ inline svuint16_t svldff1ub_u16(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -4242,6 +4557,7 @@ inline svuint32_t svldff1ub_u32(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -4251,6 +4567,7 @@ inline svuint64_t svldff1ub_u64(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -4261,6 +4578,7 @@ inline svint16_t svldff1ub_vnum_s16(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -4271,6 +4589,7 @@ inline svint32_t svldff1ub_vnum_s32(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -4281,6 +4600,7 @@ inline svint64_t svldff1ub_vnum_s64(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -4291,6 +4611,7 @@ inline svuint16_t svldff1ub_vnum_u16(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -4301,6 +4622,7 @@ inline svuint32_t svldff1ub_vnum_u32(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -4311,6 +4633,7 @@ inline svuint64_t svldff1ub_vnum_u64(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -4320,6 +4643,7 @@ inline svint32_t svldff1ub_gather_u32base_s32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint8_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -4329,6 +4653,7 @@ inline svint64_t svldff1ub_gather_u64base_s64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint8_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -4338,6 +4663,7 @@ inline svuint32_t svldff1ub_gather_u32base_u32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint8_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -4347,6 +4673,7 @@ inline svuint64_t svldff1ub_gather_u64base_u64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint8_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -4358,6 +4685,7 @@ inline svint32_t svldff1ub_gather_s32offset_s32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint8_t)]));
     }
   }
   return res;
@@ -4369,6 +4697,7 @@ inline svint64_t svldff1ub_gather_s64offset_s64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint8_t)]));
     }
   }
   return res;
@@ -4380,6 +4709,7 @@ inline svuint32_t svldff1ub_gather_s32offset_u32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint8_t)]));
     }
   }
   return res;
@@ -4391,6 +4721,7 @@ inline svuint64_t svldff1ub_gather_s64offset_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint8_t)]));
     }
   }
   return res;
@@ -4402,6 +4733,7 @@ inline svint32_t svldff1ub_gather_u32offset_s32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint8_t)]));
     }
   }
   return res;
@@ -4413,6 +4745,7 @@ inline svint64_t svldff1ub_gather_u64offset_s64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint8_t)]));
     }
   }
   return res;
@@ -4424,6 +4757,7 @@ inline svuint32_t svldff1ub_gather_u32offset_u32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint8_t)]));
     }
   }
   return res;
@@ -4435,6 +4769,7 @@ inline svuint64_t svldff1ub_gather_u64offset_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint8_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint8_t)]));
     }
   }
   return res;
@@ -4447,6 +4782,7 @@ inline svint32_t svldff1ub_gather_u32base_offset_s32(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const uint8_t *>(
           bases.vec[idx])[offset / sizeof(uint8_t)];
+          farm_mem_add_load( sizeof(uint8_t));
     }
   }
   return res;
@@ -4459,6 +4795,7 @@ inline svint64_t svldff1ub_gather_u64base_offset_s64(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const uint8_t *>(
           bases.vec[idx])[offset / sizeof(uint8_t)];
+          farm_mem_add_load( sizeof(uint8_t));
     }
   }
   return res;
@@ -4471,6 +4808,7 @@ inline svuint32_t svldff1ub_gather_u32base_offset_u32(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const uint8_t *>(
           bases.vec[idx])[offset / sizeof(uint8_t)];
+          farm_mem_add_load( sizeof(uint8_t));
     }
   }
   return res;
@@ -4483,6 +4821,7 @@ inline svuint64_t svldff1ub_gather_u64base_offset_u64(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const uint8_t *>(
           bases.vec[idx])[offset / sizeof(uint8_t)];
+          farm_mem_add_load( sizeof(uint8_t));
     }
   }
   return res;
@@ -4492,6 +4831,7 @@ inline svint32_t svldff1sh_s32(svbool_t pg, const int16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -4501,6 +4841,7 @@ inline svint64_t svldff1sh_s64(svbool_t pg, const int16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -4510,6 +4851,7 @@ inline svuint32_t svldff1sh_u32(svbool_t pg, const int16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -4519,6 +4861,7 @@ inline svuint64_t svldff1sh_u64(svbool_t pg, const int16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -4529,6 +4872,7 @@ inline svint32_t svldff1sh_vnum_s32(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -4539,6 +4883,7 @@ inline svint64_t svldff1sh_vnum_s64(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -4549,6 +4894,7 @@ inline svuint32_t svldff1sh_vnum_u32(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -4559,6 +4905,7 @@ inline svuint64_t svldff1sh_vnum_u64(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -4568,6 +4915,7 @@ inline svint32_t svldff1sh_gather_u32base_s32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int16_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -4577,6 +4925,7 @@ inline svint64_t svldff1sh_gather_u64base_s64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int16_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -4586,6 +4935,7 @@ inline svuint32_t svldff1sh_gather_u32base_u32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int16_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -4595,6 +4945,7 @@ inline svuint64_t svldff1sh_gather_u64base_u64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int16_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -4606,6 +4957,7 @@ inline svint32_t svldff1sh_gather_s32offset_s32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int16_t)]));
     }
   }
   return res;
@@ -4617,6 +4969,7 @@ inline svint64_t svldff1sh_gather_s64offset_s64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int16_t)]));
     }
   }
   return res;
@@ -4628,6 +4981,7 @@ inline svuint32_t svldff1sh_gather_s32offset_u32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int16_t)]));
     }
   }
   return res;
@@ -4639,6 +4993,7 @@ inline svuint64_t svldff1sh_gather_s64offset_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int16_t)]));
     }
   }
   return res;
@@ -4650,6 +5005,7 @@ inline svint32_t svldff1sh_gather_u32offset_s32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int16_t)]));
     }
   }
   return res;
@@ -4661,6 +5017,7 @@ inline svint64_t svldff1sh_gather_u64offset_s64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int16_t)]));
     }
   }
   return res;
@@ -4672,6 +5029,7 @@ inline svuint32_t svldff1sh_gather_u32offset_u32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int16_t)]));
     }
   }
   return res;
@@ -4683,6 +5041,7 @@ inline svuint64_t svldff1sh_gather_u64offset_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int16_t)]));
     }
   }
   return res;
@@ -4695,6 +5054,7 @@ inline svint32_t svldff1sh_gather_u32base_offset_s32(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const int16_t *>(
           bases.vec[idx])[offset / sizeof(int16_t)];
+          farm_mem_add_load( sizeof(int16_t));
     }
   }
   return res;
@@ -4707,6 +5067,7 @@ inline svint64_t svldff1sh_gather_u64base_offset_s64(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const int16_t *>(
           bases.vec[idx])[offset / sizeof(int16_t)];
+          farm_mem_add_load( sizeof(int16_t));
     }
   }
   return res;
@@ -4719,6 +5080,7 @@ inline svuint32_t svldff1sh_gather_u32base_offset_u32(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const int16_t *>(
           bases.vec[idx])[offset / sizeof(int16_t)];
+          farm_mem_add_load( sizeof(int16_t));
     }
   }
   return res;
@@ -4731,6 +5093,7 @@ inline svuint64_t svldff1sh_gather_u64base_offset_u64(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const int16_t *>(
           bases.vec[idx])[offset / sizeof(int16_t)];
+          farm_mem_add_load( sizeof(int16_t));
     }
   }
   return res;
@@ -4741,6 +5104,7 @@ inline svint32_t svldff1sh_gather_s32index_s32(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -4751,6 +5115,7 @@ inline svint64_t svldff1sh_gather_s64index_s64(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -4762,6 +5127,7 @@ inline svuint32_t svldff1sh_gather_s32index_u32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -4773,6 +5139,7 @@ inline svuint64_t svldff1sh_gather_s64index_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -4783,6 +5150,7 @@ inline svint32_t svldff1sh_gather_u32index_s32(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -4793,6 +5161,7 @@ inline svint64_t svldff1sh_gather_u64index_s64(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -4804,6 +5173,7 @@ inline svuint32_t svldff1sh_gather_u32index_u32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -4815,6 +5185,7 @@ inline svuint64_t svldff1sh_gather_u64index_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -4826,6 +5197,7 @@ inline svint32_t svldff1sh_gather_u32base_index_s32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int16_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -4837,6 +5209,7 @@ inline svint64_t svldff1sh_gather_u64base_index_s64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int16_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -4848,6 +5221,7 @@ inline svuint32_t svldff1sh_gather_u32base_index_u32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int16_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -4859,6 +5233,7 @@ inline svuint64_t svldff1sh_gather_u64base_index_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int16_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -4868,6 +5243,7 @@ inline svint32_t svldff1uh_s32(svbool_t pg, const uint16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -4877,6 +5253,7 @@ inline svint64_t svldff1uh_s64(svbool_t pg, const uint16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -4886,6 +5263,7 @@ inline svuint32_t svldff1uh_u32(svbool_t pg, const uint16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -4895,6 +5273,7 @@ inline svuint64_t svldff1uh_u64(svbool_t pg, const uint16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -4905,6 +5284,7 @@ inline svint32_t svldff1uh_vnum_s32(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -4915,6 +5295,7 @@ inline svint64_t svldff1uh_vnum_s64(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -4925,6 +5306,7 @@ inline svuint32_t svldff1uh_vnum_u32(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -4935,6 +5317,7 @@ inline svuint64_t svldff1uh_vnum_u64(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -4944,6 +5327,7 @@ inline svint32_t svldff1uh_gather_u32base_s32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint16_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -4953,6 +5337,7 @@ inline svint64_t svldff1uh_gather_u64base_s64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint16_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -4962,6 +5347,7 @@ inline svuint32_t svldff1uh_gather_u32base_u32(svbool_t pg, svuint32_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint16_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -4971,6 +5357,7 @@ inline svuint64_t svldff1uh_gather_u64base_u64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint16_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -4982,6 +5369,7 @@ inline svint32_t svldff1uh_gather_s32offset_s32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint16_t)]));
     }
   }
   return res;
@@ -4993,6 +5381,7 @@ inline svint64_t svldff1uh_gather_s64offset_s64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint16_t)]));
     }
   }
   return res;
@@ -5004,6 +5393,7 @@ inline svuint32_t svldff1uh_gather_s32offset_u32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint16_t)]));
     }
   }
   return res;
@@ -5015,6 +5405,7 @@ inline svuint64_t svldff1uh_gather_s64offset_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint16_t)]));
     }
   }
   return res;
@@ -5026,6 +5417,7 @@ inline svint32_t svldff1uh_gather_u32offset_s32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint16_t)]));
     }
   }
   return res;
@@ -5037,6 +5429,7 @@ inline svint64_t svldff1uh_gather_u64offset_s64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint16_t)]));
     }
   }
   return res;
@@ -5048,6 +5441,7 @@ inline svuint32_t svldff1uh_gather_u32offset_u32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint16_t)]));
     }
   }
   return res;
@@ -5059,6 +5453,7 @@ inline svuint64_t svldff1uh_gather_u64offset_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint16_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint16_t)]));
     }
   }
   return res;
@@ -5071,6 +5466,7 @@ inline svint32_t svldff1uh_gather_u32base_offset_s32(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const uint16_t *>(
           bases.vec[idx])[offset / sizeof(uint16_t)];
+          farm_mem_add_load( sizeof(uint16_t));
     }
   }
   return res;
@@ -5083,6 +5479,7 @@ inline svint64_t svldff1uh_gather_u64base_offset_s64(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const uint16_t *>(
           bases.vec[idx])[offset / sizeof(uint16_t)];
+          farm_mem_add_load( sizeof(uint16_t));
     }
   }
   return res;
@@ -5095,6 +5492,7 @@ inline svuint32_t svldff1uh_gather_u32base_offset_u32(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const uint16_t *>(
           bases.vec[idx])[offset / sizeof(uint16_t)];
+          farm_mem_add_load( sizeof(uint16_t));
     }
   }
   return res;
@@ -5107,6 +5505,7 @@ inline svuint64_t svldff1uh_gather_u64base_offset_u64(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const uint16_t *>(
           bases.vec[idx])[offset / sizeof(uint16_t)];
+          farm_mem_add_load( sizeof(uint16_t));
     }
   }
   return res;
@@ -5118,6 +5517,7 @@ inline svint32_t svldff1uh_gather_s32index_s32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -5129,6 +5529,7 @@ inline svint64_t svldff1uh_gather_s64index_s64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -5140,6 +5541,7 @@ inline svuint32_t svldff1uh_gather_s32index_u32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -5151,6 +5553,7 @@ inline svuint64_t svldff1uh_gather_s64index_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -5162,6 +5565,7 @@ inline svint32_t svldff1uh_gather_u32index_s32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -5173,6 +5577,7 @@ inline svint64_t svldff1uh_gather_u64index_s64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -5184,6 +5589,7 @@ inline svuint32_t svldff1uh_gather_u32index_u32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -5195,6 +5601,7 @@ inline svuint64_t svldff1uh_gather_u64index_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -5206,6 +5613,7 @@ inline svint32_t svldff1uh_gather_u32base_index_s32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint16_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -5217,6 +5625,7 @@ inline svint64_t svldff1uh_gather_u64base_index_s64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint16_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -5228,6 +5637,7 @@ inline svuint32_t svldff1uh_gather_u32base_index_u32(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint16_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -5239,6 +5649,7 @@ inline svuint64_t svldff1uh_gather_u64base_index_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint16_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -5248,6 +5659,7 @@ inline svint64_t svldff1sw_s64(svbool_t pg, const int32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5257,6 +5669,7 @@ inline svuint64_t svldff1sw_u64(svbool_t pg, const int32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5267,6 +5680,7 @@ inline svint64_t svldff1sw_vnum_s64(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 4];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 4]));
     }
   }
   return res;
@@ -5277,6 +5691,7 @@ inline svuint64_t svldff1sw_vnum_u64(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 4];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 4]));
     }
   }
   return res;
@@ -5286,6 +5701,7 @@ inline svint64_t svldff1sw_gather_u64base_s64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int32_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -5295,6 +5711,7 @@ inline svuint64_t svldff1sw_gather_u64base_u64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int32_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -5306,6 +5723,7 @@ inline svint64_t svldff1sw_gather_s64offset_s64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int32_t)]));
     }
   }
   return res;
@@ -5317,6 +5735,7 @@ inline svuint64_t svldff1sw_gather_s64offset_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int32_t)]));
     }
   }
   return res;
@@ -5328,6 +5747,7 @@ inline svint64_t svldff1sw_gather_u64offset_s64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int32_t)]));
     }
   }
   return res;
@@ -5339,6 +5759,7 @@ inline svuint64_t svldff1sw_gather_u64offset_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(int32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(int32_t)]));
     }
   }
   return res;
@@ -5351,6 +5772,7 @@ inline svint64_t svldff1sw_gather_u64base_offset_s64(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const int32_t *>(
           bases.vec[idx])[offset / sizeof(int32_t)];
+          farm_mem_add_load( sizeof(int32_t));
     }
   }
   return res;
@@ -5363,6 +5785,7 @@ inline svuint64_t svldff1sw_gather_u64base_offset_u64(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const int32_t *>(
           bases.vec[idx])[offset / sizeof(int32_t)];
+          farm_mem_add_load( sizeof(int32_t));
     }
   }
   return res;
@@ -5373,6 +5796,7 @@ inline svint64_t svldff1sw_gather_s64index_s64(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -5384,6 +5808,7 @@ inline svuint64_t svldff1sw_gather_s64index_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -5394,6 +5819,7 @@ inline svint64_t svldff1sw_gather_u64index_s64(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -5405,6 +5831,7 @@ inline svuint64_t svldff1sw_gather_u64index_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -5416,6 +5843,7 @@ inline svint64_t svldff1sw_gather_u64base_index_s64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int32_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -5427,6 +5855,7 @@ inline svuint64_t svldff1sw_gather_u64base_index_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const int32_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -5436,6 +5865,7 @@ inline svint64_t svldff1uw_s64(svbool_t pg, const uint32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5445,6 +5875,7 @@ inline svuint64_t svldff1uw_u64(svbool_t pg, const uint32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5455,6 +5886,7 @@ inline svint64_t svldff1uw_vnum_s64(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 4];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 4]));
     }
   }
   return res;
@@ -5465,6 +5897,7 @@ inline svuint64_t svldff1uw_vnum_u64(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 4];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 4]));
     }
   }
   return res;
@@ -5474,6 +5907,7 @@ inline svint64_t svldff1uw_gather_u64base_s64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint32_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -5483,6 +5917,7 @@ inline svuint64_t svldff1uw_gather_u64base_u64(svbool_t pg, svuint64_t bases) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint32_t *>(bases.vec[idx]);
+farm_mem_add_load(sizeof(bases.vec[idx]));
     }
   }
   return res;
@@ -5494,6 +5929,7 @@ inline svint64_t svldff1uw_gather_s64offset_s64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint32_t)]));
     }
   }
   return res;
@@ -5505,6 +5941,7 @@ inline svuint64_t svldff1uw_gather_s64offset_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint32_t)]));
     }
   }
   return res;
@@ -5516,6 +5953,7 @@ inline svint64_t svldff1uw_gather_u64offset_s64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint32_t)]));
     }
   }
   return res;
@@ -5527,6 +5965,7 @@ inline svuint64_t svldff1uw_gather_u64offset_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[offsets.vec[idx] / sizeof(uint32_t)];
+farm_mem_add_load(sizeof(base[offsets.vec[idx] / sizeof(uint32_t)]));
     }
   }
   return res;
@@ -5539,6 +5978,7 @@ inline svint64_t svldff1uw_gather_u64base_offset_s64(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const uint32_t *>(
           bases.vec[idx])[offset / sizeof(uint32_t)];
+          farm_mem_add_load( sizeof(uint32_t));
     }
   }
   return res;
@@ -5551,6 +5991,7 @@ inline svuint64_t svldff1uw_gather_u64base_offset_u64(svbool_t pg,
     if (pg.vec[idx]) {
       res.vec[idx] = reinterpret_cast<const uint32_t *>(
           bases.vec[idx])[offset / sizeof(uint32_t)];
+          farm_mem_add_load( sizeof(uint32_t));
     }
   }
   return res;
@@ -5562,6 +6003,7 @@ inline svint64_t svldff1uw_gather_s64index_s64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -5573,6 +6015,7 @@ inline svuint64_t svldff1uw_gather_s64index_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -5584,6 +6027,7 @@ inline svint64_t svldff1uw_gather_u64index_s64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -5595,6 +6039,7 @@ inline svuint64_t svldff1uw_gather_u64index_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[indices.vec[idx]];
+farm_mem_add_load(sizeof(base[indices.vec[idx]]));
     }
   }
   return res;
@@ -5606,6 +6051,7 @@ inline svint64_t svldff1uw_gather_u64base_index_s64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint32_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -5617,6 +6063,7 @@ inline svuint64_t svldff1uw_gather_u64base_index_u64(svbool_t pg,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = *reinterpret_cast<const uint32_t *>(bases.vec[index]);
+farm_mem_add_load(sizeof(bases.vec[index]));
     }
   }
   return res;
@@ -5626,6 +6073,7 @@ inline svint8_t svldnf1_s8(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5635,6 +6083,7 @@ inline svint16_t svldnf1_s16(svbool_t pg, const int16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5644,6 +6093,7 @@ inline svint32_t svldnf1_s32(svbool_t pg, const int32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5653,6 +6103,7 @@ inline svint64_t svldnf1_s64(svbool_t pg, const int64_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5662,6 +6113,7 @@ inline svuint8_t svldnf1_u8(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5671,6 +6123,7 @@ inline svuint16_t svldnf1_u16(svbool_t pg, const uint16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5680,6 +6133,7 @@ inline svuint32_t svldnf1_u32(svbool_t pg, const uint32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5689,6 +6143,7 @@ inline svuint64_t svldnf1_u64(svbool_t pg, const uint64_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5698,6 +6153,7 @@ inline svfloat16_t svldnf1_f16(svbool_t pg, const float16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5707,6 +6163,7 @@ inline svfloat32_t svldnf1_f32(svbool_t pg, const float32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5716,6 +6173,7 @@ inline svfloat64_t svldnf1_f64(svbool_t pg, const float64_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5725,6 +6183,7 @@ inline svint8_t svldnf1_vnum_s8(svbool_t pg, const int8_t *base, int64_t vnum) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -5735,6 +6194,7 @@ inline svint16_t svldnf1_vnum_s16(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -5745,6 +6205,7 @@ inline svint32_t svldnf1_vnum_s32(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 4];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 4]));
     }
   }
   return res;
@@ -5755,6 +6216,7 @@ inline svint64_t svldnf1_vnum_s64(svbool_t pg, const int64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 8];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 8]));
     }
   }
   return res;
@@ -5765,6 +6227,7 @@ inline svuint8_t svldnf1_vnum_u8(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -5775,6 +6238,7 @@ inline svuint16_t svldnf1_vnum_u16(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -5785,6 +6249,7 @@ inline svuint32_t svldnf1_vnum_u32(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 4];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 4]));
     }
   }
   return res;
@@ -5795,6 +6260,7 @@ inline svuint64_t svldnf1_vnum_u64(svbool_t pg, const uint64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 8];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 8]));
     }
   }
   return res;
@@ -5805,6 +6271,7 @@ inline svfloat16_t svldnf1_vnum_f16(svbool_t pg, const float16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -5815,6 +6282,7 @@ inline svfloat32_t svldnf1_vnum_f32(svbool_t pg, const float32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 4];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 4]));
     }
   }
   return res;
@@ -5825,6 +6293,7 @@ inline svfloat64_t svldnf1_vnum_f64(svbool_t pg, const float64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 8];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 8]));
     }
   }
   return res;
@@ -5834,6 +6303,7 @@ inline svint16_t svldnf1sb_s16(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5843,6 +6313,7 @@ inline svint32_t svldnf1sb_s32(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5852,6 +6323,7 @@ inline svint64_t svldnf1sb_s64(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5861,6 +6333,7 @@ inline svuint16_t svldnf1sb_u16(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5870,6 +6343,7 @@ inline svuint32_t svldnf1sb_u32(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5879,6 +6353,7 @@ inline svuint64_t svldnf1sb_u64(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5889,6 +6364,7 @@ inline svint16_t svldnf1sb_vnum_s16(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -5899,6 +6375,7 @@ inline svint32_t svldnf1sb_vnum_s32(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -5909,6 +6386,7 @@ inline svint64_t svldnf1sb_vnum_s64(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -5919,6 +6397,7 @@ inline svuint16_t svldnf1sb_vnum_u16(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -5929,6 +6408,7 @@ inline svuint32_t svldnf1sb_vnum_u32(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -5939,6 +6419,7 @@ inline svuint64_t svldnf1sb_vnum_u64(svbool_t pg, const int8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -5948,6 +6429,7 @@ inline svint16_t svldnf1ub_s16(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5957,6 +6439,7 @@ inline svint32_t svldnf1ub_s32(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5966,6 +6449,7 @@ inline svint64_t svldnf1ub_s64(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5975,6 +6459,7 @@ inline svuint16_t svldnf1ub_u16(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5984,6 +6469,7 @@ inline svuint32_t svldnf1ub_u32(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -5993,6 +6479,7 @@ inline svuint64_t svldnf1ub_u64(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6003,6 +6490,7 @@ inline svint16_t svldnf1ub_vnum_s16(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -6013,6 +6501,7 @@ inline svint32_t svldnf1ub_vnum_s32(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -6023,6 +6512,7 @@ inline svint64_t svldnf1ub_vnum_s64(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -6033,6 +6523,7 @@ inline svuint16_t svldnf1ub_vnum_u16(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -6043,6 +6534,7 @@ inline svuint32_t svldnf1ub_vnum_u32(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -6053,6 +6545,7 @@ inline svuint64_t svldnf1ub_vnum_u64(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -6062,6 +6555,7 @@ inline svint32_t svldnf1sh_s32(svbool_t pg, const int16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6071,6 +6565,7 @@ inline svint64_t svldnf1sh_s64(svbool_t pg, const int16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6080,6 +6575,7 @@ inline svuint32_t svldnf1sh_u32(svbool_t pg, const int16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6089,6 +6585,7 @@ inline svuint64_t svldnf1sh_u64(svbool_t pg, const int16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6099,6 +6596,7 @@ inline svint32_t svldnf1sh_vnum_s32(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -6109,6 +6607,7 @@ inline svint64_t svldnf1sh_vnum_s64(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -6119,6 +6618,7 @@ inline svuint32_t svldnf1sh_vnum_u32(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -6129,6 +6629,7 @@ inline svuint64_t svldnf1sh_vnum_u64(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -6138,6 +6639,7 @@ inline svint32_t svldnf1uh_s32(svbool_t pg, const uint16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6147,6 +6649,7 @@ inline svint64_t svldnf1uh_s64(svbool_t pg, const uint16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6156,6 +6659,7 @@ inline svuint32_t svldnf1uh_u32(svbool_t pg, const uint16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6165,6 +6669,7 @@ inline svuint64_t svldnf1uh_u64(svbool_t pg, const uint16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6175,6 +6680,7 @@ inline svint32_t svldnf1uh_vnum_s32(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -6185,6 +6691,7 @@ inline svint64_t svldnf1uh_vnum_s64(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -6195,6 +6702,7 @@ inline svuint32_t svldnf1uh_vnum_u32(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -6205,6 +6713,7 @@ inline svuint64_t svldnf1uh_vnum_u64(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -6214,6 +6723,7 @@ inline svint64_t svldnf1sw_s64(svbool_t pg, const int32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6223,6 +6733,7 @@ inline svuint64_t svldnf1sw_u64(svbool_t pg, const int32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6233,6 +6744,7 @@ inline svint64_t svldnf1sw_vnum_s64(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 4];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 4]));
     }
   }
   return res;
@@ -6243,6 +6755,7 @@ inline svuint64_t svldnf1sw_vnum_u64(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 4];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 4]));
     }
   }
   return res;
@@ -6252,6 +6765,7 @@ inline svint64_t svldnf1uw_s64(svbool_t pg, const uint32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6261,6 +6775,7 @@ inline svuint64_t svldnf1uw_u64(svbool_t pg, const uint32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6271,6 +6786,7 @@ inline svint64_t svldnf1uw_vnum_s64(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 4];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 4]));
     }
   }
   return res;
@@ -6281,6 +6797,7 @@ inline svuint64_t svldnf1uw_vnum_u64(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 4];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 4]));
     }
   }
   return res;
@@ -6290,6 +6807,7 @@ inline svint8_t svldnt1_s8(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6299,6 +6817,7 @@ inline svint16_t svldnt1_s16(svbool_t pg, const int16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6308,6 +6827,7 @@ inline svint32_t svldnt1_s32(svbool_t pg, const int32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6317,6 +6837,7 @@ inline svint64_t svldnt1_s64(svbool_t pg, const int64_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6326,6 +6847,7 @@ inline svuint8_t svldnt1_u8(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6335,6 +6857,7 @@ inline svuint16_t svldnt1_u16(svbool_t pg, const uint16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6344,6 +6867,7 @@ inline svuint32_t svldnt1_u32(svbool_t pg, const uint32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6353,6 +6877,7 @@ inline svuint64_t svldnt1_u64(svbool_t pg, const uint64_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6362,6 +6887,7 @@ inline svfloat16_t svldnt1_f16(svbool_t pg, const float16_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6371,6 +6897,7 @@ inline svfloat32_t svldnt1_f32(svbool_t pg, const float32_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6380,6 +6907,7 @@ inline svfloat64_t svldnt1_f64(svbool_t pg, const float64_t *base) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx];
+farm_mem_add_load(sizeof(base[idx]));
     }
   }
   return res;
@@ -6389,6 +6917,7 @@ inline svint8_t svldnt1_vnum_s8(svbool_t pg, const int8_t *base, int64_t vnum) {
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -6399,6 +6928,7 @@ inline svint16_t svldnt1_vnum_s16(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -6409,6 +6939,7 @@ inline svint32_t svldnt1_vnum_s32(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 4];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 4]));
     }
   }
   return res;
@@ -6419,6 +6950,7 @@ inline svint64_t svldnt1_vnum_s64(svbool_t pg, const int64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 8];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 8]));
     }
   }
   return res;
@@ -6429,6 +6961,7 @@ inline svuint8_t svldnt1_vnum_u8(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 1];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 1]));
     }
   }
   return res;
@@ -6439,6 +6972,7 @@ inline svuint16_t svldnt1_vnum_u16(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -6449,6 +6983,7 @@ inline svuint32_t svldnt1_vnum_u32(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 4];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 4]));
     }
   }
   return res;
@@ -6459,6 +6994,7 @@ inline svuint64_t svldnt1_vnum_u64(svbool_t pg, const uint64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 8];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 8]));
     }
   }
   return res;
@@ -6469,6 +7005,7 @@ inline svfloat16_t svldnt1_vnum_f16(svbool_t pg, const float16_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 2];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 2]));
     }
   }
   return res;
@@ -6479,6 +7016,7 @@ inline svfloat32_t svldnt1_vnum_f32(svbool_t pg, const float32_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 4];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 4]));
     }
   }
   return res;
@@ -6489,6 +7027,7 @@ inline svfloat64_t svldnt1_vnum_f64(svbool_t pg, const float64_t *base,
   for (int idx = 0; idx < res.Size; ++idx) {
     if (pg.vec[idx]) {
       res.vec[idx] = base[idx + vnum * res.Size * 8];
+farm_mem_add_load(sizeof(base[idx + vnum * res.Size * 8]));
     }
   }
   return res;
@@ -6498,7 +7037,9 @@ inline svint8x2_t svld2_s8(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2];
+farm_mem_add_load(sizeof(base[idx * 2]));
       res.v1.vec[idx] = base[idx * 2 + 1];
+farm_mem_add_load(sizeof(base[idx * 2 + 1]));
     }
   }
   return res;
@@ -6508,7 +7049,9 @@ inline svint16x2_t svld2_s16(svbool_t pg, const int16_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2];
+farm_mem_add_load(sizeof(base[idx * 2]));
       res.v1.vec[idx] = base[idx * 2 + 1];
+farm_mem_add_load(sizeof(base[idx * 2 + 1]));
     }
   }
   return res;
@@ -6518,7 +7061,9 @@ inline svint32x2_t svld2_s32(svbool_t pg, const int32_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2];
+farm_mem_add_load(sizeof(base[idx * 2]));
       res.v1.vec[idx] = base[idx * 2 + 1];
+farm_mem_add_load(sizeof(base[idx * 2 + 1]));
     }
   }
   return res;
@@ -6528,7 +7073,9 @@ inline svint64x2_t svld2_s64(svbool_t pg, const int64_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2];
+farm_mem_add_load(sizeof(base[idx * 2]));
       res.v1.vec[idx] = base[idx * 2 + 1];
+farm_mem_add_load(sizeof(base[idx * 2 + 1]));
     }
   }
   return res;
@@ -6538,7 +7085,9 @@ inline svuint8x2_t svld2_u8(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2];
+farm_mem_add_load(sizeof(base[idx * 2]));
       res.v1.vec[idx] = base[idx * 2 + 1];
+farm_mem_add_load(sizeof(base[idx * 2 + 1]));
     }
   }
   return res;
@@ -6548,7 +7097,9 @@ inline svuint16x2_t svld2_u16(svbool_t pg, const uint16_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2];
+farm_mem_add_load(sizeof(base[idx * 2]));
       res.v1.vec[idx] = base[idx * 2 + 1];
+farm_mem_add_load(sizeof(base[idx * 2 + 1]));
     }
   }
   return res;
@@ -6558,7 +7109,9 @@ inline svuint32x2_t svld2_u32(svbool_t pg, const uint32_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2];
+farm_mem_add_load(sizeof(base[idx * 2]));
       res.v1.vec[idx] = base[idx * 2 + 1];
+farm_mem_add_load(sizeof(base[idx * 2 + 1]));
     }
   }
   return res;
@@ -6568,7 +7121,9 @@ inline svuint64x2_t svld2_u64(svbool_t pg, const uint64_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2];
+farm_mem_add_load(sizeof(base[idx * 2]));
       res.v1.vec[idx] = base[idx * 2 + 1];
+farm_mem_add_load(sizeof(base[idx * 2 + 1]));
     }
   }
   return res;
@@ -6578,7 +7133,9 @@ inline svfloat16x2_t svld2_f16(svbool_t pg, const float16_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2];
+farm_mem_add_load(sizeof(base[idx * 2]));
       res.v1.vec[idx] = base[idx * 2 + 1];
+farm_mem_add_load(sizeof(base[idx * 2 + 1]));
     }
   }
   return res;
@@ -6588,7 +7145,9 @@ inline svfloat32x2_t svld2_f32(svbool_t pg, const float32_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2];
+farm_mem_add_load(sizeof(base[idx * 2]));
       res.v1.vec[idx] = base[idx * 2 + 1];
+farm_mem_add_load(sizeof(base[idx * 2 + 1]));
     }
   }
   return res;
@@ -6598,7 +7157,9 @@ inline svfloat64x2_t svld2_f64(svbool_t pg, const float64_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2];
+farm_mem_add_load(sizeof(base[idx * 2]));
       res.v1.vec[idx] = base[idx * 2 + 1];
+farm_mem_add_load(sizeof(base[idx * 2 + 1]));
     }
   }
   return res;
@@ -6608,7 +7169,9 @@ inline svint8x2_t svld2_vnum_s8(svbool_t pg, const int8_t *base, int64_t vnum) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2 * vnum];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum]));
       res.v1.vec[idx] = base[idx * 2 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum + 1]));
     }
   }
   return res;
@@ -6619,7 +7182,9 @@ inline svint16x2_t svld2_vnum_s16(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2 * vnum];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum]));
       res.v1.vec[idx] = base[idx * 2 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum + 1]));
     }
   }
   return res;
@@ -6630,7 +7195,9 @@ inline svint32x2_t svld2_vnum_s32(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2 * vnum];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum]));
       res.v1.vec[idx] = base[idx * 2 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum + 1]));
     }
   }
   return res;
@@ -6641,7 +7208,9 @@ inline svint64x2_t svld2_vnum_s64(svbool_t pg, const int64_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2 * vnum];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum]));
       res.v1.vec[idx] = base[idx * 2 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum + 1]));
     }
   }
   return res;
@@ -6652,7 +7221,9 @@ inline svuint8x2_t svld2_vnum_u8(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2 * vnum];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum]));
       res.v1.vec[idx] = base[idx * 2 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum + 1]));
     }
   }
   return res;
@@ -6663,7 +7234,9 @@ inline svuint16x2_t svld2_vnum_u16(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2 * vnum];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum]));
       res.v1.vec[idx] = base[idx * 2 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum + 1]));
     }
   }
   return res;
@@ -6674,7 +7247,9 @@ inline svuint32x2_t svld2_vnum_u32(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2 * vnum];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum]));
       res.v1.vec[idx] = base[idx * 2 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum + 1]));
     }
   }
   return res;
@@ -6685,7 +7260,9 @@ inline svuint64x2_t svld2_vnum_u64(svbool_t pg, const uint64_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2 * vnum];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum]));
       res.v1.vec[idx] = base[idx * 2 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum + 1]));
     }
   }
   return res;
@@ -6696,7 +7273,9 @@ inline svfloat16x2_t svld2_vnum_f16(svbool_t pg, const float16_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2 * vnum];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum]));
       res.v1.vec[idx] = base[idx * 2 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum + 1]));
     }
   }
   return res;
@@ -6707,7 +7286,9 @@ inline svfloat32x2_t svld2_vnum_f32(svbool_t pg, const float32_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2 * vnum];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum]));
       res.v1.vec[idx] = base[idx * 2 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum + 1]));
     }
   }
   return res;
@@ -6718,7 +7299,9 @@ inline svfloat64x2_t svld2_vnum_f64(svbool_t pg, const float64_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 2 * vnum];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum]));
       res.v1.vec[idx] = base[idx * 2 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 2 * vnum + 1]));
     }
   }
   return res;
@@ -6728,8 +7311,11 @@ inline svint8x3_t svld3_s8(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3];
+farm_mem_add_load(sizeof(base[idx * 3]));
       res.v1.vec[idx] = base[idx * 3 + 1];
+farm_mem_add_load(sizeof(base[idx * 3 + 1]));
       res.v2.vec[idx] = base[idx * 3 + 2];
+farm_mem_add_load(sizeof(base[idx * 3 + 2]));
     }
   }
   return res;
@@ -6739,8 +7325,11 @@ inline svint16x3_t svld3_s16(svbool_t pg, const int16_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3];
+farm_mem_add_load(sizeof(base[idx * 3]));
       res.v1.vec[idx] = base[idx * 3 + 1];
+farm_mem_add_load(sizeof(base[idx * 3 + 1]));
       res.v2.vec[idx] = base[idx * 3 + 2];
+farm_mem_add_load(sizeof(base[idx * 3 + 2]));
     }
   }
   return res;
@@ -6750,8 +7339,11 @@ inline svint32x3_t svld3_s32(svbool_t pg, const int32_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3];
+farm_mem_add_load(sizeof(base[idx * 3]));
       res.v1.vec[idx] = base[idx * 3 + 1];
+farm_mem_add_load(sizeof(base[idx * 3 + 1]));
       res.v2.vec[idx] = base[idx * 3 + 2];
+farm_mem_add_load(sizeof(base[idx * 3 + 2]));
     }
   }
   return res;
@@ -6761,8 +7353,11 @@ inline svint64x3_t svld3_s64(svbool_t pg, const int64_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3];
+farm_mem_add_load(sizeof(base[idx * 3]));
       res.v1.vec[idx] = base[idx * 3 + 1];
+farm_mem_add_load(sizeof(base[idx * 3 + 1]));
       res.v2.vec[idx] = base[idx * 3 + 2];
+farm_mem_add_load(sizeof(base[idx * 3 + 2]));
     }
   }
   return res;
@@ -6772,8 +7367,11 @@ inline svuint8x3_t svld3_u8(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3];
+farm_mem_add_load(sizeof(base[idx * 3]));
       res.v1.vec[idx] = base[idx * 3 + 1];
+farm_mem_add_load(sizeof(base[idx * 3 + 1]));
       res.v2.vec[idx] = base[idx * 3 + 2];
+farm_mem_add_load(sizeof(base[idx * 3 + 2]));
     }
   }
   return res;
@@ -6783,8 +7381,11 @@ inline svuint16x3_t svld3_u16(svbool_t pg, const uint16_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3];
+farm_mem_add_load(sizeof(base[idx * 3]));
       res.v1.vec[idx] = base[idx * 3 + 1];
+farm_mem_add_load(sizeof(base[idx * 3 + 1]));
       res.v2.vec[idx] = base[idx * 3 + 2];
+farm_mem_add_load(sizeof(base[idx * 3 + 2]));
     }
   }
   return res;
@@ -6794,8 +7395,11 @@ inline svuint32x3_t svld3_u32(svbool_t pg, const uint32_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3];
+farm_mem_add_load(sizeof(base[idx * 3]));
       res.v1.vec[idx] = base[idx * 3 + 1];
+farm_mem_add_load(sizeof(base[idx * 3 + 1]));
       res.v2.vec[idx] = base[idx * 3 + 2];
+farm_mem_add_load(sizeof(base[idx * 3 + 2]));
     }
   }
   return res;
@@ -6805,8 +7409,11 @@ inline svuint64x3_t svld3_u64(svbool_t pg, const uint64_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3];
+farm_mem_add_load(sizeof(base[idx * 3]));
       res.v1.vec[idx] = base[idx * 3 + 1];
+farm_mem_add_load(sizeof(base[idx * 3 + 1]));
       res.v2.vec[idx] = base[idx * 3 + 2];
+farm_mem_add_load(sizeof(base[idx * 3 + 2]));
     }
   }
   return res;
@@ -6816,8 +7423,11 @@ inline svfloat16x3_t svld3_f16(svbool_t pg, const float16_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3];
+farm_mem_add_load(sizeof(base[idx * 3]));
       res.v1.vec[idx] = base[idx * 3 + 1];
+farm_mem_add_load(sizeof(base[idx * 3 + 1]));
       res.v2.vec[idx] = base[idx * 3 + 2];
+farm_mem_add_load(sizeof(base[idx * 3 + 2]));
     }
   }
   return res;
@@ -6827,8 +7437,11 @@ inline svfloat32x3_t svld3_f32(svbool_t pg, const float32_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3];
+farm_mem_add_load(sizeof(base[idx * 3]));
       res.v1.vec[idx] = base[idx * 3 + 1];
+farm_mem_add_load(sizeof(base[idx * 3 + 1]));
       res.v2.vec[idx] = base[idx * 3 + 2];
+farm_mem_add_load(sizeof(base[idx * 3 + 2]));
     }
   }
   return res;
@@ -6838,8 +7451,11 @@ inline svfloat64x3_t svld3_f64(svbool_t pg, const float64_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3];
+farm_mem_add_load(sizeof(base[idx * 3]));
       res.v1.vec[idx] = base[idx * 3 + 1];
+farm_mem_add_load(sizeof(base[idx * 3 + 1]));
       res.v2.vec[idx] = base[idx * 3 + 2];
+farm_mem_add_load(sizeof(base[idx * 3 + 2]));
     }
   }
   return res;
@@ -6849,8 +7465,11 @@ inline svint8x3_t svld3_vnum_s8(svbool_t pg, const int8_t *base, int64_t vnum) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3 * vnum];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum]));
       res.v1.vec[idx] = base[idx * 3 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 3 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 2]));
     }
   }
   return res;
@@ -6861,8 +7480,11 @@ inline svint16x3_t svld3_vnum_s16(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3 * vnum];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum]));
       res.v1.vec[idx] = base[idx * 3 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 3 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 2]));
     }
   }
   return res;
@@ -6873,8 +7495,11 @@ inline svint32x3_t svld3_vnum_s32(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3 * vnum];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum]));
       res.v1.vec[idx] = base[idx * 3 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 3 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 2]));
     }
   }
   return res;
@@ -6885,8 +7510,11 @@ inline svint64x3_t svld3_vnum_s64(svbool_t pg, const int64_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3 * vnum];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum]));
       res.v1.vec[idx] = base[idx * 3 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 3 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 2]));
     }
   }
   return res;
@@ -6897,8 +7525,11 @@ inline svuint8x3_t svld3_vnum_u8(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3 * vnum];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum]));
       res.v1.vec[idx] = base[idx * 3 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 3 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 2]));
     }
   }
   return res;
@@ -6909,8 +7540,11 @@ inline svuint16x3_t svld3_vnum_u16(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3 * vnum];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum]));
       res.v1.vec[idx] = base[idx * 3 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 3 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 2]));
     }
   }
   return res;
@@ -6921,8 +7555,11 @@ inline svuint32x3_t svld3_vnum_u32(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3 * vnum];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum]));
       res.v1.vec[idx] = base[idx * 3 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 3 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 2]));
     }
   }
   return res;
@@ -6933,8 +7570,11 @@ inline svuint64x3_t svld3_vnum_u64(svbool_t pg, const uint64_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3 * vnum];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum]));
       res.v1.vec[idx] = base[idx * 3 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 3 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 2]));
     }
   }
   return res;
@@ -6945,8 +7585,11 @@ inline svfloat16x3_t svld3_vnum_f16(svbool_t pg, const float16_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3 * vnum];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum]));
       res.v1.vec[idx] = base[idx * 3 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 3 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 2]));
     }
   }
   return res;
@@ -6957,8 +7600,11 @@ inline svfloat32x3_t svld3_vnum_f32(svbool_t pg, const float32_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3 * vnum];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum]));
       res.v1.vec[idx] = base[idx * 3 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 3 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 2]));
     }
   }
   return res;
@@ -6969,8 +7615,11 @@ inline svfloat64x3_t svld3_vnum_f64(svbool_t pg, const float64_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 3 * vnum];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum]));
       res.v1.vec[idx] = base[idx * 3 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 3 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 3 * vnum + 2]));
     }
   }
   return res;
@@ -6980,9 +7629,13 @@ inline svint8x4_t svld4_s8(svbool_t pg, const int8_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4];
+farm_mem_add_load(sizeof(base[idx * 4]));
       res.v1.vec[idx] = base[idx * 4 + 1];
+farm_mem_add_load(sizeof(base[idx * 4 + 1]));
       res.v2.vec[idx] = base[idx * 4 + 2];
+farm_mem_add_load(sizeof(base[idx * 4 + 2]));
       res.v3.vec[idx] = base[idx * 4 + 3];
+farm_mem_add_load(sizeof(base[idx * 4 + 3]));
     }
   }
   return res;
@@ -6992,9 +7645,13 @@ inline svint16x4_t svld4_s16(svbool_t pg, const int16_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4];
+farm_mem_add_load(sizeof(base[idx * 4]));
       res.v1.vec[idx] = base[idx * 4 + 1];
+farm_mem_add_load(sizeof(base[idx * 4 + 1]));
       res.v2.vec[idx] = base[idx * 4 + 2];
+farm_mem_add_load(sizeof(base[idx * 4 + 2]));
       res.v3.vec[idx] = base[idx * 4 + 3];
+farm_mem_add_load(sizeof(base[idx * 4 + 3]));
     }
   }
   return res;
@@ -7004,9 +7661,13 @@ inline svint32x4_t svld4_s32(svbool_t pg, const int32_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4];
+farm_mem_add_load(sizeof(base[idx * 4]));
       res.v1.vec[idx] = base[idx * 4 + 1];
+farm_mem_add_load(sizeof(base[idx * 4 + 1]));
       res.v2.vec[idx] = base[idx * 4 + 2];
+farm_mem_add_load(sizeof(base[idx * 4 + 2]));
       res.v3.vec[idx] = base[idx * 4 + 3];
+farm_mem_add_load(sizeof(base[idx * 4 + 3]));
     }
   }
   return res;
@@ -7016,9 +7677,13 @@ inline svint64x4_t svld4_s64(svbool_t pg, const int64_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4];
+farm_mem_add_load(sizeof(base[idx * 4]));
       res.v1.vec[idx] = base[idx * 4 + 1];
+farm_mem_add_load(sizeof(base[idx * 4 + 1]));
       res.v2.vec[idx] = base[idx * 4 + 2];
+farm_mem_add_load(sizeof(base[idx * 4 + 2]));
       res.v3.vec[idx] = base[idx * 4 + 3];
+farm_mem_add_load(sizeof(base[idx * 4 + 3]));
     }
   }
   return res;
@@ -7028,9 +7693,13 @@ inline svuint8x4_t svld4_u8(svbool_t pg, const uint8_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4];
+farm_mem_add_load(sizeof(base[idx * 4]));
       res.v1.vec[idx] = base[idx * 4 + 1];
+farm_mem_add_load(sizeof(base[idx * 4 + 1]));
       res.v2.vec[idx] = base[idx * 4 + 2];
+farm_mem_add_load(sizeof(base[idx * 4 + 2]));
       res.v3.vec[idx] = base[idx * 4 + 3];
+farm_mem_add_load(sizeof(base[idx * 4 + 3]));
     }
   }
   return res;
@@ -7040,9 +7709,13 @@ inline svuint16x4_t svld4_u16(svbool_t pg, const uint16_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4];
+farm_mem_add_load(sizeof(base[idx * 4]));
       res.v1.vec[idx] = base[idx * 4 + 1];
+farm_mem_add_load(sizeof(base[idx * 4 + 1]));
       res.v2.vec[idx] = base[idx * 4 + 2];
+farm_mem_add_load(sizeof(base[idx * 4 + 2]));
       res.v3.vec[idx] = base[idx * 4 + 3];
+farm_mem_add_load(sizeof(base[idx * 4 + 3]));
     }
   }
   return res;
@@ -7052,9 +7725,13 @@ inline svuint32x4_t svld4_u32(svbool_t pg, const uint32_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4];
+farm_mem_add_load(sizeof(base[idx * 4]));
       res.v1.vec[idx] = base[idx * 4 + 1];
+farm_mem_add_load(sizeof(base[idx * 4 + 1]));
       res.v2.vec[idx] = base[idx * 4 + 2];
+farm_mem_add_load(sizeof(base[idx * 4 + 2]));
       res.v3.vec[idx] = base[idx * 4 + 3];
+farm_mem_add_load(sizeof(base[idx * 4 + 3]));
     }
   }
   return res;
@@ -7064,9 +7741,13 @@ inline svuint64x4_t svld4_u64(svbool_t pg, const uint64_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4];
+farm_mem_add_load(sizeof(base[idx * 4]));
       res.v1.vec[idx] = base[idx * 4 + 1];
+farm_mem_add_load(sizeof(base[idx * 4 + 1]));
       res.v2.vec[idx] = base[idx * 4 + 2];
+farm_mem_add_load(sizeof(base[idx * 4 + 2]));
       res.v3.vec[idx] = base[idx * 4 + 3];
+farm_mem_add_load(sizeof(base[idx * 4 + 3]));
     }
   }
   return res;
@@ -7076,9 +7757,13 @@ inline svfloat16x4_t svld4_f16(svbool_t pg, const float16_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4];
+farm_mem_add_load(sizeof(base[idx * 4]));
       res.v1.vec[idx] = base[idx * 4 + 1];
+farm_mem_add_load(sizeof(base[idx * 4 + 1]));
       res.v2.vec[idx] = base[idx * 4 + 2];
+farm_mem_add_load(sizeof(base[idx * 4 + 2]));
       res.v3.vec[idx] = base[idx * 4 + 3];
+farm_mem_add_load(sizeof(base[idx * 4 + 3]));
     }
   }
   return res;
@@ -7088,9 +7773,13 @@ inline svfloat32x4_t svld4_f32(svbool_t pg, const float32_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4];
+farm_mem_add_load(sizeof(base[idx * 4]));
       res.v1.vec[idx] = base[idx * 4 + 1];
+farm_mem_add_load(sizeof(base[idx * 4 + 1]));
       res.v2.vec[idx] = base[idx * 4 + 2];
+farm_mem_add_load(sizeof(base[idx * 4 + 2]));
       res.v3.vec[idx] = base[idx * 4 + 3];
+farm_mem_add_load(sizeof(base[idx * 4 + 3]));
     }
   }
   return res;
@@ -7100,9 +7789,13 @@ inline svfloat64x4_t svld4_f64(svbool_t pg, const float64_t *base) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4];
+farm_mem_add_load(sizeof(base[idx * 4]));
       res.v1.vec[idx] = base[idx * 4 + 1];
+farm_mem_add_load(sizeof(base[idx * 4 + 1]));
       res.v2.vec[idx] = base[idx * 4 + 2];
+farm_mem_add_load(sizeof(base[idx * 4 + 2]));
       res.v3.vec[idx] = base[idx * 4 + 3];
+farm_mem_add_load(sizeof(base[idx * 4 + 3]));
     }
   }
   return res;
@@ -7112,9 +7805,13 @@ inline svint8x4_t svld4_vnum_s8(svbool_t pg, const int8_t *base, int64_t vnum) {
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4 * vnum];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum]));
       res.v1.vec[idx] = base[idx * 4 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 4 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 2]));
       res.v3.vec[idx] = base[idx * 4 * vnum + 3];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 3]));
     }
   }
   return res;
@@ -7125,9 +7822,13 @@ inline svint16x4_t svld4_vnum_s16(svbool_t pg, const int16_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4 * vnum];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum]));
       res.v1.vec[idx] = base[idx * 4 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 4 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 2]));
       res.v3.vec[idx] = base[idx * 4 * vnum + 3];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 3]));
     }
   }
   return res;
@@ -7138,9 +7839,13 @@ inline svint32x4_t svld4_vnum_s32(svbool_t pg, const int32_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4 * vnum];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum]));
       res.v1.vec[idx] = base[idx * 4 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 4 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 2]));
       res.v3.vec[idx] = base[idx * 4 * vnum + 3];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 3]));
     }
   }
   return res;
@@ -7151,9 +7856,13 @@ inline svint64x4_t svld4_vnum_s64(svbool_t pg, const int64_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4 * vnum];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum]));
       res.v1.vec[idx] = base[idx * 4 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 4 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 2]));
       res.v3.vec[idx] = base[idx * 4 * vnum + 3];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 3]));
     }
   }
   return res;
@@ -7164,9 +7873,13 @@ inline svuint8x4_t svld4_vnum_u8(svbool_t pg, const uint8_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4 * vnum];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum]));
       res.v1.vec[idx] = base[idx * 4 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 4 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 2]));
       res.v3.vec[idx] = base[idx * 4 * vnum + 3];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 3]));
     }
   }
   return res;
@@ -7177,9 +7890,13 @@ inline svuint16x4_t svld4_vnum_u16(svbool_t pg, const uint16_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4 * vnum];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum]));
       res.v1.vec[idx] = base[idx * 4 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 4 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 2]));
       res.v3.vec[idx] = base[idx * 4 * vnum + 3];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 3]));
     }
   }
   return res;
@@ -7190,9 +7907,13 @@ inline svuint32x4_t svld4_vnum_u32(svbool_t pg, const uint32_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4 * vnum];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum]));
       res.v1.vec[idx] = base[idx * 4 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 4 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 2]));
       res.v3.vec[idx] = base[idx * 4 * vnum + 3];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 3]));
     }
   }
   return res;
@@ -7203,9 +7924,13 @@ inline svuint64x4_t svld4_vnum_u64(svbool_t pg, const uint64_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4 * vnum];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum]));
       res.v1.vec[idx] = base[idx * 4 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 4 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 2]));
       res.v3.vec[idx] = base[idx * 4 * vnum + 3];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 3]));
     }
   }
   return res;
@@ -7216,9 +7941,13 @@ inline svfloat16x4_t svld4_vnum_f16(svbool_t pg, const float16_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4 * vnum];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum]));
       res.v1.vec[idx] = base[idx * 4 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 4 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 2]));
       res.v3.vec[idx] = base[idx * 4 * vnum + 3];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 3]));
     }
   }
   return res;
@@ -7229,9 +7958,13 @@ inline svfloat32x4_t svld4_vnum_f32(svbool_t pg, const float32_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4 * vnum];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum]));
       res.v1.vec[idx] = base[idx * 4 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 4 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 2]));
       res.v3.vec[idx] = base[idx * 4 * vnum + 3];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 3]));
     }
   }
   return res;
@@ -7242,9 +7975,13 @@ inline svfloat64x4_t svld4_vnum_f64(svbool_t pg, const float64_t *base,
   for (int idx = 0; idx < res.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       res.v0.vec[idx] = base[idx * 4 * vnum];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum]));
       res.v1.vec[idx] = base[idx * 4 * vnum + 1];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 1]));
       res.v2.vec[idx] = base[idx * 4 * vnum + 2];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 2]));
       res.v3.vec[idx] = base[idx * 4 * vnum + 3];
+farm_mem_add_load(sizeof(base[idx * 4 * vnum + 3]));
     }
   }
   return res;
@@ -7254,6 +7991,7 @@ inline void svst1_s8(svbool_t pg, int8_t *base, svint8_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = data.vec[idx];
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -7261,6 +7999,7 @@ inline void svst1_s16(svbool_t pg, int16_t *base, svint16_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = data.vec[idx];
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -7268,6 +8007,7 @@ inline void svst1_s32(svbool_t pg, int32_t *base, svint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = data.vec[idx];
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -7275,6 +8015,7 @@ inline void svst1_s64(svbool_t pg, int64_t *base, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = data.vec[idx];
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -7282,6 +8023,7 @@ inline void svst1_u8(svbool_t pg, uint8_t *base, svuint8_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = data.vec[idx];
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -7289,6 +8031,7 @@ inline void svst1_u16(svbool_t pg, uint16_t *base, svuint16_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = data.vec[idx];
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -7296,6 +8039,7 @@ inline void svst1_u32(svbool_t pg, uint32_t *base, svuint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = data.vec[idx];
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -7303,6 +8047,7 @@ inline void svst1_u64(svbool_t pg, uint64_t *base, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = data.vec[idx];
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -7310,6 +8055,7 @@ inline void svst1_f16(svbool_t pg, float16_t *base, svfloat16_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = data.vec[idx];
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -7317,6 +8063,7 @@ inline void svst1_f32(svbool_t pg, float32_t *base, svfloat32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = data.vec[idx];
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -7324,6 +8071,7 @@ inline void svst1_f64(svbool_t pg, float64_t *base, svfloat64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = data.vec[idx];
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -7332,6 +8080,7 @@ inline void svst1_vnum_s8(svbool_t pg, int8_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx + vnum * data.Size] = data.vec[idx];
+      farm_mem_add_store(base[idx + vnum * data.Size]);
     }
   }
 }
@@ -7340,6 +8089,7 @@ inline void svst1_vnum_s16(svbool_t pg, int16_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx + vnum * data.Size] = data.vec[idx];
+      farm_mem_add_store(base[idx + vnum * data.Size]);
     }
   }
 }
@@ -7348,6 +8098,7 @@ inline void svst1_vnum_s32(svbool_t pg, int32_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx + vnum * data.Size] = data.vec[idx];
+      farm_mem_add_store(base[idx + vnum * data.Size]);
     }
   }
 }
@@ -7356,6 +8107,7 @@ inline void svst1_vnum_s64(svbool_t pg, int64_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx + vnum * data.Size] = data.vec[idx];
+      farm_mem_add_store(base[idx + vnum * data.Size]);
     }
   }
 }
@@ -7364,6 +8116,7 @@ inline void svst1_vnum_u8(svbool_t pg, uint8_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx + vnum * data.Size] = data.vec[idx];
+      farm_mem_add_store(base[idx + vnum * data.Size]);
     }
   }
 }
@@ -7372,6 +8125,7 @@ inline void svst1_vnum_u16(svbool_t pg, uint16_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx + vnum * data.Size] = data.vec[idx];
+      farm_mem_add_store(base[idx + vnum * data.Size]);
     }
   }
 }
@@ -7380,6 +8134,7 @@ inline void svst1_vnum_u32(svbool_t pg, uint32_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx + vnum * data.Size] = data.vec[idx];
+      farm_mem_add_store(base[idx + vnum * data.Size]);
     }
   }
 }
@@ -7388,6 +8143,7 @@ inline void svst1_vnum_u64(svbool_t pg, uint64_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx + vnum * data.Size] = data.vec[idx];
+      farm_mem_add_store(base[idx + vnum * data.Size]);
     }
   }
 }
@@ -7396,6 +8152,7 @@ inline void svst1_vnum_f16(svbool_t pg, float16_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx + vnum * data.Size] = data.vec[idx];
+      farm_mem_add_store(base[idx + vnum * data.Size]);
     }
   }
 }
@@ -7404,6 +8161,7 @@ inline void svst1_vnum_f32(svbool_t pg, float32_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx + vnum * data.Size] = data.vec[idx];
+      farm_mem_add_store(base[idx + vnum * data.Size]);
     }
   }
 }
@@ -7412,6 +8170,7 @@ inline void svst1_vnum_f64(svbool_t pg, float64_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx + vnum * data.Size] = data.vec[idx];
+      farm_mem_add_store(base[idx + vnum * data.Size]);
     }
   }
 }
@@ -7421,6 +8180,7 @@ inline void svst1_scatter_u32base_s32(svbool_t pg, svuint32_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       *reinterpret_cast<int32_t *>(bases.vec[idx]) = data.vec[idx];
+      farm_mem_add_store(sizeof(*reinterpret_cast<int32_t *>(bases.vec[idx])));
     }
   }
 }
@@ -7429,6 +8189,7 @@ inline void svst1_scatter_u64base_s64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       *reinterpret_cast<int64_t *>(bases.vec[idx]) = data.vec[idx];
+      farm_mem_add_store(sizeof(*reinterpret_cast<int64_t *>(bases.vec[idx])));
     }
   }
 }
@@ -7437,6 +8198,7 @@ inline void svst1_scatter_u32base_u32(svbool_t pg, svuint32_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       *reinterpret_cast<uint32_t *>(bases.vec[idx]) = data.vec[idx];
+      farm_mem_add_store(sizeof(*reinterpret_cast<uint32_t *>(bases.vec[idx])));
     }
   }
 }
@@ -7445,6 +8207,7 @@ inline void svst1_scatter_u64base_u64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       *reinterpret_cast<uint64_t *>(bases.vec[idx]) = data.vec[idx];
+      farm_mem_add_store(sizeof(*reinterpret_cast<uint64_t *>(bases.vec[idx])));
     }
   }
 }
@@ -7453,6 +8216,7 @@ inline void svst1_scatter_u32base_f32(svbool_t pg, svuint32_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       *reinterpret_cast<float32_t *>(bases.vec[idx]) = data.vec[idx];
+      farm_mem_add_store(sizeof(*reinterpret_cast<float32_t *>(bases.vec[idx])));
     }
   }
 }
@@ -7461,6 +8225,7 @@ inline void svst1_scatter_u64base_f64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       *reinterpret_cast<float64_t *>(bases.vec[idx]) = data.vec[idx];
+      farm_mem_add_store(sizeof(*reinterpret_cast<float64_t *>(bases.vec[idx])));
     }
   }
 }
@@ -7469,6 +8234,7 @@ inline void svst1_scatter_s32offset_s32(svbool_t pg, int32_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(int32_t)] = data.vec[idx];
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(int32_t)]);
     }
   }
 }
@@ -7477,6 +8243,7 @@ inline void svst1_scatter_s64offset_s64(svbool_t pg, int64_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(int64_t)] = data.vec[idx];
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(int64_t)]);
     }
   }
 }
@@ -7485,6 +8252,7 @@ inline void svst1_scatter_s32offset_u32(svbool_t pg, uint32_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(uint32_t)] = data.vec[idx];
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(uint32_t)]);
     }
   }
 }
@@ -7493,6 +8261,7 @@ inline void svst1_scatter_s64offset_u64(svbool_t pg, uint64_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(uint64_t)] = data.vec[idx];
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(uint64_t)]);
     }
   }
 }
@@ -7501,6 +8270,7 @@ inline void svst1_scatter_s32offset_f32(svbool_t pg, float32_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(float32_t)] = data.vec[idx];
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(float32_t)]);
     }
   }
 }
@@ -7509,6 +8279,7 @@ inline void svst1_scatter_s64offset_f64(svbool_t pg, float64_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(float64_t)] = data.vec[idx];
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(float64_t)]);
     }
   }
 }
@@ -7517,6 +8288,7 @@ inline void svst1_scatter_u32offset_s32(svbool_t pg, int32_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(int32_t)] = data.vec[idx];
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(int32_t)]);
     }
   }
 }
@@ -7525,6 +8297,7 @@ inline void svst1_scatter_u64offset_s64(svbool_t pg, int64_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(int64_t)] = data.vec[idx];
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(int64_t)]);
     }
   }
 }
@@ -7533,6 +8306,7 @@ inline void svst1_scatter_u32offset_u32(svbool_t pg, uint32_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(uint32_t)] = data.vec[idx];
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(uint32_t)]);
     }
   }
 }
@@ -7541,6 +8315,7 @@ inline void svst1_scatter_u64offset_u64(svbool_t pg, uint64_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(uint64_t)] = data.vec[idx];
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(uint64_t)]);
     }
   }
 }
@@ -7549,6 +8324,7 @@ inline void svst1_scatter_u32offset_f32(svbool_t pg, float32_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(float32_t)] = data.vec[idx];
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(float32_t)]);
     }
   }
 }
@@ -7557,6 +8333,7 @@ inline void svst1_scatter_u64offset_f64(svbool_t pg, float64_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(float64_t)] = data.vec[idx];
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(float64_t)]);
     }
   }
 }
@@ -7564,8 +8341,8 @@ inline void svst1_scatter_u32base_offset_s32(svbool_t pg, svuint32_t bases,
                                              int64_t offset, svint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      reinterpret_cast<int32_t *>(bases.vec[idx])[offset / sizeof(int32_t)] =
-          data.vec[idx];
+      reinterpret_cast<int32_t *>(bases.vec[idx])[offset / sizeof(int32_t)] = data.vec[idx];
+      farm_mem_add_store(sizeof(reinterpret_cast<int32_t *>(bases.vec[idx])[offset / sizeof(int32_t)]));
     }
   }
 }
@@ -7573,8 +8350,8 @@ inline void svst1_scatter_u64base_offset_s64(svbool_t pg, svuint64_t bases,
                                              int64_t offset, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      reinterpret_cast<int64_t *>(bases.vec[idx])[offset / sizeof(int64_t)] =
-          data.vec[idx];
+      reinterpret_cast<int64_t *>(bases.vec[idx])[offset / sizeof(int64_t)] = data.vec[idx];
+      farm_mem_add_store(sizeof(reinterpret_cast<int64_t *>(bases.vec[idx])[offset / sizeof(int64_t)]));
     }
   }
 }
@@ -7582,8 +8359,8 @@ inline void svst1_scatter_u32base_offset_u32(svbool_t pg, svuint32_t bases,
                                              int64_t offset, svuint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      reinterpret_cast<uint32_t *>(bases.vec[idx])[offset / sizeof(uint32_t)] =
-          data.vec[idx];
+      reinterpret_cast<uint32_t *>(bases.vec[idx])[offset / sizeof(uint32_t)] = data.vec[idx];
+      farm_mem_add_store(sizeof(reinterpret_cast<uint32_t *>(bases.vec[idx])[offset / sizeof(uint32_t)]));
     }
   }
 }
@@ -7591,8 +8368,8 @@ inline void svst1_scatter_u64base_offset_u64(svbool_t pg, svuint64_t bases,
                                              int64_t offset, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      reinterpret_cast<uint64_t *>(bases.vec[idx])[offset / sizeof(uint64_t)] =
-          data.vec[idx];
+      reinterpret_cast<uint64_t *>(bases.vec[idx])[offset / sizeof(uint64_t)] = data.vec[idx];
+      farm_mem_add_store(sizeof(reinterpret_cast<uint64_t *>(bases.vec[idx])[offset / sizeof(uint64_t)]));
     }
   }
 }
@@ -7602,6 +8379,7 @@ inline void svst1_scatter_u32base_offset_f32(svbool_t pg, svuint32_t bases,
     if (pg.vec[idx]) {
       reinterpret_cast<float32_t *>(
           bases.vec[idx])[offset / sizeof(float32_t)] = data.vec[idx];
+          farm_mem_add_load(sizeof(float32_t));
     }
   }
 }
@@ -7611,6 +8389,7 @@ inline void svst1_scatter_u64base_offset_f64(svbool_t pg, svuint64_t bases,
     if (pg.vec[idx]) {
       reinterpret_cast<float64_t *>(
           bases.vec[idx])[offset / sizeof(float64_t)] = data.vec[idx];
+          farm_mem_add_load(sizeof(float64_t));
     }
   }
 }
@@ -7619,6 +8398,7 @@ inline void svst1_scatter_s32index_s32(svbool_t pg, int32_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = data.vec[idx];
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -7627,6 +8407,7 @@ inline void svst1_scatter_s64index_s64(svbool_t pg, int64_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = data.vec[idx];
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -7635,6 +8416,7 @@ inline void svst1_scatter_s32index_u32(svbool_t pg, uint32_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = data.vec[idx];
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -7643,6 +8425,7 @@ inline void svst1_scatter_s64index_u64(svbool_t pg, uint64_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = data.vec[idx];
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -7651,6 +8434,7 @@ inline void svst1_scatter_s32index_f32(svbool_t pg, float32_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = data.vec[idx];
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -7659,6 +8443,7 @@ inline void svst1_scatter_s64index_f64(svbool_t pg, float64_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = data.vec[idx];
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -7667,6 +8452,7 @@ inline void svst1_scatter_u32index_s32(svbool_t pg, int32_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = data.vec[idx];
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -7675,6 +8461,7 @@ inline void svst1_scatter_u64index_s64(svbool_t pg, int64_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = data.vec[idx];
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -7683,6 +8470,7 @@ inline void svst1_scatter_u32index_u32(svbool_t pg, uint32_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = data.vec[idx];
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -7691,6 +8479,7 @@ inline void svst1_scatter_u64index_u64(svbool_t pg, uint64_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = data.vec[idx];
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -7699,6 +8488,7 @@ inline void svst1_scatter_u32index_f32(svbool_t pg, float32_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = data.vec[idx];
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -7707,6 +8497,7 @@ inline void svst1_scatter_u64index_f64(svbool_t pg, float64_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = data.vec[idx];
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -7715,6 +8506,7 @@ inline void svst1_scatter_u32base_index_s32(svbool_t pg, svuint32_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<int32_t *>(bases.vec[idx])[index] = data.vec[idx];
+      farm_mem_add_store(sizeof(reinterpret_cast<int32_t *>(bases.vec[idx])[index]));
     }
   }
 }
@@ -7723,6 +8515,7 @@ inline void svst1_scatter_u64base_index_s64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<int64_t *>(bases.vec[idx])[index] = data.vec[idx];
+      farm_mem_add_store(sizeof(reinterpret_cast<int64_t *>(bases.vec[idx])[index]));
     }
   }
 }
@@ -7731,6 +8524,7 @@ inline void svst1_scatter_u32base_index_u32(svbool_t pg, svuint32_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<uint32_t *>(bases.vec[idx])[index] = data.vec[idx];
+      farm_mem_add_store(sizeof(reinterpret_cast<uint32_t *>(bases.vec[idx])[index]));
     }
   }
 }
@@ -7739,6 +8533,7 @@ inline void svst1_scatter_u64base_index_u64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<uint64_t *>(bases.vec[idx])[index] = data.vec[idx];
+      farm_mem_add_store(sizeof(reinterpret_cast<uint64_t *>(bases.vec[idx])[index]));
     }
   }
 }
@@ -7747,6 +8542,7 @@ inline void svst1_scatter_u32base_index_f32(svbool_t pg, svuint32_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<float32_t *>(bases.vec[idx])[index] = data.vec[idx];
+      farm_mem_add_store(sizeof(reinterpret_cast<float32_t *>(bases.vec[idx])[index]));
     }
   }
 }
@@ -7755,6 +8551,7 @@ inline void svst1_scatter_u64base_index_f64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       reinterpret_cast<float64_t *>(bases.vec[idx])[index] = data.vec[idx];
+      farm_mem_add_store(sizeof(reinterpret_cast<float64_t *>(bases.vec[idx])[index]));
     }
   }
 }
@@ -7762,6 +8559,7 @@ inline void svst1b_s16(svbool_t pg, int8_t *base, svint16_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = core_to_s8(data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -7769,6 +8567,7 @@ inline void svst1b_s32(svbool_t pg, int8_t *base, svint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = core_to_s8(data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -7776,6 +8575,7 @@ inline void svst1b_s64(svbool_t pg, int8_t *base, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = core_to_s8(data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -7783,6 +8583,7 @@ inline void svst1b_u16(svbool_t pg, uint8_t *base, svuint16_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = core_to_u8(data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -7790,6 +8591,7 @@ inline void svst1b_u32(svbool_t pg, uint8_t *base, svuint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = core_to_u8(data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -7797,6 +8599,7 @@ inline void svst1b_u64(svbool_t pg, uint8_t *base, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = core_to_u8(data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -7805,6 +8608,7 @@ inline void svst1b_vnum_s16(svbool_t pg, int8_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = core_to_s8(data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -7813,6 +8617,7 @@ inline void svst1b_vnum_s32(svbool_t pg, int8_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = core_to_s8(data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -7821,6 +8626,7 @@ inline void svst1b_vnum_s64(svbool_t pg, int8_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = core_to_s8(data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -7829,6 +8635,7 @@ inline void svst1b_vnum_u16(svbool_t pg, uint8_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = core_to_u8(data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -7837,6 +8644,7 @@ inline void svst1b_vnum_u32(svbool_t pg, uint8_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = core_to_u8(data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -7845,6 +8653,7 @@ inline void svst1b_vnum_u64(svbool_t pg, uint8_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = core_to_u8(data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -7853,6 +8662,7 @@ inline void svst1b_scatter_u32base_s32(svbool_t pg, svuint32_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       *reinterpret_cast<uint8_t *>(bases.vec[idx]) = core_to_u8(data.vec[idx]);
+      farm_mem_add_store(sizeof(*reinterpret_cast<uint8_t *>(bases.vec[idx])));
     }
   }
 }
@@ -7861,6 +8671,7 @@ inline void svst1b_scatter_u64base_s64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       *reinterpret_cast<uint8_t *>(bases.vec[idx]) = core_to_u8(data.vec[idx]);
+      farm_mem_add_store(sizeof(*reinterpret_cast<uint8_t *>(bases.vec[idx])));
     }
   }
 }
@@ -7869,6 +8680,7 @@ inline void svst1b_scatter_u32base_u32(svbool_t pg, svuint32_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       *reinterpret_cast<uint8_t *>(bases.vec[idx]) = core_to_u8(data.vec[idx]);
+      farm_mem_add_store(sizeof(*reinterpret_cast<uint8_t *>(bases.vec[idx])));
     }
   }
 }
@@ -7877,6 +8689,7 @@ inline void svst1b_scatter_u64base_u64(svbool_t pg, svuint64_t bases,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       *reinterpret_cast<uint8_t *>(bases.vec[idx]) = core_to_u8(data.vec[idx]);
+      farm_mem_add_store(sizeof(*reinterpret_cast<uint8_t *>(bases.vec[idx])));
     }
   }
 }
@@ -7885,6 +8698,7 @@ inline void svst1b_scatter_s32offset_s32(svbool_t pg, int8_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(int8_t)] = core_to_s8(data.vec[idx]);
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(int8_t)]);
     }
   }
 }
@@ -7893,6 +8707,7 @@ inline void svst1b_scatter_s64offset_s64(svbool_t pg, int8_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(int8_t)] = core_to_s8(data.vec[idx]);
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(int8_t)]);
     }
   }
 }
@@ -7901,6 +8716,7 @@ inline void svst1b_scatter_s32offset_u32(svbool_t pg, uint8_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(int8_t)] = core_to_s8(data.vec[idx]);
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(int8_t)]);
     }
   }
 }
@@ -7909,6 +8725,7 @@ inline void svst1b_scatter_s64offset_u64(svbool_t pg, uint8_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(int8_t)] = core_to_s8(data.vec[idx]);
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(int8_t)]);
     }
   }
 }
@@ -7917,6 +8734,7 @@ inline void svst1b_scatter_u32offset_s32(svbool_t pg, int8_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(uint8_t)] = core_to_u8(data.vec[idx]);
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(uint8_t)]);
     }
   }
 }
@@ -7925,6 +8743,7 @@ inline void svst1b_scatter_u64offset_s64(svbool_t pg, int8_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(uint8_t)] = core_to_u8(data.vec[idx]);
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(uint8_t)]);
     }
   }
 }
@@ -7933,6 +8752,7 @@ inline void svst1b_scatter_u32offset_u32(svbool_t pg, uint8_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(uint8_t)] = core_to_u8(data.vec[idx]);
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(uint8_t)]);
     }
   }
 }
@@ -7941,6 +8761,7 @@ inline void svst1b_scatter_u64offset_u64(svbool_t pg, uint8_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(uint8_t)] = core_to_u8(data.vec[idx]);
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(uint8_t)]);
     }
   }
 }
@@ -7948,8 +8769,8 @@ inline void svst1b_scatter_u32base_offset_s32(svbool_t pg, svuint32_t bases,
                                               int64_t offset, svint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      reinterpret_cast<uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)] =
-          core_to_u8(data.vec[idx]);
+      reinterpret_cast<uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)] = core_to_u8(data.vec[idx]);
+      farm_mem_add_store(sizeof(reinterpret_cast<uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)]));
     }
   }
 }
@@ -7957,8 +8778,8 @@ inline void svst1b_scatter_u64base_offset_s64(svbool_t pg, svuint64_t bases,
                                               int64_t offset, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      reinterpret_cast<uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)] =
-          core_to_u8(data.vec[idx]);
+      reinterpret_cast<uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)] = core_to_u8(data.vec[idx]);
+      farm_mem_add_store(sizeof(reinterpret_cast<uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)]));
     }
   }
 }
@@ -7966,8 +8787,8 @@ inline void svst1b_scatter_u32base_offset_u32(svbool_t pg, svuint32_t bases,
                                               int64_t offset, svuint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      reinterpret_cast<uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)] =
-          core_to_u8(data.vec[idx]);
+      reinterpret_cast<uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)] = core_to_u8(data.vec[idx]);
+      farm_mem_add_store(sizeof(reinterpret_cast<uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)]));
     }
   }
 }
@@ -7975,8 +8796,8 @@ inline void svst1b_scatter_u64base_offset_u64(svbool_t pg, svuint64_t bases,
                                               int64_t offset, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      reinterpret_cast<uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)] =
-          core_to_u8(data.vec[idx]);
+      reinterpret_cast<uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)] = core_to_u8(data.vec[idx]);
+      farm_mem_add_store(sizeof(reinterpret_cast<uint8_t *>(bases.vec[idx])[offset / sizeof(uint8_t)]));
     }
   }
 }
@@ -7984,6 +8805,7 @@ inline void svst1h_s32(svbool_t pg, int16_t *base, svint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = core_to_s16(data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -7991,6 +8813,7 @@ inline void svst1h_s64(svbool_t pg, int16_t *base, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = core_to_s16(data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -7998,6 +8821,7 @@ inline void svst1h_u32(svbool_t pg, uint16_t *base, svuint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -8005,6 +8829,7 @@ inline void svst1h_u64(svbool_t pg, uint16_t *base, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -8013,6 +8838,7 @@ inline void svst1h_vnum_s32(svbool_t pg, int16_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = core_to_s16(data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -8021,6 +8847,7 @@ inline void svst1h_vnum_s64(svbool_t pg, int16_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = core_to_s16(data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -8029,6 +8856,7 @@ inline void svst1h_vnum_u32(svbool_t pg, uint16_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -8037,6 +8865,7 @@ inline void svst1h_vnum_u64(svbool_t pg, uint16_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -8044,8 +8873,8 @@ inline void svst1h_scatter_u32base_s32(svbool_t pg, svuint32_t bases,
                                        svint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      *reinterpret_cast<uint16_t *>(bases.vec[idx]) =
-          core_to_u16(data.vec[idx]);
+      *reinterpret_cast<uint16_t *>(bases.vec[idx]) = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(sizeof(*reinterpret_cast<uint16_t *>(bases.vec[idx])));
     }
   }
 }
@@ -8053,8 +8882,8 @@ inline void svst1h_scatter_u64base_s64(svbool_t pg, svuint64_t bases,
                                        svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      *reinterpret_cast<uint16_t *>(bases.vec[idx]) =
-          core_to_u16(data.vec[idx]);
+      *reinterpret_cast<uint16_t *>(bases.vec[idx]) = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(sizeof(*reinterpret_cast<uint16_t *>(bases.vec[idx])));
     }
   }
 }
@@ -8062,8 +8891,8 @@ inline void svst1h_scatter_u32base_u32(svbool_t pg, svuint32_t bases,
                                        svuint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      *reinterpret_cast<uint16_t *>(bases.vec[idx]) =
-          core_to_u16(data.vec[idx]);
+      *reinterpret_cast<uint16_t *>(bases.vec[idx]) = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(sizeof(*reinterpret_cast<uint16_t *>(bases.vec[idx])));
     }
   }
 }
@@ -8071,8 +8900,8 @@ inline void svst1h_scatter_u64base_u64(svbool_t pg, svuint64_t bases,
                                        svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      *reinterpret_cast<uint16_t *>(bases.vec[idx]) =
-          core_to_u16(data.vec[idx]);
+      *reinterpret_cast<uint16_t *>(bases.vec[idx]) = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(sizeof(*reinterpret_cast<uint16_t *>(bases.vec[idx])));
     }
   }
 }
@@ -8081,6 +8910,7 @@ inline void svst1h_scatter_s32offset_s32(svbool_t pg, int16_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(int16_t)] = core_to_s16(data.vec[idx]);
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(int16_t)]);
     }
   }
 }
@@ -8089,6 +8919,7 @@ inline void svst1h_scatter_s64offset_s64(svbool_t pg, int16_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(int16_t)] = core_to_s16(data.vec[idx]);
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(int16_t)]);
     }
   }
 }
@@ -8097,6 +8928,7 @@ inline void svst1h_scatter_s32offset_u32(svbool_t pg, uint16_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(int16_t)] = core_to_s16(data.vec[idx]);
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(int16_t)]);
     }
   }
 }
@@ -8105,6 +8937,7 @@ inline void svst1h_scatter_s64offset_u64(svbool_t pg, uint16_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(int16_t)] = core_to_s16(data.vec[idx]);
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(int16_t)]);
     }
   }
 }
@@ -8113,6 +8946,7 @@ inline void svst1h_scatter_u32offset_s32(svbool_t pg, int16_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(uint16_t)] = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(uint16_t)]);
     }
   }
 }
@@ -8121,6 +8955,7 @@ inline void svst1h_scatter_u64offset_s64(svbool_t pg, int16_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(uint16_t)] = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(uint16_t)]);
     }
   }
 }
@@ -8129,6 +8964,7 @@ inline void svst1h_scatter_u32offset_u32(svbool_t pg, uint16_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(uint16_t)] = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(uint16_t)]);
     }
   }
 }
@@ -8137,6 +8973,7 @@ inline void svst1h_scatter_u64offset_u64(svbool_t pg, uint16_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(uint16_t)] = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(uint16_t)]);
     }
   }
 }
@@ -8144,8 +8981,8 @@ inline void svst1h_scatter_u32base_offset_s32(svbool_t pg, svuint32_t bases,
                                               int64_t offset, svint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      reinterpret_cast<uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)] =
-          core_to_u16(data.vec[idx]);
+      reinterpret_cast<uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)] = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(sizeof(reinterpret_cast<uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)]));
     }
   }
 }
@@ -8153,8 +8990,8 @@ inline void svst1h_scatter_u64base_offset_s64(svbool_t pg, svuint64_t bases,
                                               int64_t offset, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      reinterpret_cast<uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)] =
-          core_to_u16(data.vec[idx]);
+      reinterpret_cast<uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)] = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(sizeof(reinterpret_cast<uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)]));
     }
   }
 }
@@ -8162,8 +8999,8 @@ inline void svst1h_scatter_u32base_offset_u32(svbool_t pg, svuint32_t bases,
                                               int64_t offset, svuint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      reinterpret_cast<uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)] =
-          core_to_u16(data.vec[idx]);
+      reinterpret_cast<uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)] = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(sizeof(reinterpret_cast<uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)]));
     }
   }
 }
@@ -8171,8 +9008,8 @@ inline void svst1h_scatter_u64base_offset_u64(svbool_t pg, svuint64_t bases,
                                               int64_t offset, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      reinterpret_cast<uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)] =
-          core_to_u16(data.vec[idx]);
+      reinterpret_cast<uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)] = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(sizeof(reinterpret_cast<uint16_t *>(bases.vec[idx])[offset / sizeof(uint16_t)]));
     }
   }
 }
@@ -8181,6 +9018,7 @@ inline void svst1h_scatter_s32index_s32(svbool_t pg, int16_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = core_to_s16(data.vec[idx]);
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -8189,6 +9027,7 @@ inline void svst1h_scatter_s64index_s64(svbool_t pg, int16_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = core_to_s16(data.vec[idx]);
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -8197,6 +9036,7 @@ inline void svst1h_scatter_s32index_u32(svbool_t pg, uint16_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = core_to_s16(data.vec[idx]);
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -8205,6 +9045,7 @@ inline void svst1h_scatter_s64index_u64(svbool_t pg, uint16_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = core_to_s16(data.vec[idx]);
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -8213,6 +9054,7 @@ inline void svst1h_scatter_u32index_s32(svbool_t pg, int16_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -8221,6 +9063,7 @@ inline void svst1h_scatter_u64index_s64(svbool_t pg, int16_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -8229,6 +9072,7 @@ inline void svst1h_scatter_u32index_u32(svbool_t pg, uint16_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -8237,6 +9081,7 @@ inline void svst1h_scatter_u64index_u64(svbool_t pg, uint16_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -8244,8 +9089,8 @@ inline void svst1h_scatter_u32base_index_s32(svbool_t pg, svuint32_t bases,
                                              int64_t index, svint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      reinterpret_cast<uint16_t *>(bases.vec[idx])[index] =
-          core_to_u16(data.vec[idx]);
+      reinterpret_cast<uint16_t *>(bases.vec[idx])[index] = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(sizeof(reinterpret_cast<uint16_t *>(bases.vec[idx])[index]));
     }
   }
 }
@@ -8253,8 +9098,8 @@ inline void svst1h_scatter_u64base_index_s64(svbool_t pg, svuint64_t bases,
                                              int64_t index, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      reinterpret_cast<uint16_t *>(bases.vec[idx])[index] =
-          core_to_u16(data.vec[idx]);
+      reinterpret_cast<uint16_t *>(bases.vec[idx])[index] = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(sizeof(reinterpret_cast<uint16_t *>(bases.vec[idx])[index]));
     }
   }
 }
@@ -8262,8 +9107,8 @@ inline void svst1h_scatter_u32base_index_u32(svbool_t pg, svuint32_t bases,
                                              int64_t index, svuint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      reinterpret_cast<uint16_t *>(bases.vec[idx])[index] =
-          core_to_u16(data.vec[idx]);
+      reinterpret_cast<uint16_t *>(bases.vec[idx])[index] = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(sizeof(reinterpret_cast<uint16_t *>(bases.vec[idx])[index]));
     }
   }
 }
@@ -8271,8 +9116,8 @@ inline void svst1h_scatter_u64base_index_u64(svbool_t pg, svuint64_t bases,
                                              int64_t index, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      reinterpret_cast<uint16_t *>(bases.vec[idx])[index] =
-          core_to_u16(data.vec[idx]);
+      reinterpret_cast<uint16_t *>(bases.vec[idx])[index] = core_to_u16(data.vec[idx]);
+      farm_mem_add_store(sizeof(reinterpret_cast<uint16_t *>(bases.vec[idx])[index]));
     }
   }
 }
@@ -8280,6 +9125,7 @@ inline void svst1w_s64(svbool_t pg, int32_t *base, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = core_to_s32(data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -8287,6 +9133,7 @@ inline void svst1w_u64(svbool_t pg, uint32_t *base, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = core_to_u32(data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -8295,6 +9142,7 @@ inline void svst1w_vnum_s64(svbool_t pg, int32_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = core_to_s32(data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -8303,6 +9151,7 @@ inline void svst1w_vnum_u64(svbool_t pg, uint32_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = core_to_u32(data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -8310,8 +9159,8 @@ inline void svst1w_scatter_u64base_s64(svbool_t pg, svuint64_t bases,
                                        svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      *reinterpret_cast<uint32_t *>(bases.vec[idx]) =
-          core_to_u32(data.vec[idx]);
+      *reinterpret_cast<uint32_t *>(bases.vec[idx]) = core_to_u32(data.vec[idx]);
+      farm_mem_add_store(sizeof(*reinterpret_cast<uint32_t *>(bases.vec[idx])));
     }
   }
 }
@@ -8319,8 +9168,8 @@ inline void svst1w_scatter_u64base_u64(svbool_t pg, svuint64_t bases,
                                        svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      *reinterpret_cast<uint32_t *>(bases.vec[idx]) =
-          core_to_u32(data.vec[idx]);
+      *reinterpret_cast<uint32_t *>(bases.vec[idx]) = core_to_u32(data.vec[idx]);
+      farm_mem_add_store(sizeof(*reinterpret_cast<uint32_t *>(bases.vec[idx])));
     }
   }
 }
@@ -8329,6 +9178,7 @@ inline void svst1w_scatter_s64offset_s64(svbool_t pg, int32_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(int32_t)] = core_to_s32(data.vec[idx]);
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(int32_t)]);
     }
   }
 }
@@ -8337,6 +9187,7 @@ inline void svst1w_scatter_s64offset_u64(svbool_t pg, uint32_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(int32_t)] = core_to_s32(data.vec[idx]);
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(int32_t)]);
     }
   }
 }
@@ -8345,6 +9196,7 @@ inline void svst1w_scatter_u64offset_s64(svbool_t pg, int32_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(uint32_t)] = core_to_u32(data.vec[idx]);
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(uint32_t)]);
     }
   }
 }
@@ -8353,6 +9205,7 @@ inline void svst1w_scatter_u64offset_u64(svbool_t pg, uint32_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[offsets.vec[idx] / sizeof(uint32_t)] = core_to_u32(data.vec[idx]);
+      farm_mem_add_store(base[offsets.vec[idx] / sizeof(uint32_t)]);
     }
   }
 }
@@ -8360,8 +9213,8 @@ inline void svst1w_scatter_u64base_offset_s64(svbool_t pg, svuint64_t bases,
                                               int64_t offset, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      reinterpret_cast<uint32_t *>(bases.vec[idx])[offset / sizeof(uint32_t)] =
-          core_to_u32(data.vec[idx]);
+      reinterpret_cast<uint32_t *>(bases.vec[idx])[offset / sizeof(uint32_t)] = core_to_u32(data.vec[idx]);
+      farm_mem_add_store(sizeof(reinterpret_cast<uint32_t *>(bases.vec[idx])[offset / sizeof(uint32_t)]));
     }
   }
 }
@@ -8369,8 +9222,8 @@ inline void svst1w_scatter_u64base_offset_u64(svbool_t pg, svuint64_t bases,
                                               int64_t offset, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      reinterpret_cast<uint32_t *>(bases.vec[idx])[offset / sizeof(uint32_t)] =
-          core_to_u32(data.vec[idx]);
+      reinterpret_cast<uint32_t *>(bases.vec[idx])[offset / sizeof(uint32_t)] = core_to_u32(data.vec[idx]);
+      farm_mem_add_store(sizeof(reinterpret_cast<uint32_t *>(bases.vec[idx])[offset / sizeof(uint32_t)]));
     }
   }
 }
@@ -8379,6 +9232,7 @@ inline void svst1w_scatter_s64index_s64(svbool_t pg, int32_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = core_to_s32(data.vec[idx]);
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -8387,6 +9241,7 @@ inline void svst1w_scatter_s64index_u64(svbool_t pg, uint32_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = core_to_s32(data.vec[idx]);
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -8395,6 +9250,7 @@ inline void svst1w_scatter_u64index_s64(svbool_t pg, int32_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = core_to_u32(data.vec[idx]);
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -8403,6 +9259,7 @@ inline void svst1w_scatter_u64index_u64(svbool_t pg, uint32_t *base,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[indices.vec[idx]] = core_to_u32(data.vec[idx]);
+      farm_mem_add_store(base[indices.vec[idx]]);
     }
   }
 }
@@ -8410,8 +9267,8 @@ inline void svst1w_scatter_u64base_index_s64(svbool_t pg, svuint64_t bases,
                                              int64_t index, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      reinterpret_cast<uint32_t *>(bases.vec[idx])[index] =
-          core_to_u32(data.vec[idx]);
+      reinterpret_cast<uint32_t *>(bases.vec[idx])[index] = core_to_u32(data.vec[idx]);
+      farm_mem_add_store(sizeof(reinterpret_cast<uint32_t *>(bases.vec[idx])[index]));
     }
   }
 }
@@ -8419,8 +9276,8 @@ inline void svst1w_scatter_u64base_index_u64(svbool_t pg, svuint64_t bases,
                                              int64_t index, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
-      reinterpret_cast<uint32_t *>(bases.vec[idx])[index] =
-          core_to_u32(data.vec[idx]);
+      reinterpret_cast<uint32_t *>(bases.vec[idx])[index] = core_to_u32(data.vec[idx]);
+      farm_mem_add_store(sizeof(reinterpret_cast<uint32_t *>(bases.vec[idx])[index]));
     }
   }
 }
@@ -8428,6 +9285,7 @@ inline void svstnt1_s8(svbool_t pg, int8_t *base, svint8_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = (data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -8435,6 +9293,7 @@ inline void svstnt1_s16(svbool_t pg, int16_t *base, svint16_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = (data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -8442,6 +9301,7 @@ inline void svstnt1_s32(svbool_t pg, int32_t *base, svint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = (data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -8449,6 +9309,7 @@ inline void svstnt1_s64(svbool_t pg, int64_t *base, svint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = (data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -8456,6 +9317,7 @@ inline void svstnt1_u8(svbool_t pg, uint8_t *base, svuint8_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = (data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -8463,6 +9325,7 @@ inline void svstnt1_u16(svbool_t pg, uint16_t *base, svuint16_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = (data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -8470,6 +9333,7 @@ inline void svstnt1_u32(svbool_t pg, uint32_t *base, svuint32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = (data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -8477,6 +9341,7 @@ inline void svstnt1_u64(svbool_t pg, uint64_t *base, svuint64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = (data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -8484,6 +9349,7 @@ inline void svstnt1_f16(svbool_t pg, float16_t *base, svfloat16_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = (data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -8491,6 +9357,7 @@ inline void svstnt1_f32(svbool_t pg, float32_t *base, svfloat32_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = (data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -8498,6 +9365,7 @@ inline void svstnt1_f64(svbool_t pg, float64_t *base, svfloat64_t data) {
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx] = (data.vec[idx]);
+      farm_mem_add_store(base[idx]);
     }
   }
 }
@@ -8506,6 +9374,7 @@ inline void svstnt1_vnum_s8(svbool_t pg, int8_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = (data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -8514,6 +9383,7 @@ inline void svstnt1_vnum_s16(svbool_t pg, int16_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = (data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -8522,6 +9392,7 @@ inline void svstnt1_vnum_s32(svbool_t pg, int32_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = (data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -8530,6 +9401,7 @@ inline void svstnt1_vnum_s64(svbool_t pg, int64_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = (data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -8538,6 +9410,7 @@ inline void svstnt1_vnum_u8(svbool_t pg, uint8_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = (data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -8546,6 +9419,7 @@ inline void svstnt1_vnum_u16(svbool_t pg, uint16_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = (data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -8554,6 +9428,7 @@ inline void svstnt1_vnum_u32(svbool_t pg, uint32_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = (data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -8562,6 +9437,7 @@ inline void svstnt1_vnum_u64(svbool_t pg, uint64_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = (data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -8570,6 +9446,7 @@ inline void svstnt1_vnum_f16(svbool_t pg, float16_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = (data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -8578,6 +9455,7 @@ inline void svstnt1_vnum_f32(svbool_t pg, float32_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = (data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -8586,6 +9464,7 @@ inline void svstnt1_vnum_f64(svbool_t pg, float64_t *base, int64_t vnum,
   for (int idx = 0; idx < data.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * vnum] = (data.vec[idx]);
+      farm_mem_add_store(base[idx * vnum]);
     }
   }
 }
@@ -8593,7 +9472,9 @@ inline void svst2_s8(svbool_t pg, int8_t *base, svint8x2_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2]);
       base[idx * 2 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 + 1]);
     }
   }
 }
@@ -8601,7 +9482,9 @@ inline void svst2_s16(svbool_t pg, int16_t *base, svint16x2_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2]);
       base[idx * 2 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 + 1]);
     }
   }
 }
@@ -8609,7 +9492,9 @@ inline void svst2_s32(svbool_t pg, int32_t *base, svint32x2_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2]);
       base[idx * 2 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 + 1]);
     }
   }
 }
@@ -8617,7 +9502,9 @@ inline void svst2_s64(svbool_t pg, int64_t *base, svint64x2_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2]);
       base[idx * 2 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 + 1]);
     }
   }
 }
@@ -8625,7 +9512,9 @@ inline void svst2_u8(svbool_t pg, uint8_t *base, svuint8x2_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2]);
       base[idx * 2 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 + 1]);
     }
   }
 }
@@ -8633,7 +9522,9 @@ inline void svst2_u16(svbool_t pg, uint16_t *base, svuint16x2_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2]);
       base[idx * 2 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 + 1]);
     }
   }
 }
@@ -8641,7 +9532,9 @@ inline void svst2_u32(svbool_t pg, uint32_t *base, svuint32x2_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2]);
       base[idx * 2 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 + 1]);
     }
   }
 }
@@ -8649,7 +9542,9 @@ inline void svst2_u64(svbool_t pg, uint64_t *base, svuint64x2_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2]);
       base[idx * 2 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 + 1]);
     }
   }
 }
@@ -8657,7 +9552,9 @@ inline void svst2_f16(svbool_t pg, float16_t *base, svfloat16x2_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2]);
       base[idx * 2 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 + 1]);
     }
   }
 }
@@ -8665,7 +9562,9 @@ inline void svst2_f32(svbool_t pg, float32_t *base, svfloat32x2_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2]);
       base[idx * 2 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 + 1]);
     }
   }
 }
@@ -8673,7 +9572,9 @@ inline void svst2_f64(svbool_t pg, float64_t *base, svfloat64x2_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2]);
       base[idx * 2 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 + 1]);
     }
   }
 }
@@ -8682,7 +9583,9 @@ inline void svst2_vnum_s8(svbool_t pg, int8_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum]);
       base[idx * 2 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum + 1]);
     }
   }
 }
@@ -8691,7 +9594,9 @@ inline void svst2_vnum_s16(svbool_t pg, int16_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum]);
       base[idx * 2 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum + 1]);
     }
   }
 }
@@ -8700,7 +9605,9 @@ inline void svst2_vnum_s32(svbool_t pg, int32_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum]);
       base[idx * 2 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum + 1]);
     }
   }
 }
@@ -8709,7 +9616,9 @@ inline void svst2_vnum_s64(svbool_t pg, int64_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum]);
       base[idx * 2 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum + 1]);
     }
   }
 }
@@ -8718,7 +9627,9 @@ inline void svst2_vnum_u8(svbool_t pg, uint8_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum]);
       base[idx * 2 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum + 1]);
     }
   }
 }
@@ -8727,7 +9638,9 @@ inline void svst2_vnum_u16(svbool_t pg, uint16_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum]);
       base[idx * 2 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum + 1]);
     }
   }
 }
@@ -8736,7 +9649,9 @@ inline void svst2_vnum_u32(svbool_t pg, uint32_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum]);
       base[idx * 2 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum + 1]);
     }
   }
 }
@@ -8745,7 +9660,9 @@ inline void svst2_vnum_u64(svbool_t pg, uint64_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum]);
       base[idx * 2 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum + 1]);
     }
   }
 }
@@ -8754,7 +9671,9 @@ inline void svst2_vnum_f16(svbool_t pg, float16_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum]);
       base[idx * 2 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum + 1]);
     }
   }
 }
@@ -8763,7 +9682,9 @@ inline void svst2_vnum_f32(svbool_t pg, float32_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum]);
       base[idx * 2 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum + 1]);
     }
   }
 }
@@ -8772,7 +9693,9 @@ inline void svst2_vnum_f64(svbool_t pg, float64_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 2 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum]);
       base[idx * 2 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 2 * vnum + 1]);
     }
   }
 }
@@ -8780,8 +9703,11 @@ inline void svst3_s8(svbool_t pg, int8_t *base, svint8x3_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3]);
       base[idx * 3 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 1]);
       base[idx * 3 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 2]);
     }
   }
 }
@@ -8789,8 +9715,11 @@ inline void svst3_s16(svbool_t pg, int16_t *base, svint16x3_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3]);
       base[idx * 3 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 1]);
       base[idx * 3 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 2]);
     }
   }
 }
@@ -8798,8 +9727,11 @@ inline void svst3_s32(svbool_t pg, int32_t *base, svint32x3_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3]);
       base[idx * 3 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 1]);
       base[idx * 3 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 2]);
     }
   }
 }
@@ -8807,8 +9739,11 @@ inline void svst3_s64(svbool_t pg, int64_t *base, svint64x3_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3]);
       base[idx * 3 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 1]);
       base[idx * 3 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 2]);
     }
   }
 }
@@ -8816,8 +9751,11 @@ inline void svst3_u8(svbool_t pg, uint8_t *base, svuint8x3_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3]);
       base[idx * 3 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 1]);
       base[idx * 3 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 2]);
     }
   }
 }
@@ -8825,8 +9763,11 @@ inline void svst3_u16(svbool_t pg, uint16_t *base, svuint16x3_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3]);
       base[idx * 3 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 1]);
       base[idx * 3 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 2]);
     }
   }
 }
@@ -8834,8 +9775,11 @@ inline void svst3_u32(svbool_t pg, uint32_t *base, svuint32x3_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3]);
       base[idx * 3 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 1]);
       base[idx * 3 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 2]);
     }
   }
 }
@@ -8843,8 +9787,11 @@ inline void svst3_u64(svbool_t pg, uint64_t *base, svuint64x3_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3]);
       base[idx * 3 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 1]);
       base[idx * 3 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 2]);
     }
   }
 }
@@ -8852,8 +9799,11 @@ inline void svst3_f16(svbool_t pg, float16_t *base, svfloat16x3_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3]);
       base[idx * 3 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 1]);
       base[idx * 3 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 2]);
     }
   }
 }
@@ -8861,8 +9811,11 @@ inline void svst3_f32(svbool_t pg, float32_t *base, svfloat32x3_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3]);
       base[idx * 3 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 1]);
       base[idx * 3 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 2]);
     }
   }
 }
@@ -8870,8 +9823,11 @@ inline void svst3_f64(svbool_t pg, float64_t *base, svfloat64x3_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3]);
       base[idx * 3 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 1]);
       base[idx * 3 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 + 2]);
     }
   }
 }
@@ -8880,8 +9836,11 @@ inline void svst3_vnum_s8(svbool_t pg, int8_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum]);
       base[idx * 3 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 1]);
       base[idx * 3 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 2]);
     }
   }
 }
@@ -8890,8 +9849,11 @@ inline void svst3_vnum_s16(svbool_t pg, int16_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum]);
       base[idx * 3 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 1]);
       base[idx * 3 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 2]);
     }
   }
 }
@@ -8900,8 +9862,11 @@ inline void svst3_vnum_s32(svbool_t pg, int32_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum]);
       base[idx * 3 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 1]);
       base[idx * 3 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 2]);
     }
   }
 }
@@ -8910,8 +9875,11 @@ inline void svst3_vnum_s64(svbool_t pg, int64_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum]);
       base[idx * 3 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 1]);
       base[idx * 3 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 2]);
     }
   }
 }
@@ -8920,8 +9888,11 @@ inline void svst3_vnum_u8(svbool_t pg, uint8_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum]);
       base[idx * 3 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 1]);
       base[idx * 3 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 2]);
     }
   }
 }
@@ -8930,8 +9901,11 @@ inline void svst3_vnum_u16(svbool_t pg, uint16_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum]);
       base[idx * 3 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 1]);
       base[idx * 3 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 2]);
     }
   }
 }
@@ -8940,8 +9914,11 @@ inline void svst3_vnum_u32(svbool_t pg, uint32_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum]);
       base[idx * 3 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 1]);
       base[idx * 3 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 2]);
     }
   }
 }
@@ -8950,8 +9927,11 @@ inline void svst3_vnum_u64(svbool_t pg, uint64_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum]);
       base[idx * 3 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 1]);
       base[idx * 3 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 2]);
     }
   }
 }
@@ -8960,8 +9940,11 @@ inline void svst3_vnum_f16(svbool_t pg, float16_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum]);
       base[idx * 3 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 1]);
       base[idx * 3 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 2]);
     }
   }
 }
@@ -8970,8 +9953,11 @@ inline void svst3_vnum_f32(svbool_t pg, float32_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum]);
       base[idx * 3 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 1]);
       base[idx * 3 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 2]);
     }
   }
 }
@@ -8980,8 +9966,11 @@ inline void svst3_vnum_f64(svbool_t pg, float64_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 3 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum]);
       base[idx * 3 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 1]);
       base[idx * 3 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 3 * vnum + 2]);
     }
   }
 }
@@ -8989,9 +9978,13 @@ inline void svst4_s8(svbool_t pg, int8_t *base, svint8x4_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4]);
       base[idx * 4 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 1]);
       base[idx * 4 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 2]);
       base[idx * 4 + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 3]);
     }
   }
 }
@@ -8999,9 +9992,13 @@ inline void svst4_s16(svbool_t pg, int16_t *base, svint16x4_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4]);
       base[idx * 4 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 1]);
       base[idx * 4 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 2]);
       base[idx * 4 + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 3]);
     }
   }
 }
@@ -9009,9 +10006,13 @@ inline void svst4_s32(svbool_t pg, int32_t *base, svint32x4_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4]);
       base[idx * 4 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 1]);
       base[idx * 4 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 2]);
       base[idx * 4 + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 3]);
     }
   }
 }
@@ -9019,9 +10020,13 @@ inline void svst4_s64(svbool_t pg, int64_t *base, svint64x4_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4]);
       base[idx * 4 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 1]);
       base[idx * 4 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 2]);
       base[idx * 4 + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 3]);
     }
   }
 }
@@ -9029,9 +10034,13 @@ inline void svst4_u8(svbool_t pg, uint8_t *base, svuint8x4_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4]);
       base[idx * 4 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 1]);
       base[idx * 4 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 2]);
       base[idx * 4 + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 3]);
     }
   }
 }
@@ -9039,9 +10048,13 @@ inline void svst4_u16(svbool_t pg, uint16_t *base, svuint16x4_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4]);
       base[idx * 4 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 1]);
       base[idx * 4 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 2]);
       base[idx * 4 + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 3]);
     }
   }
 }
@@ -9049,9 +10062,13 @@ inline void svst4_u32(svbool_t pg, uint32_t *base, svuint32x4_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4]);
       base[idx * 4 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 1]);
       base[idx * 4 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 2]);
       base[idx * 4 + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 3]);
     }
   }
 }
@@ -9059,9 +10076,13 @@ inline void svst4_u64(svbool_t pg, uint64_t *base, svuint64x4_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4]);
       base[idx * 4 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 1]);
       base[idx * 4 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 2]);
       base[idx * 4 + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 3]);
     }
   }
 }
@@ -9069,9 +10090,13 @@ inline void svst4_f16(svbool_t pg, float16_t *base, svfloat16x4_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4]);
       base[idx * 4 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 1]);
       base[idx * 4 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 2]);
       base[idx * 4 + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 3]);
     }
   }
 }
@@ -9079,9 +10104,13 @@ inline void svst4_f32(svbool_t pg, float32_t *base, svfloat32x4_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4]);
       base[idx * 4 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 1]);
       base[idx * 4 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 2]);
       base[idx * 4 + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 3]);
     }
   }
 }
@@ -9089,9 +10118,13 @@ inline void svst4_f64(svbool_t pg, float64_t *base, svfloat64x4_t data) {
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4]);
       base[idx * 4 + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 1]);
       base[idx * 4 + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 2]);
       base[idx * 4 + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 + 3]);
     }
   }
 }
@@ -9100,9 +10133,13 @@ inline void svst4_vnum_s8(svbool_t pg, int8_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum]);
       base[idx * 4 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 1]);
       base[idx * 4 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 2]);
       base[idx * 4 * vnum + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 3]);
     }
   }
 }
@@ -9111,9 +10148,13 @@ inline void svst4_vnum_s16(svbool_t pg, int16_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum]);
       base[idx * 4 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 1]);
       base[idx * 4 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 2]);
       base[idx * 4 * vnum + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 3]);
     }
   }
 }
@@ -9122,9 +10163,13 @@ inline void svst4_vnum_s32(svbool_t pg, int32_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum]);
       base[idx * 4 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 1]);
       base[idx * 4 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 2]);
       base[idx * 4 * vnum + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 3]);
     }
   }
 }
@@ -9133,9 +10178,13 @@ inline void svst4_vnum_s64(svbool_t pg, int64_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum]);
       base[idx * 4 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 1]);
       base[idx * 4 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 2]);
       base[idx * 4 * vnum + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 3]);
     }
   }
 }
@@ -9144,9 +10193,13 @@ inline void svst4_vnum_u8(svbool_t pg, uint8_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum]);
       base[idx * 4 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 1]);
       base[idx * 4 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 2]);
       base[idx * 4 * vnum + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 3]);
     }
   }
 }
@@ -9155,9 +10208,13 @@ inline void svst4_vnum_u16(svbool_t pg, uint16_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum]);
       base[idx * 4 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 1]);
       base[idx * 4 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 2]);
       base[idx * 4 * vnum + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 3]);
     }
   }
 }
@@ -9166,9 +10223,13 @@ inline void svst4_vnum_u32(svbool_t pg, uint32_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum]);
       base[idx * 4 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 1]);
       base[idx * 4 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 2]);
       base[idx * 4 * vnum + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 3]);
     }
   }
 }
@@ -9177,9 +10238,13 @@ inline void svst4_vnum_u64(svbool_t pg, uint64_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum]);
       base[idx * 4 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 1]);
       base[idx * 4 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 2]);
       base[idx * 4 * vnum + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 3]);
     }
   }
 }
@@ -9188,9 +10253,13 @@ inline void svst4_vnum_f16(svbool_t pg, float16_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum]);
       base[idx * 4 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 1]);
       base[idx * 4 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 2]);
       base[idx * 4 * vnum + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 3]);
     }
   }
 }
@@ -9199,9 +10268,13 @@ inline void svst4_vnum_f32(svbool_t pg, float32_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum]);
       base[idx * 4 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 1]);
       base[idx * 4 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 2]);
       base[idx * 4 * vnum + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 3]);
     }
   }
 }
@@ -9210,9 +10283,13 @@ inline void svst4_vnum_f64(svbool_t pg, float64_t *base, int64_t vnum,
   for (int idx = 0; idx < data.v0.Size; ++idx) {
     if (pg.vec[idx]) {
       base[idx * 4 * vnum] = (data.v0.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum]);
       base[idx * 4 * vnum + 1] = (data.v1.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 1]);
       base[idx * 4 * vnum + 2] = (data.v2.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 2]);
       base[idx * 4 * vnum + 3] = (data.v3.vec[idx]);
+      farm_mem_add_store(base[idx * 4 * vnum + 3]);
     }
   }
 }
@@ -9377,6 +10454,7 @@ inline svuint32_t svadrb_u32base_s32offset(svuint32_t bases,
   svuint32_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     res.vec[idx] = bases.vec[idx] + offsets.vec[idx];
+farm_mem_add_load(sizeof(bases.vec[idx] + offsets.vec[idx]));
   }
   return res;
 }
@@ -9385,6 +10463,7 @@ inline svuint64_t svadrb_u64base_s64offset(svuint64_t bases,
   svuint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     res.vec[idx] = bases.vec[idx] + offsets.vec[idx];
+farm_mem_add_load(sizeof(bases.vec[idx] + offsets.vec[idx]));
   }
   return res;
 }
@@ -9393,6 +10472,7 @@ inline svuint32_t svadrb_u32base_u32offset(svuint32_t bases,
   svuint32_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     res.vec[idx] = bases.vec[idx] + offsets.vec[idx];
+farm_mem_add_load(sizeof(bases.vec[idx] + offsets.vec[idx]));
   }
   return res;
 }
@@ -9401,6 +10481,7 @@ inline svuint64_t svadrb_u64base_u64offset(svuint64_t bases,
   svuint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     res.vec[idx] = bases.vec[idx] + offsets.vec[idx];
+farm_mem_add_load(sizeof(bases.vec[idx] + offsets.vec[idx]));
   }
   return res;
 }
@@ -9408,6 +10489,7 @@ inline svuint32_t svadrh_u32base_s32index(svuint32_t bases, svint32_t indices) {
   svuint32_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     res.vec[idx] = bases.vec[idx] + indices.vec[idx] * 2;
+farm_mem_add_load(sizeof(bases.vec[idx] + indices.vec[idx]));
   }
   return res;
 }
@@ -9415,6 +10497,7 @@ inline svuint64_t svadrh_u64base_s64index(svuint64_t bases, svint64_t indices) {
   svuint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     res.vec[idx] = bases.vec[idx] + indices.vec[idx] * 2;
+farm_mem_add_load(sizeof(bases.vec[idx] + indices.vec[idx]));
   }
   return res;
 }
@@ -9423,6 +10506,7 @@ inline svuint32_t svadrh_u32base_u32index(svuint32_t bases,
   svuint32_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     res.vec[idx] = bases.vec[idx] + indices.vec[idx] * 2;
+farm_mem_add_load(sizeof(bases.vec[idx] + indices.vec[idx]));
   }
   return res;
 }
@@ -9431,6 +10515,7 @@ inline svuint64_t svadrh_u64base_u64index(svuint64_t bases,
   svuint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     res.vec[idx] = bases.vec[idx] + indices.vec[idx] * 2;
+farm_mem_add_load(sizeof(bases.vec[idx] + indices.vec[idx]));
   }
   return res;
 }
@@ -9438,6 +10523,7 @@ inline svuint32_t svadrw_u32base_s32index(svuint32_t bases, svint32_t indices) {
   svuint32_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     res.vec[idx] = bases.vec[idx] + indices.vec[idx] * 4;
+farm_mem_add_load(sizeof(bases.vec[idx] + indices.vec[idx]));
   }
   return res;
 }
@@ -9445,6 +10531,7 @@ inline svuint64_t svadrw_u64base_s64index(svuint64_t bases, svint64_t indices) {
   svuint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     res.vec[idx] = bases.vec[idx] + indices.vec[idx] * 4;
+farm_mem_add_load(sizeof(bases.vec[idx] + indices.vec[idx]));
   }
   return res;
 }
@@ -9453,6 +10540,7 @@ inline svuint32_t svadrw_u32base_u32index(svuint32_t bases,
   svuint32_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     res.vec[idx] = bases.vec[idx] + indices.vec[idx] * 4;
+farm_mem_add_load(sizeof(bases.vec[idx] + indices.vec[idx]));
   }
   return res;
 }
@@ -9461,6 +10549,7 @@ inline svuint64_t svadrw_u64base_u64index(svuint64_t bases,
   svuint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     res.vec[idx] = bases.vec[idx] + indices.vec[idx] * 4;
+farm_mem_add_load(sizeof(bases.vec[idx] + indices.vec[idx]));
   }
   return res;
 }
@@ -9468,6 +10557,7 @@ inline svuint32_t svadrd_u32base_s32index(svuint32_t bases, svint32_t indices) {
   svuint32_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     res.vec[idx] = bases.vec[idx] + indices.vec[idx] * 8;
+farm_mem_add_load(sizeof(bases.vec[idx] + indices.vec[idx]));
   }
   return res;
 }
@@ -9475,6 +10565,7 @@ inline svuint64_t svadrd_u64base_s64index(svuint64_t bases, svint64_t indices) {
   svuint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     res.vec[idx] = bases.vec[idx] + indices.vec[idx] * 8;
+farm_mem_add_load(sizeof(bases.vec[idx] + indices.vec[idx]));
   }
   return res;
 }
@@ -9483,6 +10574,7 @@ inline svuint32_t svadrd_u32base_u32index(svuint32_t bases,
   svuint32_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     res.vec[idx] = bases.vec[idx] + indices.vec[idx] * 8;
+farm_mem_add_load(sizeof(bases.vec[idx] + indices.vec[idx]));
   }
   return res;
 }
@@ -9491,6 +10583,7 @@ inline svuint64_t svadrd_u64base_u64index(svuint64_t bases,
   svuint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
     res.vec[idx] = bases.vec[idx] + indices.vec[idx] * 8;
+farm_mem_add_load(sizeof(bases.vec[idx] + indices.vec[idx]));
   }
   return res;
 }
