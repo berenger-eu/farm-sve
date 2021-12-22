@@ -493,7 +493,7 @@ inline Type core_svrevh(const Type v1) {
   bytes16 data;
   data.val = v1;
   for (int idx = 0; idx < int(sizeof(Type) / 4); ++idx) {
-    std::swap(data.bt[idx], data.bt[sizeof(Type) - idx - 1]);
+    std::swap(data.bt[idx], data.bt[sizeof(Type) / 2 - idx - 1]);
   }
 
   return data.val;
