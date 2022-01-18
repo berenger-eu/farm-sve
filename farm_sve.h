@@ -33346,7 +33346,7 @@ inline svfloat64_t svtrn2_f64(svfloat64_t op1, svfloat64_t op2) {
 }
 inline svbool_t svtrn2_b8(svbool_t op1, svbool_t op2) {
   svbool_t res;
-  for (int idx = 0; idx < FARM_NB_BITS_IN_VEC / 8 / 2; idx += 2) {
+  for (int idx = 0; idx < FARM_NB_BITS_IN_VEC / 8; idx += 2) {
     res.vec[idx] = op1.vec[idx + 1];
     res.vec[idx + 1] = op2.vec[idx + 1];
   }
@@ -33354,7 +33354,7 @@ inline svbool_t svtrn2_b8(svbool_t op1, svbool_t op2) {
 }
 inline svbool_t svtrn2_b16(svbool_t op1, svbool_t op2) {
   svbool_t res;
-  for (int idx = 0; idx < FARM_NB_BITS_IN_VEC / 16 / 2; idx += 2) {
+  for (int idx = 0; idx < FARM_NB_BITS_IN_VEC / 16; idx += 2) {
     res.vec[idx] = op1.vec[idx + 1];
     res.vec[idx + 1] = op2.vec[idx + 1];
   }
@@ -33363,7 +33363,7 @@ inline svbool_t svtrn2_b16(svbool_t op1, svbool_t op2) {
 
 inline svbool_t svtrn2_b32(svbool_t op1, svbool_t op2) {
   svbool_t res;
-  for (int idx = 0; idx < FARM_NB_BITS_IN_VEC / 32 / 2; idx += 2) {
+  for (int idx = 0; idx < FARM_NB_BITS_IN_VEC / 32; idx += 2) {
     res.vec[idx] = op1.vec[idx + 1];
     res.vec[idx + 1] = op2.vec[idx + 1];
   }
@@ -33371,7 +33371,7 @@ inline svbool_t svtrn2_b32(svbool_t op1, svbool_t op2) {
 }
 inline svbool_t svtrn2_b64(svbool_t op1, svbool_t op2) {
   svbool_t res;
-  for (int idx = 0; idx < FARM_NB_BITS_IN_VEC / 64 / 2; idx += 2) {
+  for (int idx = 0; idx < FARM_NB_BITS_IN_VEC / 64; idx += 2) {
     res.vec[idx] = op1.vec[idx + 1];
     res.vec[idx + 1] = op2.vec[idx + 1];
   }
