@@ -32947,14 +32947,14 @@ inline svfloat64_t svdupq_lane_f64(svfloat64_t data, uint64_t index) {
 inline svint8_t svtbl_s8(svint8_t data, svuint8_t indices) {
   svint8_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
-    res.vec[idx] = data.vec[indices.vec[idx]];
+    res.vec[idx] = ((0 <= indices.vec[idx] && indices.vec[idx] < res.Size) ? data.vec[indices.vec[idx]] : 0);
   }
   return res;
 }
 inline svint16_t svtbl_s16(svint16_t data, svuint16_t indices) {
   svint16_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
-    res.vec[idx] = data.vec[indices.vec[idx]];
+    res.vec[idx] = ((0 <= indices.vec[idx] && indices.vec[idx] < res.Size) ? data.vec[indices.vec[idx]] : 0);
   }
   return res;
 }
@@ -32962,7 +32962,7 @@ inline svint16_t svtbl_s16(svint16_t data, svuint16_t indices) {
 inline svint32_t svtbl_s32(svint32_t data, svuint32_t indices) {
   svint32_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
-    res.vec[idx] = data.vec[indices.vec[idx]];
+    res.vec[idx] = ((0 <= indices.vec[idx] && indices.vec[idx] < res.Size) ? data.vec[indices.vec[idx]] : 0);
   }
   return res;
 }
@@ -32970,49 +32970,49 @@ inline svint32_t svtbl_s32(svint32_t data, svuint32_t indices) {
 inline svint64_t svtbl_s64(svint64_t data, svuint64_t indices) {
   svint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
-    res.vec[idx] = data.vec[indices.vec[idx]];
+    res.vec[idx] = ((0 <= indices.vec[idx] && indices.vec[idx] < res.Size) ? data.vec[indices.vec[idx]] : 0);
   }
   return res;
 }
 inline svuint8_t svtbl_u8(svuint8_t data, svuint8_t indices) {
   svuint8_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
-    res.vec[idx] = data.vec[indices.vec[idx]];
+    res.vec[idx] = ((0 <= indices.vec[idx] && indices.vec[idx] < res.Size) ? data.vec[indices.vec[idx]] : 0);
   }
   return res;
 }
 inline svuint16_t svtbl_u16(svuint16_t data, svuint16_t indices) {
   svuint16_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
-    res.vec[idx] = data.vec[indices.vec[idx]];
+    res.vec[idx] = ((0 <= indices.vec[idx] && indices.vec[idx] < res.Size) ? data.vec[indices.vec[idx]] : 0);
   }
   return res;
 }
 inline svuint32_t svtbl_u32(svuint32_t data, svuint32_t indices) {
   svuint32_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
-    res.vec[idx] = data.vec[indices.vec[idx]];
+    res.vec[idx] = ((0 <= indices.vec[idx] && indices.vec[idx] < res.Size) ? data.vec[indices.vec[idx]] : 0);
   }
   return res;
 }
 inline svuint64_t svtbl_u64(svuint64_t data, svuint64_t indices) {
   svuint64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
-    res.vec[idx] = data.vec[indices.vec[idx]];
+    res.vec[idx] = ((0 <= indices.vec[idx] && indices.vec[idx] < res.Size) ? data.vec[indices.vec[idx]] : 0);
   }
   return res;
 }
 inline svfloat16_t svtbl_f16(svfloat16_t data, svuint16_t indices) {
   svfloat16_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
-    res.vec[idx] = data.vec[indices.vec[idx]];
+    res.vec[idx] = ((0 <= indices.vec[idx] && indices.vec[idx] < res.Size) ? data.vec[indices.vec[idx]] : FarmFloat16(0.f));
   }
   return res;
 }
 inline svfloat32_t svtbl_f32(svfloat32_t data, svuint32_t indices) {
   svfloat32_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
-    res.vec[idx] = data.vec[indices.vec[idx]];
+    res.vec[idx] = ((0 <= indices.vec[idx] && indices.vec[idx] < res.Size) ? data.vec[indices.vec[idx]] : 0.f);
   }
   return res;
 }
@@ -33020,7 +33020,7 @@ inline svfloat32_t svtbl_f32(svfloat32_t data, svuint32_t indices) {
 inline svfloat64_t svtbl_f64(svfloat64_t data, svuint64_t indices) {
   svfloat64_t res;
   for (int idx = 0; idx < res.Size; ++idx) {
-    res.vec[idx] = data.vec[indices.vec[idx]];
+    res.vec[idx] = ((0 <= indices.vec[idx] && indices.vec[idx] < res.Size) ? data.vec[indices.vec[idx]] : 0.);
   }
   return res;
 }
