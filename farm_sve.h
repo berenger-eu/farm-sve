@@ -30829,7 +30829,7 @@ inline svint32_t svcvt_s32_f16_z(svbool_t pg, svfloat16_t op) {
   svint32_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -30847,7 +30847,7 @@ inline svint32_t svcvt_s32_f64_z(svbool_t pg, svfloat64_t op) {
   svint32_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = core_s32_from_float(op.vec[idx]);
+      res.vec[idx * 2] = core_s32_from_float(op.vec[idx]);
     }
   }
   return res;
@@ -30856,7 +30856,7 @@ inline svint64_t svcvt_s64_f16_z(svbool_t pg, svfloat16_t op) {
   svint64_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 4];
     }
   }
   return res;
@@ -30865,7 +30865,7 @@ inline svint64_t svcvt_s64_f32_z(svbool_t pg, svfloat32_t op) {
   svint64_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -30883,7 +30883,7 @@ inline svuint32_t svcvt_u32_f16_z(svbool_t pg, svfloat16_t op) {
   svuint32_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -30901,7 +30901,7 @@ inline svuint32_t svcvt_u32_f64_z(svbool_t pg, svfloat64_t op) {
   svuint32_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 2] = op.vec[idx];
     }
   }
   return res;
@@ -30910,7 +30910,7 @@ inline svuint64_t svcvt_u64_f16_z(svbool_t pg, svfloat16_t op) {
   svuint64_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 4];
     }
   }
   return res;
@@ -30919,7 +30919,7 @@ inline svuint64_t svcvt_u64_f32_z(svbool_t pg, svfloat32_t op) {
   svuint64_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -30958,7 +30958,7 @@ inline svint32_t svcvt_s32_f16_m(svint32_t inactive, svbool_t pg,
   svint32_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -30978,7 +30978,7 @@ inline svint32_t svcvt_s32_f64_m(svint32_t inactive, svbool_t pg,
   svint32_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = core_s32_from_float(op.vec[idx]);
+      res.vec[idx * 2] = core_s32_from_float(op.vec[idx]);
     }
   }
   return res;
@@ -30988,7 +30988,7 @@ inline svint64_t svcvt_s64_f16_m(svint64_t inactive, svbool_t pg,
   svint64_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 4];
     }
   }
   return res;
@@ -30998,7 +30998,7 @@ inline svint64_t svcvt_s64_f32_m(svint64_t inactive, svbool_t pg,
   svint64_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -31018,7 +31018,7 @@ inline svuint32_t svcvt_u32_f16_m(svuint32_t inactive, svbool_t pg,
   svuint32_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -31038,7 +31038,7 @@ inline svuint32_t svcvt_u32_f64_m(svuint32_t inactive, svbool_t pg,
   svuint32_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 2] = op.vec[idx];
     }
   }
   return res;
@@ -31048,7 +31048,7 @@ inline svuint64_t svcvt_u64_f16_m(svuint64_t inactive, svbool_t pg,
   svuint64_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 4];
     }
   }
   return res;
@@ -31058,7 +31058,7 @@ inline svuint64_t svcvt_u64_f32_m(svuint64_t inactive, svbool_t pg,
   svuint64_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -31095,7 +31095,7 @@ inline svint32_t svcvt_s32_f16_x(svbool_t pg, svfloat16_t op) {
   svint32_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -31113,7 +31113,7 @@ inline svint32_t svcvt_s32_f64_x(svbool_t pg, svfloat64_t op) {
   svint32_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = core_s32_from_float(op.vec[idx]);
+      res.vec[idx * 2] = core_s32_from_float(op.vec[idx]);
     }
   }
   return res;
@@ -31122,7 +31122,7 @@ inline svint64_t svcvt_s64_f16_x(svbool_t pg, svfloat16_t op) {
   svint64_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 4];
     }
   }
   return res;
@@ -31131,7 +31131,7 @@ inline svint64_t svcvt_s64_f32_x(svbool_t pg, svfloat32_t op) {
   svint64_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -31149,7 +31149,7 @@ inline svuint32_t svcvt_u32_f16_x(svbool_t pg, svfloat16_t op) {
   svuint32_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -31167,7 +31167,7 @@ inline svuint32_t svcvt_u32_f64_x(svbool_t pg, svfloat64_t op) {
   svuint32_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 2] = op.vec[idx];
     }
   }
   return res;
@@ -31176,7 +31176,7 @@ inline svuint64_t svcvt_u64_f16_x(svbool_t pg, svfloat16_t op) {
   svuint64_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 4];
     }
   }
   return res;
@@ -31185,7 +31185,7 @@ inline svuint64_t svcvt_u64_f32_x(svbool_t pg, svfloat32_t op) {
   svuint64_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -31221,7 +31221,7 @@ inline svfloat16_t svcvt_f16_s32_z(svbool_t pg, svint32_t op) {
   svfloat16_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 2] = op.vec[idx];
     }
   }
   return res;
@@ -31239,7 +31239,7 @@ inline svfloat64_t svcvt_f64_s32_z(svbool_t pg, svint32_t op) {
   svfloat64_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -31248,7 +31248,7 @@ inline svfloat16_t svcvt_f16_s64_z(svbool_t pg, svint64_t op) {
   svfloat16_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 4] = op.vec[idx];
     }
   }
   return res;
@@ -31257,7 +31257,7 @@ inline svfloat32_t svcvt_f32_s64_z(svbool_t pg, svint64_t op) {
   svfloat32_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 2] = op.vec[idx];
     }
   }
   return res;
@@ -31275,7 +31275,7 @@ inline svfloat16_t svcvt_f16_u32_z(svbool_t pg, svuint32_t op) {
   svfloat16_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 2] = op.vec[idx];
     }
   }
   return res;
@@ -31293,7 +31293,7 @@ inline svfloat64_t svcvt_f64_u32_z(svbool_t pg, svuint32_t op) {
   svfloat64_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -31302,7 +31302,7 @@ inline svfloat16_t svcvt_f16_u64_z(svbool_t pg, svuint64_t op) {
   svfloat16_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 4] = op.vec[idx];
     }
   }
   return res;
@@ -31311,7 +31311,7 @@ inline svfloat32_t svcvt_f32_u64_z(svbool_t pg, svuint64_t op) {
   svfloat32_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 2] = op.vec[idx];
     }
   }
   return res;
@@ -31350,7 +31350,7 @@ inline svfloat16_t svcvt_f16_s32_m(svfloat16_t inactive, svbool_t pg,
   svfloat16_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 2] = op.vec[idx];
     }
   }
   return res;
@@ -31370,7 +31370,7 @@ inline svfloat64_t svcvt_f64_s32_m(svfloat64_t inactive, svbool_t pg,
   svfloat64_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -31380,7 +31380,7 @@ inline svfloat16_t svcvt_f16_s64_m(svfloat16_t inactive, svbool_t pg,
   svfloat16_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 4] = op.vec[idx];
     }
   }
   return res;
@@ -31390,7 +31390,7 @@ inline svfloat32_t svcvt_f32_s64_m(svfloat32_t inactive, svbool_t pg,
   svfloat32_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 2] = op.vec[idx];
     }
   }
   return res;
@@ -31410,7 +31410,7 @@ inline svfloat16_t svcvt_f16_u32_m(svfloat16_t inactive, svbool_t pg,
   svfloat16_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 2] = op.vec[idx];
     }
   }
   return res;
@@ -31430,7 +31430,7 @@ inline svfloat64_t svcvt_f64_u32_m(svfloat64_t inactive, svbool_t pg,
   svfloat64_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -31440,7 +31440,7 @@ inline svfloat16_t svcvt_f16_u64_m(svfloat16_t inactive, svbool_t pg,
   svfloat16_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 4] = op.vec[idx];
     }
   }
   return res;
@@ -31450,7 +31450,7 @@ inline svfloat32_t svcvt_f32_u64_m(svfloat32_t inactive, svbool_t pg,
   svfloat32_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 2] = op.vec[idx];
     }
   }
   return res;
@@ -31487,7 +31487,7 @@ inline svfloat16_t svcvt_f16_s32_x(svbool_t pg, svint32_t op) {
   svfloat16_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 2] = op.vec[idx];
     }
   }
   return res;
@@ -31505,7 +31505,7 @@ inline svfloat64_t svcvt_f64_s32_x(svbool_t pg, svint32_t op) {
   svfloat64_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -31514,7 +31514,7 @@ inline svfloat16_t svcvt_f16_s64_x(svbool_t pg, svint64_t op) {
   svfloat16_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 4] = op.vec[idx];
     }
   }
   return res;
@@ -31523,7 +31523,7 @@ inline svfloat32_t svcvt_f32_s64_x(svbool_t pg, svint64_t op) {
   svfloat32_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 2] = op.vec[idx];
     }
   }
   return res;
@@ -31541,7 +31541,7 @@ inline svfloat16_t svcvt_f16_u32_x(svbool_t pg, svuint32_t op) {
   svfloat16_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 2] = op.vec[idx];
     }
   }
   return res;
@@ -31559,7 +31559,7 @@ inline svfloat64_t svcvt_f64_u32_x(svbool_t pg, svuint32_t op) {
   svfloat64_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -31568,7 +31568,7 @@ inline svfloat16_t svcvt_f16_u64_x(svbool_t pg, svuint64_t op) {
   svfloat16_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 4] = op.vec[idx];
     }
   }
   return res;
@@ -31577,7 +31577,7 @@ inline svfloat32_t svcvt_f32_u64_x(svbool_t pg, svuint64_t op) {
   svfloat32_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 2] = op.vec[idx];
     }
   }
   return res;
@@ -31595,7 +31595,7 @@ inline svfloat32_t svcvt_f32_f16_z(svbool_t pg, svfloat16_t op) {
   svfloat32_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -31604,7 +31604,7 @@ inline svfloat64_t svcvt_f64_f16_z(svbool_t pg, svfloat16_t op) {
   svfloat64_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 4];
     }
   }
   return res;
@@ -31613,7 +31613,7 @@ inline svfloat64_t svcvt_f64_f32_z(svbool_t pg, svfloat32_t op) {
   svfloat64_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -31623,7 +31623,7 @@ inline svfloat32_t svcvt_f32_f16_m(svfloat32_t inactive, svbool_t pg,
   svfloat32_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -31633,7 +31633,7 @@ inline svfloat64_t svcvt_f64_f16_m(svfloat64_t inactive, svbool_t pg,
   svfloat64_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 4];
     }
   }
   return res;
@@ -31643,7 +31643,7 @@ inline svfloat64_t svcvt_f64_f32_m(svfloat64_t inactive, svbool_t pg,
   svfloat64_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -31652,7 +31652,7 @@ inline svfloat32_t svcvt_f32_f16_x(svbool_t pg, svfloat16_t op) {
   svfloat32_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -31661,7 +31661,7 @@ inline svfloat64_t svcvt_f64_f16_x(svbool_t pg, svfloat16_t op) {
   svfloat64_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 4];
     }
   }
   return res;
@@ -31670,7 +31670,7 @@ inline svfloat64_t svcvt_f64_f32_x(svbool_t pg, svfloat32_t op) {
   svfloat64_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx] = op.vec[idx * 2];
     }
   }
   return res;
@@ -31679,7 +31679,7 @@ inline svfloat16_t svcvt_f16_f32_z(svbool_t pg, svfloat32_t op) {
   svfloat16_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 2] = op.vec[idx];
     }
   }
   return res;
@@ -31688,7 +31688,7 @@ inline svfloat16_t svcvt_f16_f64_z(svbool_t pg, svfloat64_t op) {
   svfloat16_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 4] = op.vec[idx];
     }
   }
   return res;
@@ -31697,7 +31697,7 @@ inline svfloat32_t svcvt_f32_f64_z(svbool_t pg, svfloat64_t op) {
   svfloat32_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 2] = op.vec[idx];
     }
   }
   return res;
@@ -31707,7 +31707,7 @@ inline svfloat16_t svcvt_f16_f32_m(svfloat16_t inactive, svbool_t pg,
   svfloat16_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 2] = op.vec[idx];
     }
   }
   return res;
@@ -31717,7 +31717,7 @@ inline svfloat16_t svcvt_f16_f64_m(svfloat16_t inactive, svbool_t pg,
   svfloat16_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 4] = op.vec[idx];
     }
   }
   return res;
@@ -31727,7 +31727,7 @@ inline svfloat32_t svcvt_f32_f64_m(svfloat32_t inactive, svbool_t pg,
   svfloat32_t res = inactive;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 2] = op.vec[idx];
     }
   }
   return res;
@@ -31736,7 +31736,7 @@ inline svfloat16_t svcvt_f16_f32_x(svbool_t pg, svfloat32_t op) {
   svfloat16_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 2] = op.vec[idx];
     }
   }
   return res;
@@ -31745,7 +31745,7 @@ inline svfloat16_t svcvt_f16_f64_x(svbool_t pg, svfloat64_t op) {
   svfloat16_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 4] = op.vec[idx];
     }
   }
   return res;
@@ -31754,7 +31754,7 @@ inline svfloat32_t svcvt_f32_f64_x(svbool_t pg, svfloat64_t op) {
   svfloat32_t res;
   for (int idx = 0; idx < core_min(res.Size, op.Size); ++idx) {
     if (pg.vec[idx]) {
-      res.vec[idx] = op.vec[idx];
+      res.vec[idx * 2] = op.vec[idx];
     }
   }
   return res;
